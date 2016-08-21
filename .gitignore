@@ -1,0 +1,12 @@
+.DS_Store
+.idea/
+*.iml
+node_modules/
+dist/
+tmp/
+
+## local compilations
+index.js
+index.js.map
+lib/**/*.js
+lib/**/*.js.map

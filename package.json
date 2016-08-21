@@ -1,0 +1,99 @@
+{
+  "name": "ng2-hal",
+  "version": "0.1.0",
+  "description": "An HAL Navigator for Angular2",
+  "keywords": [
+    "ng2",
+    "angular2",
+    "hal",
+    "hypermedia",
+    "rest",
+    "http",
+    "json"
+  ],
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "scripts": {
+    "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist",
+    "clean:dist": "npm run rimraf -- dist",
+    "preclean:install": "npm run clean",
+    "clean:install": "npm set progress=false && npm install",
+    "preclean:start": "npm run clean",
+    "clean:start": "npm start",
+    "build": "npm run build:dev",
+    "prebuild:dev": "npm run clean:dist",
+    "build:dev": "webpack --config config/webpack.dev.js --progress --profile --colors --display-error-details --display-cached",
+    "prebuild:prod": "npm run clean:dist",
+    "build:prod": "webpack --config config/webpack.prod.js  --progress --profile --colors --display-error-details --display-cached --bail",
+    "server": "npm run server:dev",
+    "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
+    "start": "npm run server:dev",
+    "test": "npm test",
+    "preversion": "npm test",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags"
+  },
+  "dependencies": {
+    "halfred": "^1.0.0"
+  },
+  "peerDependencies": {
+    "@angular/core": "^2.0.0-rc.0",
+    "@angular/http": "^2.0.0-rc.0",
+    "rxjs": "^5.0.0-beta.6",
+    "zone.js": "^0.6.6"
+  },
+  "devDependencies": {
+    "@angular/common": "2.0.0-rc.5",
+    "@angular/compiler": "2.0.0-rc.5",
+    "@angular/core": "2.0.0-rc.5",
+    "@angular/forms": "^0.3.0",
+    "@angular/http": "2.0.0-rc.5",
+    "@angular/platform-browser": "2.0.0-rc.5",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.5",
+    "@angular/platform-server": "2.0.0-rc.5",
+    "@angular/router": "^3.0.0-rc.1",
+    "@angularclass/request-idle-callback": "^1.0.7",
+    "@angularclass/webpack-toolkit": "^1.3.3",
+    "@types/core-js": "^0.9.31",
+    "@types/node": "^6.0.36",
+    "@types/source-map": "^0.1.26",
+    "@types/uglify-js": "^2.0.27",
+    "@types/webpack": "^1.12.32",
+    "angular2-template-loader": "^0.4.0",
+    "awesome-typescript-loader": "^2.2.1",
+    "copy-webpack-plugin": "^3.0.1",
+    "core-js": "^2.4.0",
+    "css-loader": "^0.23.1",
+    "html-webpack-plugin": "^2.22.0",
+    "http-server": "^0.9.0",
+    "ie-shim": "^0.1.0",
+    "json-loader": "^0.5.4",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.5.4",
+    "rxjs": "5.0.0-beta.6",
+    "source-map-loader": "^0.1.5",
+    "to-string-loader": "^1.1.4",
+    "ts-helpers": "^1.1.1",
+    "tslint": "^3.14.0",
+    "typedoc": "^0.4.5",
+    "typescript": "^2.0.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^0.14.1",
+    "zone.js": "~0.6.12"
+  },
+  "engines": {
+    "node": ">= 4.2.1",
+    "npm": ">= 3"
+  },
+  "author": "David Herges <david@spektrakel.de>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dherges/ng2-hal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dherges/ng2-hal/issues"
+  },
+  "homepage": "https://dherges.github.io/ng2-hal"
+}
