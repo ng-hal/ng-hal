@@ -28,7 +28,7 @@
     "server": "npm run server:dev",
     "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
     "start": "npm run server:dev",
-    "test": "npm test",
+    "test": "exit 1",
     "preversion": "npm test",
     "version": "npm run build",
     "postversion": "git push && git push --tags"
