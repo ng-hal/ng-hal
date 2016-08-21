@@ -8,8 +8,8 @@
     "sourceMap": true,
     "noEmitHelpers": true,
     "noImplicitAny": true,
-    "declaration": false,
-    "baseUrl": "./app",
+    "declaration": true,
+    "outDir": "dist",
     "types": [
       "core-js",
       "node",
@@ -23,11 +23,9 @@
     "dist",
     "dist-demo"
   ],
-  "awesomeTypescriptLoaderOptions": {
-    "forkChecker": true,
-    "useWebpackText": true
-  },
-  "compileOnSave": false,
-  "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false }
+  "files": [
+    "./demo/custom-typings.d.ts",
+    "./typings/halfred.d.ts",
+    "./lib/index.ts"
+  ]
 }

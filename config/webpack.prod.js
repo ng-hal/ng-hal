@@ -55,7 +55,7 @@ module.exports = webpackMerge(commonConfig, {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-path
      */
-    path: helpers.root('dist'),
+    path: helpers.root('dist-demo'),
 
     /**
      * Specifies the name of each output file on disk.
@@ -203,7 +203,7 @@ module.exports = webpackMerge(commonConfig, {
   tslint: {
     emitErrors: true,
     failOnHint: true,
-    resourcePath: 'src'
+    resourcePath: 'demo'
   },
 
   /**

@@ -3,10 +3,6 @@
 *.iml
 node_modules/
 dist/
+dist-demo/
 tmp/
-
-## local compilations
-index.js
-index.js.map
-lib/**/*.js
-lib/**/*.js.map
+npm-debug.log

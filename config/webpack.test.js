@@ -43,7 +43,7 @@ module.exports = {
     /**
      * Make sure root is src
      */
-    root: helpers.root('src'),
+    root: helpers.root('demo'),
 
   },
 
@@ -124,7 +124,7 @@ module.exports = {
        *
        * See: https://github.com/webpack/json-loader
        */
-      { test: /\.json$/, loader: 'json-loader', exclude: [helpers.root('src/index.html')] },
+      { test: /\.json$/, loader: 'json-loader', exclude: [helpers.root('demo/index.html')] },
 
       /**
        * Raw loader support for *.css files
@@ -132,7 +132,7 @@ module.exports = {
        *
        * See: https://github.com/webpack/raw-loader
        */
-      { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'], exclude: [helpers.root('src/index.html')] },
+      { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'], exclude: [helpers.root('demo/index.html')] },
 
       /**
        * Raw loader support for *.html
@@ -140,7 +140,7 @@ module.exports = {
        *
        * See: https://github.com/webpack/raw-loader
        */
-      { test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] }
+      { test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('demo/index.html')] }
 
     ],
 
@@ -159,7 +159,7 @@ module.exports = {
        */
       {
         test: /\.(js|ts)$/, loader: 'istanbul-instrumenter-loader',
-        include: helpers.root('src'),
+        include: helpers.root('demo'),
         exclude: [
           /\.(e2e|spec)\.ts$/,
           /node_modules/
@@ -208,7 +208,7 @@ module.exports = {
   tslint: {
     emitErrors: false,
     failOnHint: false,
-    resourcePath: 'src'
+    resourcePath: 'demo'
   },
 
   /**
@@ -227,4 +227,3 @@ module.exports = {
   }
 
 };
-
