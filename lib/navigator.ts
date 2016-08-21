@@ -1,3 +1,4 @@
+/// <reference path="../typings/halfred.d.ts" />
 import { Injectable } from '@angular/core';
 import { Http, Request, RequestOptionsArgs, Response } from '@angular/http';
 

@@ -1,3 +1,4 @@
+/// <reference path="../typings/halfred.d.ts" />
 import { Response } from '@angular/http';
 import { ConversionStrategy } from './conversion-strategy';
 import { Resource } from 'halfred';
