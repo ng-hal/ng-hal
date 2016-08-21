@@ -1,10 +1,8 @@
-/// <reference path="halfred.d.ts" />
+/// <reference path="../typings/halfred.d.ts" />
+import halfred = require('halfred');
+export { parse, enableValidation, disableValidatio, Resource } from 'halfred';
 
-import * as half from 'halfred';
-export * from 'halfred';
-
-
-export * from './conversion-strategy';
-export * from './conversion-strategy-json';
-export * from './hal-document';
-export * from './navigator';
+export { ConversionStrategy } from './conversion-strategy';
+export { ConversionStrategyJson } from './conversion-strategy-json';
+export { HalDocument } from './hal-document';
+export { Navigator } from './navigator';

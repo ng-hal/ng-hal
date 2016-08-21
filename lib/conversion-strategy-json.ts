@@ -1,7 +1,7 @@
 import { Injectable }   from '@angular/core';
 import { Response }     from '@angular/http';
 
-import { parse } from 'halfred';
+import { parse, Resource } from 'halfred';
 
 import { ConversionStrategy } from './conversion-strategy';
 import { HalDocument }        from './hal-document';
@@ -17,7 +17,7 @@ export class ConversionStrategyJson implements ConversionStrategy {
     return mediaType == 'application/json' || mediaType == 'application/hal+json';
   }
 
-  convert(response: Response): HalDocument {
+  convert(response: Response): Resource {
     let data = response.json();
 
     return parse(data);

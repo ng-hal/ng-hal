@@ -1,5 +1,5 @@
 import { Request, Response } from '@angular/http';
-//import { Resource } from 'halfred';
+import { Resource } from 'halfred';
 
 export class HalDocument {
 

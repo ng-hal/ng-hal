@@ -10,3 +10,6 @@ export function main(initialHmrState?: any): Promise<any> {
     .then(decorateComponentRef)
     .catch(err => console.error(err));
 }
+
+// bootstrap when document is ready
+document.addEventListener('DOMContentLoaded', () => main());

@@ -2,25 +2,14 @@
  * Typings for halfred
  * @see https://github.com/basti1302/halfred#resource-api
  */
-//import halfred = require('halfred');
 
-declare module halfred {
-
-}
-
-//import * as half from 'halfred';
-
-//declare module "halfred" {
-//  export = halfred;
-
-//  export function parse(object: any): boolean;
-//}
-
-declare namespace halfred___ {
+declare module "halfred" {
 
   export function parse(object: any): Resource;
 
-  export function enableValidation(): boolean;
+  export function enableValidation(flag: boolean): void;
+
+  export function disableValidatio (): void;
 
   export interface Resource {
 
@@ -70,17 +59,12 @@ declare namespace halfred___ {
 }
 
 
-
-
-
-
-
 /**
  * A Link Object represents a hyperlink from the containing resource to a URI.
  *
  * @see https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5
  */
-export declare interface Link {
+declare interface Link {
 
   /**
    * The "href" property is REQUIRED.

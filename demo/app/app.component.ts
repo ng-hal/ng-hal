@@ -1,11 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Request, Response } from '@angular/http';
 
-import { Navigator, HalDocument } from '../../lib';
-import { Resource } from 'halfred';
-
-console.log("app.component.ts", Resource);
-
+import { Navigator, HalDocument, ConversionStrategy, Resource } from '../../dist';
 
 /** Demo application */
 @Component({
@@ -16,7 +12,7 @@ export class AppComponent {
 
   model: any = {
     verb: 'GET',
-    url: '/assets/hal/orders.json'
+    url: '/hal/orders.json'
   };
   activeTab: string = 'hal';
 

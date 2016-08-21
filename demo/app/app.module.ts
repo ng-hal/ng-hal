@@ -5,13 +5,12 @@ import { FormsModule }        from '@angular/forms';
 import { AppComponent }       from './app.component';
 
 
-//import { Navigator, ConversionStrategy, ConverterJson } from '../lib';
+import { Navigator, ConversionStrategy, ConversionStrategyJson } from '../../dist';
+console.log(ConversionStrategy);
 
 const APP_PROVIDERS: any[] = [
-//  Navigator,
-//  new Provider(ConversionStrategy, {
-//    useFactory: () => new ConversionStrategy().add(new ConverterJson())
-//  })
+  new Provider(ConversionStrategy, { useFactory: () => new ConversionStrategyJson() }),
+  Navigator
 ];
 
 @NgModule({

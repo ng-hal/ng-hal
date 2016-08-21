@@ -1,0 +1,5 @@
+{
+  "_links": {
+    "self": { "href": "/example_resource" }
+  }
+}
