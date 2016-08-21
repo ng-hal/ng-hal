@@ -11,8 +11,8 @@
     "http",
     "json"
   ],
-  "main": "index.js",
-  "typings": "index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist",
     "clean:dist": "npm run rimraf -- dist",
