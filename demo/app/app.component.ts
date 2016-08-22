@@ -12,7 +12,7 @@ export class AppComponent {
 
   model: any = {
     verb: 'GET',
-    url: '/hal/orders.json'
+    url: 'hal/orders.json'
   };
   activeTab: string = 'hal';
 

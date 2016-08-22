@@ -55,7 +55,7 @@ module.exports = webpackMerge(commonConfig, {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-path
      */
-    path: helpers.root('dist-demo'),
+    path: helpers.root('gh-pages'),
 
     /**
      * Specifies the name of each output file on disk.

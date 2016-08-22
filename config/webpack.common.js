@@ -220,8 +220,8 @@ module.exports = {
      * See: https://www.npmjs.com/package/copy-webpack-plugin
      */
     new CopyWebpackPlugin([{
-      from: 'demo/assets',
-      to: 'assets'
+      from: 'demo/hal',
+      to: 'hal'
     }]),
 
     /*
