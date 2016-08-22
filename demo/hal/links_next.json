@@ -1,5 +1,5 @@
 {
   "_links": {
-    "next": { "href": "/page=2" }
+    "next": { "href": "/hal/links_items.json" }
   }
 }

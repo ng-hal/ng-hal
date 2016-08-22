@@ -21,7 +21,8 @@ export class ConversionStrategyComposite implements ConversionStrategy {
   }
 
   convert(response: Response): Resource {
-    let mediaType: string = response.headers.get('Content-Type'); // TODO ... this is duplicated from navigator.ts
+    // TODO ... this is duplicated from navigator.ts
+    let mediaType: string = response.headers.get('Content-Type');
 
     for (let c of this.conversionStrategies) {
       if (c.accepts(mediaType)) {

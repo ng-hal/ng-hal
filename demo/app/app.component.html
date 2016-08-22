@@ -65,10 +65,17 @@
       <div class="col-md-6">
         <h4>Links <small><em>resource.allLinks()</em></small></h4>
         <pre><code class="small">{{ resource?.allLinks() | json }}</code></pre>
-      </div>
-      <div class="col-md-6">
+
         <h4>CURIEs <small><em>resource.curieArray()</em></small></h4>
         <pre><code class="small">{{ resource?.curieArray() | json }}</code></pre>
+      </div>
+      <div class="col-md-6">
+        <h4>Navigation</h4>
+        <ul>
+          <li *ngFor="let link of links">
+            <a href="{{link.link.href}}" (click)="onNavigate(link.link)">{{link.rel}} {{link.link.href}}</a>
+          </li>
+        </ul>
       </div>
     </div>
   </aside>

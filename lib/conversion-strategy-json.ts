@@ -14,7 +14,7 @@ export class ConversionStrategyJson implements ConversionStrategy {
   constructor() {}
 
   accepts(mediaType: string): boolean {
-    return mediaType == 'application/json' || mediaType == 'application/hal+json';
+    return mediaType === 'application/json' || mediaType === 'application/hal+json';
   }
 
   convert(response: Response): Resource {

@@ -52,7 +52,7 @@ export class Navigator {
 
     return this.http
       .patch(url, body, options)
-      .map((res: Response) => this.doConvert(res));      
+      .map((res: Response) => this.doConvert(res));
   }
 
   public head(url: string, options?: RequestOptionsArgs): Observable<HalDocument> {
