@@ -4,7 +4,6 @@ export {
   parse,
   enableValidation,
   disableValidation,
-  Resource,
   ResourceCollection,
   LinkCollection,
   Link
@@ -14,3 +13,4 @@ export { ConversionStrategy } from './conversion-strategy';
 export { ConversionStrategyJson } from './conversion-strategy-json';
 export { HalDocument } from './hal-document';
 export { Navigator } from './navigator';
+export { Resource } from './resource';

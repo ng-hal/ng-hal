@@ -1,6 +1,8 @@
 /// <reference path="../typings/halfred.d.ts" />
 import { Request, Response } from '@angular/http';
-import { Resource } from 'halfred';
+
+import { Resource } from './resource';
+
 
 export class HalDocument {
 

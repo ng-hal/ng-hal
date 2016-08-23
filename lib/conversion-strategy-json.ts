@@ -1,10 +1,11 @@
 import { Injectable }   from '@angular/core';
 import { Response }     from '@angular/http';
 
-import { parse, Resource } from 'halfred';
+import { parse } from 'halfred';
 
 import { ConversionStrategy } from './conversion-strategy';
 import { HalDocument }        from './hal-document';
+import { Resource }           from './resource';
 
 
 /** A converter for 'application/hal+json' */
@@ -20,6 +21,6 @@ export class ConversionStrategyJson implements ConversionStrategy {
   convert(response: Response): Resource {
     let data = response.json();
 
-    return parse(data);
+    return new Resource(parse(data));
   }
 }

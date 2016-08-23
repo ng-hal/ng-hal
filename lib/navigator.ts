@@ -5,10 +5,11 @@ import { Http, Request, RequestOptionsArgs, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { parse, Resource } from 'halfred';
+import { parse } from 'halfred';
 
 import { ConversionStrategy }   from './conversion-strategy';
 import { HalDocument }          from './hal-document';
+import { Resource }             from './resource';
 
 
 @Injectable()
