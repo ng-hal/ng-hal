@@ -9,13 +9,9 @@
     "noEmitHelpers": true,
     "noImplicitAny": true,
     "declaration": true,
-    "outDir": "dist",
+    "outDir": "../dist",
     "types": [
-      "core-js",
-      "node",
-      "source-map",
-      "uglify-js",
-      "webpack"
+      "core-js"
     ]
   },
   "exclude": [
@@ -23,9 +19,10 @@
     "dist",
     "dist-demo"
   ],
+  "compileOnSave": false,
+  "buildOnSave": false,
   "files": [
-    "./demo/custom-typings.d.ts",
-    "./typings/halfred.d.ts",
-    "./lib/index.ts"
+    "../typings/halfred.d.ts",
+    "./index.ts"
   ]
 }

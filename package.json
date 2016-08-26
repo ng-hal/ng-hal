@@ -34,7 +34,7 @@
     "github-deploy:prod": "webpack --config config/webpack.github-deploy.js --progress --profile --colors --display-error-details --display-cached --github-prod",
     "lint": "npm run tslint \"lib/**/*.ts\"",
     "prepublish": "npm run clean:dist",
-    "publish": "tsc -p tsconfig.publish.json",
+    "publish": "tsc -p lib",
     "server": "npm run server:dev",
     "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --colors --watch --display-error-details --display-cached --content-base demo/",
     "start": "npm run server:dev",
@@ -44,7 +44,8 @@
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
-    "halfred": "^1.0.0"
+    "halfred": "^1.0.0",
+    "uri-templates": "^0.2.0"
   },
   "peerDependencies": {
     "@angular/core": "^2.0.0-rc.0",
