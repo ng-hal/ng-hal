@@ -1,13 +1,14 @@
 .DS_Store
 .idea/
 *.iml
-node_modules/
-gh-pages/
 tmp/
 npm-debug.log
 
 config/
+demo/
+gh-pages/
 lib/
+node_modules/
 tsconfig.json
 tslint.json
 typedoc.json

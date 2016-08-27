@@ -4,6 +4,8 @@ ng2-hal
 [![Build Status](https://travis-ci.org/dherges/ng2-hal.svg?branch=master)](https://travis-ci.org/dherges/ng2-hal)
 [![Dependency Status](https://david-dm.org/dherges/ng2-hal/status.svg)](https://david-dm.org/dherges/ng2-hal)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://img.shields.io/npm/v/ng2-hal.svg)](https://npmjs.org/ng2-hal))
+[![npm downloads](https://img.shields.io/npm/dm/ng2-hal.svg)](https://npmjs.org/ng2-hal)
 
 
 > An HAL Navigator for Angular2
