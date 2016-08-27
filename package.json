@@ -16,7 +16,8 @@
   "scripts": {
     "rimraf": "rimraf",
     "tslint": "tslint",
-    "ci": "npm run dist && npm run lint",
+    "build": "npm run dist",
+    "ci": "npm run build && npm run test",
     "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist gh-pages",
     "clean:dist": "npm run rimraf -- dist",
     "clean:ghpages": "npm run rimraf -- gh-pages",
@@ -39,7 +40,7 @@
     "server": "npm run server:dev",
     "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --colors --watch --display-error-details --display-cached --content-base demo/",
     "start": "npm run server:dev",
-    "test": "npm run ci",
+    "test": "npm run lint",
     "preversion": "npm test",
     "version": "npm run build",
     "postversion": "git push && git push --tags"
