@@ -1,5 +1,6 @@
 /// <reference path="../typings/halfred.d.ts" />
 import { Resource as HalfredResource, LinkCollection, Link, ResourceCollection } from 'halfred';
+import { LinkWithRel } from './link-with-rel';
 
 
 /** Abstraction of a HAL resource. Based on halfred. */
@@ -9,7 +10,24 @@ export class Resource implements HalfredResource {
     private delegate: HalfredResource
   ) {}
 
+  /** @experimental */
+  allLinksFlattenedArray(): LinkWithRel[] {
+    let flattenedArray: any[] = [];
+    let allLinks = this.allLinks();
+    for (let key in allLinks) {
+      if (typeof this.linkArray(key) === 'array') {
+        let links = this.linkArray(key);
 
+        for (let link of links) {
+          let linkWithRel: LinkWithRel = link as LinkWithRel;
+          linkWithRel.rel = key;
+          flattenedArray.push(linkWithRel);
+        }
+      }
+    }
+
+    return flattenedArray;
+  }
 
   allLinkArrays(): LinkCollection {
     return this.delegate.allLinkArrays();
@@ -27,15 +45,15 @@ export class Resource implements HalfredResource {
     return this.delegate.link(key);
   }
 
-  allEmbeddedResourceArrays(): ResourceCollection {
+  allEmbeddedResourceArrays(): ResourceCollection { // XX ... map(res => new Resource(res))
     return this.delegate.allEmbeddedResourceArrays();
   }
 
-  allEmbeddedArrays(): ResourceCollection {
+  allEmbeddedArrays(): ResourceCollection { // XX ... map(res => new Resource(res))
     return this.delegate.allEmbeddedArrays();
   }
 
-  allEmbeddedResources(): ResourceCollection  {
+  allEmbeddedResources(): ResourceCollection  { // XX ... map(res => new Resource(res))
     return this.delegate.allEmbeddedResources();
   }
 

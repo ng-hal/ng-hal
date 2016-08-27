@@ -59,6 +59,13 @@ export class Foo {
 Please refer to the generated type definitions.
 
 
+## Reading List
+
+ * HAL - Hypertext Application Language: [specification](http://stateless.co/hal_specification.html)
+ * JSON Hypertext Application Language: [draft-kelly-json-hal-08](https://tools.ietf.org/html/draft-kelly-json-hal-08)
+ * URI Templates: [RFC 6570](https://tools.ietf.org/html/rfc6570)
+
+
 ## Heads up!
 
 **This is still very much work-in-progress.**
@@ -83,7 +90,7 @@ Please refer to the generated type definitions.
 
 ## Version History
 
- * ``v0.1.0``: first version on public npm registry
+ * ``v0.1.0`` first version on public npm registry
 
 
 ## License
@@ -114,5 +121,6 @@ SOFTWARE.
 ## Credits
 
  * [basti1302/halfred](https://github.com/basti1302/halfred): resource parsing and normalization for ``application/hal+json``
+ * [geraintluff/uri-templates](https://github.com/geraintluff/uri-templates): URI templates according to [RFC6570](https://tools.ietf.org/html/rfc6570)
  * [Daniel Rosenwasser](https://github.com/DanielRosenwasser): for helping out on [TypeScript #10463](https://github.com/Microsoft/TypeScript/issues/10463)
  * [AngularClass/angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter): build tools

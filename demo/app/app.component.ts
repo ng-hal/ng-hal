@@ -1,7 +1,10 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Request, Response } from '@angular/http';
 
-import { Navigator, HalDocument, ConversionStrategy, Resource, Link } from '../../dist';
+import {
+  Navigator, HalDocument, ConversionStrategy, Resource, Link, LinkWithRel
+} from '../../dist';
+
 
 /** Demo application */
 @Component({
@@ -20,7 +23,7 @@ export class AppComponent {
   resource: Resource;
   response: Response;
   request: Request;
-  links: {rel: string, link: Link}[] = [];
+  links: LinkWithRel[] = [];
 
   constructor(
     private navigator: Navigator
@@ -57,16 +60,7 @@ export class AppComponent {
           this.resource = doc.resource;
           this.response = doc.response;
           this.request = doc.request;
-
-          this.links = [];
-          let allLinks = this.resource.allLinks();
-          for (let key in allLinks) {
-            let links = this.resource.linkArray(key);
-
-            for (let link of links) {
-              this.links.push({rel: key, link});
-            }
-          }
+          this.links = this.resource.allLinksFlattenedArray();
         }
       )
   }
