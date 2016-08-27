@@ -12,7 +12,7 @@ ng2-hal
 ## Usage
 
 ```bash
-$ npm install https://github.com/dherges/ng2-hal.git #later from npm: ng2-hal
+$ npm install ng2-hal
 ```
 
 Register with Angular's dependency injection:
