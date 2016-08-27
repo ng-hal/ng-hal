@@ -1,5 +1,6 @@
 {
   "name": "ng2-hal",
+  "version": "0.1.0",
   "description": "An HAL Navigator for Angular2",
   "keywords": [
     "ng2",
@@ -110,6 +111,5 @@
   "bugs": {
     "url": "https://github.com/dherges/ng2-hal/issues"
   },
-  "homepage": "https://dherges.github.io/ng2-hal",
-  "version": "0.1.0"
+  "homepage": "https://dherges.github.io/ng2-hal"
 }
