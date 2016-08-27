@@ -10,18 +10,19 @@ export class Resource implements HalfredResource {
     private delegate: HalfredResource
   ) {}
 
-
   /** @experimental */
   allLinksFlattenedArray(): LinkWithRel[] {
     let flattenedArray: any[] = [];
     let allLinks = this.allLinks();
     for (let key in allLinks) {
-      let links = this.linkArray(key);
+      if (typeof this.linkArray(key) === 'array') {
+        let links = this.linkArray(key);
 
-      for (let link of links) {
-        let linkWithRel: LinkWithRel = link as LinkWithRel;
-        linkWithRel.rel = key;
-        flattenedArray.push(linkWithRel);
+        for (let link of links) {
+          let linkWithRel: LinkWithRel = link as LinkWithRel;
+          linkWithRel.rel = key;
+          flattenedArray.push(linkWithRel);
+        }
       }
     }
 

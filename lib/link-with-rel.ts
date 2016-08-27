@@ -2,5 +2,5 @@
 import { Link } from 'halfred';
 
 export interface LinkWithRel extends Link {
-  rel: string
+  rel: string;
 }
