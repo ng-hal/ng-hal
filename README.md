@@ -15,17 +15,19 @@ ng2-hal
 ### TODOs
 
  - [ ] URI templating
+ - [ ] ``npm test``: add unit testing
  - [ ] ``Navigator`` API: convenient shortcut for follow-on navigation
    * e.g., ``follow((hal: HalDocument) => Observable<HalDocument>)``
    * currently, ``mergeMap()`` achieves desired behaviour – just an alias?
  - [ ] ``Link`` API: uri templating as instance methods on ``Link``
    * requires: ``Resource`` implementation to map ``Object`` (declares as ts interface ``Link``) to class instances
  - [ ] publish to npm
- - [ ] ``ConversionStrategy``: this needs improvement
+ - [ ] ``ConversionStrategy``:
    * in later version, it would be nice to chose between ``hal+json`` and ``hal+xml``
    * also: have a multiple strategies registered, then choose the right one dependent on ``Content-Type``
+ - [x] ``ConversionStrategy`` API: ``(res: Response) => boolean`` and ``(res: Response) => Resource`` is good
  - [x] ``HalDocument`` API: a tuple of ``(Request, Response, Resource)``?
- - [x] ``npm run test``: automated build testing :-)
+ - [x] ``npm test``: for now, only build and linting
 
 
 ## Usage

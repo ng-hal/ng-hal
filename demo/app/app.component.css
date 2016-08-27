@@ -1,0 +1,12 @@
+.github-link {
+  color: #333;
+}
+
+.github-link:hover {
+  color: #4078c0;
+  text-decoration: none;
+}
+
+.octicon {
+  fill: currentColor
+}
