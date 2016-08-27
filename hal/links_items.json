@@ -1,9 +1,12 @@
 {
   "_links": {
-    "items": [{
-      "href": "/first_item"
-    },{
-      "href": "/second_item"
-    }]
+    "items": [
+      {
+        "href": "/first_item"
+      },
+      {
+        "href": "/second_item"
+      }
+    ]
   }
 }
