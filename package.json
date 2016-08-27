@@ -110,5 +110,6 @@
   "bugs": {
     "url": "https://github.com/dherges/ng2-hal/issues"
   },
-  "homepage": "https://dherges.github.io/ng2-hal"
+  "homepage": "https://dherges.github.io/ng2-hal",
+  "version": "0.1.0"
 }
