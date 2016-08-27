@@ -1,33 +1,12 @@
 ng2-hal
 =======
 
-> An HAL Navigator for Angular2
-
-
 [![Build Status](https://travis-ci.org/dherges/ng2-hal.svg?branch=master)](https://travis-ci.org/dherges/ng2-hal)
 [![Dependency Status](https://david-dm.org/dherges/ng2-hal/status.svg)](https://david-dm.org/dherges/ng2-hal)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## Heads up!
 
-**This is still very much work-in-progress.**
-
-### TODOs
-
- - [ ] URI templating
- - [ ] ``npm test``: add unit testing
- - [ ] ``Navigator`` API: convenient shortcut for follow-on navigation
-   * e.g., ``follow((hal: HalDocument) => Observable<HalDocument>)``
-   * currently, ``mergeMap()`` achieves desired behaviour – just an alias?
- - [ ] ``Link`` API: uri templating as instance methods on ``Link``
-   * requires: ``Resource`` implementation to map ``Object`` (declares as ts interface ``Link``) to class instances
- - [ ] publish to npm
- - [ ] ``ConversionStrategy``:
-   * in later version, it would be nice to chose between ``hal+json`` and ``hal+xml``
-   * also: have a multiple strategies registered, then choose the right one dependent on ``Content-Type``
- - [x] ``ConversionStrategy`` API: ``(res: Response) => boolean`` and ``(res: Response) => Resource`` is good
- - [x] ``HalDocument`` API: a tuple of ``(Request, Response, Resource)``?
- - [x] ``npm test``: for now, only build and linting
+> An HAL Navigator for Angular2
 
 
 ## Usage
@@ -74,14 +53,36 @@ export class Foo {
 
 ## API Design Considerations
 
-### ``d.ts`` are the API docs
+``d.ts`` are the API docs.
+Please refer to the generated type definitions.
 
-Please refere to the generated type definitions.
 
-### ...
+## Heads up!
 
-*see TODOs, still work-in-progress*
+**This is still very much work-in-progress.**
 
+### TODOs
+
+ - [ ] URI templating
+ - [ ] ``npm test``: add unit testing
+ - [ ] ``Navigator`` API: convenient shortcut for follow-on navigation
+   * e.g., ``follow((hal: HalDocument) => Observable<HalDocument>)``
+   * currently, ``mergeMap()`` achieves desired behaviour – just an alias?
+ - [ ] ``Link`` API: uri templating as instance methods on ``Link``
+   * requires: ``Resource`` implementation to map ``Object`` (declares as ts interface ``Link``) to class instances
+ - [ ] publish to npm
+ - [ ] ``ConversionStrategy``:
+   * in later version, it would be nice to chose between ``hal+json`` and ``hal+xml``
+   * also: have a multiple strategies registered, then choose the right one dependent on ``Content-Type``
+ - [x] ``ConversionStrategy`` API: ``(res: Response) => boolean`` and ``(res: Response) => Resource`` is good
+ - [x] ``HalDocument`` API: a tuple of ``(Request, Response, Resource)``?
+ - [x] ``npm test``: for now, only build and linting
+
+
+
+## Version History
+
+ * 0.1.0: first public version
 
 
 ## Credits

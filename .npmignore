@@ -1,0 +1,14 @@
+.DS_Store
+.idea/
+*.iml
+node_modules/
+gh-pages/
+tmp/
+npm-debug.log
+
+config/
+lib/
+tsconfig.json
+tslint.json
+typedoc.json
+webpack.config.js

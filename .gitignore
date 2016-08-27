@@ -3,7 +3,6 @@
 *.iml
 node_modules/
 dist/
-dist-demo/
 gh-pages/
 tmp/
 npm-debug.log
