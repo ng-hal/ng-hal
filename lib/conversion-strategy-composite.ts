@@ -1,7 +1,7 @@
-/// <reference path="../typings/halfred.d.ts" />
-import { Response } from '@angular/http';
-import { ConversionStrategy } from './conversion-strategy';
-import { Resource } from './resource';
+import { Response }             from '@angular/http';
+
+import { ConversionStrategy }   from './conversion-strategy';
+import { Resource }             from './resource';
 
 
 export class ConversionStrategyComposite implements ConversionStrategy {
@@ -10,27 +10,28 @@ export class ConversionStrategyComposite implements ConversionStrategy {
     private conversionStrategies: ConversionStrategy[]
   ) {}
 
-  accepts(mediaType: string): boolean {
-    for (let c of this.conversionStrategies) {
-      if (c.accepts(mediaType)) {
-        return true;
-      }
-    }
+  accepts(response: Response): boolean {
+    let c: ConversionStrategy = this.findFirst(response);
 
-    return false;
+    return c ? true : false;
   }
 
   convert(response: Response): Resource {
-    // TODO ... this is duplicated from navigator.ts
-    let mediaType: string = response.headers.get('Content-Type');
+    let c: ConversionStrategy = this.findFirst(response);
 
-    for (let c of this.conversionStrategies) {
-      if (c.accepts(mediaType)) {
-        return c.convert(response);
-      }
+    if (c) {
+      return c.convert(response);
     }
 
-    return null;
+    return;
+  }
+
+  private findFirst(response: Response): ConversionStrategy {
+    for (let c of this.conversionStrategies) {
+      if (c.accepts(response)) {
+        return c;
+      }
+    }
   }
 
 }

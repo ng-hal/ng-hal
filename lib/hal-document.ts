@@ -1,27 +1,14 @@
-/// <reference path="../typings/halfred.d.ts" />
-import { Request, Response } from '@angular/http';
+import { Request, Response }  from '@angular/http';
 
-import { Resource } from './resource';
+import { Resource }           from './resource';
 
 
 export class HalDocument {
 
   constructor(
-    private _request: Request,
-    private _response: Response,
-    private _resource: Resource
+    public request: Request,
+    public response: Response,
+    public resource: Resource
   ) {}
-
-  public get request(): Request {
-    return this._request;
-  }
-
-  public get response(): Response {
-    return this._response;
-  }
-
-  public get resource(): Resource {
-    return this._resource;
-  }
 
 }

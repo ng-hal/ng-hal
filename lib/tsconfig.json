@@ -23,6 +23,7 @@
   "buildOnSave": false,
   "files": [
     "../typings/halfred.d.ts",
+    "../typings/uri-templates.d.ts",
     "./index.ts"
   ]
 }
