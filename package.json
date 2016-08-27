@@ -16,6 +16,7 @@
   "scripts": {
     "rimraf": "rimraf",
     "tslint": "tslint",
+    "ci": "npm run dist && npm run lint",
     "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist gh-pages",
     "clean:dist": "npm run rimraf -- dist",
     "clean:ghpages": "npm run rimraf -- gh-pages",
@@ -33,12 +34,12 @@
     "github-deploy:dev": "webpack --config config/webpack.github-deploy.js --progress --profile --colors --display-error-details --display-cached --github-dev",
     "github-deploy:prod": "webpack --config config/webpack.github-deploy.js --progress --profile --colors --display-error-details --display-cached --github-prod",
     "lint": "npm run tslint \"lib/**/*.ts\"",
-    "prepublish": "npm run clean:dist",
-    "publish": "tsc -p lib",
+    "predist": "npm run clean:dist",
+    "dist": "tsc -p lib",
     "server": "npm run server:dev",
     "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --colors --watch --display-error-details --display-cached --content-base demo/",
     "start": "npm run server:dev",
-    "test": "exit 1",
+    "test": "npm run ci",
     "preversion": "npm test",
     "version": "npm run build",
     "postversion": "git push && git push --tags"
