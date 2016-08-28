@@ -15,7 +15,7 @@ export class Resource implements HalfredResource {
     let flattenedArray: any[] = [];
     let allLinks = this.allLinks();
     for (let key in allLinks) {
-      if (typeof this.linkArray(key) === 'array') {
+      if (allLinks.hasOwnProperty(key)) {
         let links = this.linkArray(key);
 
         for (let link of links) {
