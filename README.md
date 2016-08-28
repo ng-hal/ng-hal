@@ -19,10 +19,14 @@ $ npm install ng2-hal
 
 Register with Angular's dependency injection:
 ```ts
-import { Navigator, ConversionStrategy, ConversionStrategyJson } from '../../dist';
+import {
+  Navigator,
+  ConversionStrategy,
+  ConversionStrategyJson
+} from 'ng2-hal';
 
 const MY_PROVIDERS: any[] = [
-  new Provider(ConversionStrategy, { useFactory: () => new ConversionStrategyJson() }),
+  new Provider(ConversionStrategy, { useClass: ConversionStrategyJson }),
   Navigator
 ];
 ```
