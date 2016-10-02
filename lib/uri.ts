@@ -4,19 +4,27 @@ import utpl = require('uri-templates');
 console.log(utpl);
 console.log(utpl('http://www.foo.com/{foo}?{bar*}').fillFromObject({foo: 123, bar: 789}));
 
-
 export class Uri {
 
-  public static of(url: string): Uri {
-    return new Uri(url);
+  public static from(url: string): Uri {
+    return new Uri(utpl(url));
   }
 
   constructor (
-    public url: string
+    private uritemplate: any // <-- URITemplate
   ) {}
 
-  public concrete (vars: Object): string {
-    return utpl(this.url).fillFromObject(vars);
+  public with(vars: { [key: string]: string}): string {
+    return this.uritemplate.fillFromObject(vars);
   }
 
+  public withCb(callback: (key: string) => string): string {
+    return this.uritemplate.frill(callback);
+  }
+
+  public fromUri(uri: string): Uri {
+    this.uritemplate = utpl(uri);
+
+    return this;
+  }
 }

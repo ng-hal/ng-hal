@@ -6,8 +6,8 @@ import { AppComponent }       from './app.component';
 
 import { Navigator, ConversionStrategy, ConversionStrategyJson } from '../../dist';
 
-const APP_PROVIDERS: any[] = [
-  new Provider(ConversionStrategy, { useClass: ConversionStrategyJson }),
+const APP_PROVIDERS: Provider[] = [
+  { provide: ConversionStrategy, useClass: ConversionStrategyJson },
   Navigator
 ];
 

@@ -12,4 +12,3 @@ switch (process.env.NODE_ENV) {
   default:
     module.exports = require('./config/webpack.dev');
 }
-
