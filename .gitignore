@@ -1,5 +1,6 @@
 .DS_Store
 .idea/
+.chrome/
 *.iml
 node_modules/
 dist/
