@@ -3,7 +3,7 @@ import utpl = require('uri-templates');
 
 export class Uri {
 
-  public static from(url: string): Uri {
+  public static of(url: string): Uri {
     return new Uri(utpl(url));
   }
 

@@ -23,13 +23,14 @@
   <hr>
 
   <main>
-    <form (ngSubmit)="onFormSubmit()">
+    <form (ngSubmit)="onFormSubmit()" #navigationForm="ngForm">
       <div class="form-group row">
         <label for="formVerb" class="col-sm-2">Verb:</label>
         <div class="col-sm-10">
           <select class="form-control"
                   id="formVerb"
                   name="verb"
+                  required
                   [(ngModel)]="model.verb">
             <option>GET</option>
             <option>POST</option>
@@ -48,12 +49,35 @@
                  id="formUrlInput"
                  type="text"
                  name="url"
+                 required
                  [(ngModel)]="model.url"/>
         </div>
       </div>
+      <div class="form-group row" *ngFor="let param of this.model.params">
+        <label for="formUrlInput_x" class="col-sm-2">Params:</label>
+        <div class="col-sm-3">
+          <input class="form-control"
+                 id="formUrlInput_x"
+                 type="text"
+                 placeholder="Key"
+                 name="params_key_x"
+                 required
+                 [(ngModel)]="param.key"/>
+        </div>
+        <div class="col-sm-3">
+          <input class="form-control"
+                 id="formUrlInput_xy"
+                 type="text"
+                 placeholder="Value"
+                 name="params_value_x"
+                 required
+                 [(ngModel)]="param.value"/>
+        </div>
+      </div>
+
       <div class="form-group row">
         <div class="offset-sm-2 col-sm-10">
-          <button type="submit" class="btn btn-primary">Navigate</button>
+          <button type="submit" class="btn btn-primary" [disabled]="navigationForm.invalid">Navigate</button>
         </div>
       </div>
     </form>

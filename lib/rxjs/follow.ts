@@ -5,15 +5,15 @@ import { HalDocument } from '../hal-document';
 
 
 export interface FollowSignature<T> {
-  (project: (value: T, index: number) => ObservableInput<HalDocument>): Observable<HalNavigation>;
+  (project: (value: T, index: number) => ObservableInput<HalDocument>): Observable<Session>;
 }
 
 export function follow<T>(
-  project: (value: T, index: number) => ObservableInput<HalDocument>): Observable<HalNavigation> {
+  project: (value: T, index: number) => ObservableInput<HalDocument>): Observable<Session> {
 
   return this.lift(new MergeMapOperator(project,
-    (outer: T, inner: HalDocument): HalNavigation => {
-      let nav = outer instanceof HalNavigation ? outer : new HalNavigation();
+    (outer: T, inner: HalDocument): Session => {
+      let nav = outer instanceof Session ? outer : new Session();
 
       if (outer instanceof HalDocument) {
         nav.history.push(outer);
@@ -26,7 +26,7 @@ export function follow<T>(
   ));
 }
 
-export class HalNavigation {
+export class Session {
   current: HalDocument;
   history: HalDocument[] = [];
 }
