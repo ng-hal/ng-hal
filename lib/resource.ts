@@ -1,105 +1,34 @@
 /// <reference path="../typings/halfred.d.ts" />
 import { Resource as HalfredResource, LinkCollection, Link, ResourceCollection } from 'halfred';
-import { LinkWithRel } from './link-with-rel';
-
 
 /** Abstraction of a HAL resource. Based on halfred. */
-export class Resource implements HalfredResource {
+export class Resource extends HalfredResource {
+
+  private _original: any;
 
   constructor(
-    private delegate: HalfredResource
-  ) {}
+    shallow: any
+  ) {
+    super(shallow['_links'], shallow['_curies'], shallow['_embedded'], shallow['_validation']);
+
+    this._original = shallow['_original'];
+  }
 
   /** @experimental */
-  allLinksFlattenedArray(): LinkWithRel[] {
-    let flattenedArray: any[] = [];
-    let allLinks = this.allLinks();
-    for (let key in allLinks) {
-      if (allLinks.hasOwnProperty(key)) {
-        let links = this.linkArray(key);
+  allLinksFlattenedArray(): Link[] {
+    let flattenedArray: any[] = Object.keys(this.allLinks())
+      .map((key) => {
+        return this.linkArray(key)
+          .map((link: Link) => {
+            let linkWithRel = { rel: key };
+            Object.assign(linkWithRel, link);
 
-        for (let link of links) {
-          let linkWithRel: LinkWithRel = link as LinkWithRel;
-          linkWithRel.rel = key;
-          flattenedArray.push(linkWithRel);
-        }
-      }
-    }
+            return linkWithRel;
+          })
+      })
+      .reduce((a, b) => a.concat(b), [])
 
     return flattenedArray;
   }
 
-  allLinkArrays(): LinkCollection {
-    return this.delegate.allLinkArrays();
-  }
-
-  allLinks(): LinkCollection {
-    return this.delegate.allLinks();
-  }
-
-  linkArray(key: string): Link[] {
-    return this.delegate.linkArray(key);
-  }
-
-  link(key: string): Link {
-    return this.delegate.link(key);
-  }
-
-  allEmbeddedResourceArrays(): ResourceCollection { // XX ... map(res => new Resource(res))
-    return this.delegate.allEmbeddedResourceArrays();
-  }
-
-  allEmbeddedArrays(): ResourceCollection { // XX ... map(res => new Resource(res))
-    return this.delegate.allEmbeddedArrays();
-  }
-
-  allEmbeddedResources(): ResourceCollection  { // XX ... map(res => new Resource(res))
-    return this.delegate.allEmbeddedResources();
-  }
-
-  embeddedResourceArray(key: string): Resource[] {
-    return this.delegate.embeddedResourceArray(key)
-      .map((val: HalfredResource) => new Resource(val));
-  }
-
-  embeddedArray(key: string): Resource[] {
-    return this.delegate.embeddedArray(key)
-      .map((val: HalfredResource) => new Resource(val));
-  }
-
-  embeddedResource(key: string): Resource {
-    return new Resource(this.delegate.embeddedResource(key));
-  }
-
-  embedded(key: string): Resource {
-    return new Resource(this.delegate.embedded(key));
-  }
-
-  original(): any {
-    return this.delegate.original();
-  }
-
-  hasCuries(): boolean {
-    return this.delegate.hasCuries();
-  }
-
-  curieArray(): Link[] {
-    return this.delegate.curieArray();
-  }
-
-  curie(name: string): Link {
-    return this.delegate.curie(name);
-  }
-
-  reverseResolveCurie(fullUrl: string): string {
-    return this.delegate.reverseResolveCurie(fullUrl);
-  }
-
-  validationIssues(): any {
-    return this.delegate.validationIssues();
-  }
-
-  validation(): any {
-    return this.delegate.validation();
-  }
 }

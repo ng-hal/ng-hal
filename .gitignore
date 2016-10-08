@@ -3,6 +3,7 @@
 .chrome/
 *.iml
 node_modules/
+coverage/
 dist/
 gh-pages/
 tmp/

@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { Request, Response } from '@angular/http';
 
 import {
-  Navigator, HalDocument, ConversionStrategy, Resource, Link, LinkWithRel
+  Navigator, HalDocument, HalNavigation, ConversionStrategy, Resource, Link
 } from '../../dist';
 
 
@@ -23,7 +23,7 @@ export class AppComponent {
   resource: Resource;
   response: Response;
   request: Request;
-  links: LinkWithRel[] = [];
+  links: Link[] = [];
 
   constructor(
     private navigator: Navigator
@@ -32,22 +32,11 @@ export class AppComponent {
   ngOnInit() {
     console.log("AppComponent inited.", this.navigator);
 
-    /*
     this.navigator
       .get('/hal/orders.json')
-      .mergeMap((hal: HalDocument) => { // XX .. follow
-        console.log("mergeMap");
-        return this.navigator.get('/hal/orders_523.json')
-      })
-      .mergeMap((hal: HalDocument) => { // XX .. follow
-        console.log("mergeMap");
-        return this.navigator.get('/hal/links_self.json')
-      })
-      .subscribe((hal: HalDocument) => { // XX .. follow
-        console.log(hal);
-        console.log("finished");
-      })
-    */
+      .follow((doc) => this.navigator.get('fooo'))
+      .follow((nav) => this.navigator.post('bar', {}))
+      .subscribe((nav) => console.log(nav));
   }
 
   onFormSubmit() {

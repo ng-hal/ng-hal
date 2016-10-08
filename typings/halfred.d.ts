@@ -19,7 +19,9 @@ declare module "halfred" {
   export function disableValidation(): void;
 
   /** @see https://github.com/basti1302/halfred#resource-api */
-  export interface Resource {
+  export class Resource {
+
+    constructor(links: any, curies: any, embedded: any, validationIssues: any);
 
     /**
      * Returns an object which has an array for each link that was present in the source object.

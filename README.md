@@ -17,24 +17,25 @@ ng2-hal
 $ npm install ng2-hal
 ```
 
-Register with Angular's dependency injection:
+Import ``HalModule`` to your application, similar to the following example:
 ```ts
-import {
-  Navigator,
-  ConversionStrategy,
-  ConversionStrategyJson
-} from 'ng2-hal';
+import { HalModule } from 'ng2-hal';
 
-const MY_PROVIDERS: any[] = [
-  new Provider(ConversionStrategy, { useClass: ConversionStrategyJson }),
-  Navigator
-];
+@NgModule({
+  declarations: [ AppComponent ],
+  bootstrap:    [ AppComponent ],
+  imports:      [
+    BrowserModule,
+    HttpModule,
+    FormsModule,
+    HalModule
+  ]
+})
+export class AppModule {}
 ```
 
-Please note: you also need Angular's ``Http`` ready for DI. It is required by ``Navigator``.
-
-
-Navigation example:
+To retrieve HAL/JSON documents, inject ``Navigator`` into one our your components or services.
+Usage Example:
 ```ts
 import { Navigator } from 'ng2-hal';
 
@@ -59,8 +60,10 @@ export class Foo {
 
 ## API Design Considerations
 
-``d.ts`` are the API docs.
-Please refer to the generated type definitions.
+ * ``Navigator`` API is almost identical to Angular's ``Http`` API.
+   * ``follow`` is a short-cut Observable operation that is derived from ``mergeMap``/``flatMap``.
+ * ``HalDocument`` gives you a ``Resource`` object and the original ``Request``/``Response`` pair.
+ * ``Resource`` is a normalized view of the JSON document. You can, however, obtain the unmodified JSON object.
 
 
 ## Reading List
@@ -77,16 +80,16 @@ Please refer to the generated type definitions.
 ### TODOs
 
  - [ ] URI templating
- - [ ] ``npm test``: add unit testing
- - [ ] ``Navigator`` API: convenient shortcut for follow-on navigation
-   * e.g., ``follow((hal: HalDocument) => Observable<HalDocument>)``
-   * currently, ``mergeMap()`` achieves desired behaviour – just an alias?
  - [ ] ``Link`` API: uri templating as instance methods on ``Link``
    * requires: ``Resource`` implementation to map ``Object`` (declares as ts interface ``Link``) to class instances
  - [ ] publish to npm
  - [ ] ``ConversionStrategy``:
    * in later version, it would be nice to chose between ``hal+json`` and ``hal+xml``
    * also: have a multiple strategies registered, then choose the right one dependent on ``Content-Type``
+ - [x] ``npm test``: add unit testing
+ - [x] ``Navigator`` API: convenient shortcut for follow-on navigation
+   * e.g., ``follow((hal: HalDocument) => Observable<HalDocument>)``
+   * currently, ``mergeMap()`` achieves desired behaviour – just an alias?
  - [x] ``ConversionStrategy`` API: ``(res: Response) => boolean`` and ``(res: Response) => Resource`` is good
  - [x] ``HalDocument`` API: a tuple of ``(Request, Response, Resource)``?
  - [x] ``npm test``: for now, only build and linting

@@ -1,8 +1,7 @@
-import halfred = require('halfred');
+import './rxjs/add/follow'; 
+export * from './rxjs/follow';
+
 export {
-  parse,
-  enableValidation,
-  disableValidation,
   ResourceCollection,
   LinkCollection,
   Link
@@ -12,7 +11,7 @@ export { ConversionStrategy }           from './conversion-strategy';
 export { ConversionStrategyJson }       from './conversion-strategy-json';
 export { ConversionStrategyComposite }  from './conversion-strategy-composite';
 export { HalDocument }                  from './hal-document';
-export { LinkWithRel }                  from './link-with-rel';
+export { HalModule }                    from './hal.module';
 export { Navigator }                    from './navigator';
 export { Resource }                     from './resource';
 export { Uri }                          from './uri';

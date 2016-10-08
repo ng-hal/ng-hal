@@ -27,8 +27,10 @@
       <div class="form-group row">
         <label for="formVerb" class="col-sm-2">Verb:</label>
         <div class="col-sm-10">
-          <select class="form-control" id="formVerb"
-                  name="verb" [(ngModel)]="model.verb">
+          <select class="form-control"
+                  id="formVerb"
+                  name="verb"
+                  [(ngModel)]="model.verb">
             <option>GET</option>
             <option>POST</option>
             <option>PUT</option>
@@ -42,8 +44,11 @@
       <div class="form-group row">
         <label for="formUrlInput" class="col-sm-2">URL:</label>
         <div class="col-sm-10">
-          <input id="formUrlInput" class="form-control"
-                 type="text" name="url" [(ngModel)]="model.url"/>
+          <input class="form-control"
+                 id="formUrlInput"
+                 type="text"
+                 name="url"
+                 [(ngModel)]="model.url"/>
         </div>
       </div>
       <div class="form-group row">
@@ -56,16 +61,27 @@
 
   <nav>
     <ul class="nav nav-tabs m-b-1 p-l-1 p-r-1">
-      <li class="nav-item"><a class="nav-link" href="#" [class.active]="activeTab == 'hal'"
-          (click)="onSwitchTab('hal')">HAL Resource</a></li>
-      <li class="nav-item"><a class="nav-link" href="#" [class.active]="activeTab == 'links'"
-          (click)="onSwitchTab('links')">Links</a></li>
-      <li class="nav-item"><a class="nav-link" href="#" [class.active]="activeTab == 'embedded'"
-          (click)="onSwitchTab('embedded')">Embedded</a></li>
-      <li class="nav-item"><a class="nav-link" href="#" [class.active]="activeTab == 'navigation'"
-          (click)="onSwitchTab('navigation')">Navigation</a></li>
-      <li class="nav-item"><a class="nav-link" href="#" [class.active]="activeTab == 'http'"
-          (click)="onSwitchTab('http')">HTTP</a></li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"
+           [class.active]="activeTab == 'hal'"
+           (click)="onSwitchTab('hal')">HAL Resource</a>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="#"
+          [class.active]="activeTab == 'embedded'"
+          (click)="onSwitchTab('embedded')">Embedded</a>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="#"
+          [class.active]="activeTab == 'links'"
+          (click)="onSwitchTab('links')">Links</a>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="#"
+          [class.active]="activeTab == 'navigation'"
+          (click)="onSwitchTab('navigation')">Navigation</a>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="#"
+          [class.active]="activeTab == 'http'"
+          (click)="onSwitchTab('http')">HTTP</a>
+      </li>
     </ul>
   </nav>
 
