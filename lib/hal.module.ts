@@ -6,9 +6,6 @@ import { ConversionStrategyJson } from './conversion-strategy-json';
 import { Navigator } from './navigator';
 
 @NgModule({
-  imports: [
-    HttpModule
-  ],
   providers: [
     { provide: ConversionStrategy, useClass: ConversionStrategyJson },
     Navigator
