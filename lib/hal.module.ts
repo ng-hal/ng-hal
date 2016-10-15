@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 
 import { ConversionStrategy } from './conversion-strategy';
 import { ConversionStrategyJson } from './conversion-strategy-json';
