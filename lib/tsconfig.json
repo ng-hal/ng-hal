@@ -17,7 +17,7 @@
   "exclude": [
     "node_modules",
     "dist",
-    "dist-demo"
+    "gh-pages"
   ],
   "compileOnSave": false,
   "buildOnSave": false,

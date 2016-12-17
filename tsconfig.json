@@ -19,8 +19,9 @@
     ]
   },
   "exclude": [
-    "node_modules",
     "dist",
+    "node_modules",
+    "lib",
     "gh-pages"
   ],
   "awesomeTypescriptLoaderOptions": {
