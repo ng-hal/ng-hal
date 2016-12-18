@@ -1,0 +1,11 @@
+{
+  "vendor": {
+    "js": "/ng-hal/vendor.cd182d710497383d2d7c.bundle.js"
+  },
+  "main": {
+    "js": "/ng-hal/main.cd182d710497383d2d7c.bundle.js"
+  },
+  "polyfills": {
+    "js": "/ng-hal/polyfills.cd182d710497383d2d7c.bundle.js"
+  }
+}
