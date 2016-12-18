@@ -1,0 +1,5 @@
+{
+  "_links": {
+    "self": { "href": "/hal/links_self.json" }
+  }
+}

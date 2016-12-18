@@ -1,8 +1,0 @@
-{
-  "_links": {
-    "self": { "href": "hal/orders/123.json" }
-  },
-  "currency": "USD",
-  "status": "shipped",
-  "total": 1.23
-}

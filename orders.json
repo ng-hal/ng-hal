@@ -1,0 +1,61 @@
+{
+  "_links": {
+    "self": {
+      "href": "hal/orders.json"
+    },
+    "curies": [
+      {
+        "name": "ea",
+        "href": "http://example.com/docs/rels/{rel}",
+        "templated": true
+      }
+    ],
+    "next": {
+      "href": "hal/orders?page=2"
+    },
+    "ea:detail": {
+      "href": "hal/orders/{id}.json",
+      "templated": true
+    },
+    "ea:find": {
+      "href": "hal/orders.json{?id}",
+      "templated": true
+    },
+    "ea:admin": [
+      {
+        "href": "hal/admins/2.json",
+        "title": "Fred"
+      },
+      {
+        "href": "hal/admins/5.json",
+        "title": "Kate"
+      }
+    ]
+  },
+  "currentlyProcessing": 14,
+  "shippedToday": 20,
+  "_embedded": {
+    "ea:order": [
+      {
+        "_links": {
+          "self": { "href": "hal/orders/123.json" },
+          "ea:basket": { "href": "hal/baskets/98712.json" },
+          "ea:customer": { "href": "hal/customers/7809.json" }
+        },
+        "total": 30.00,
+        "currency": "USD",
+        "status": "shipped"
+      },
+      {
+        "_links": {
+          "self": { "href": "hal/orders/124.json" },
+          "ea:basket": { "href": "hal/baskets/97213.json" },
+          "ea:customer": { "href": "hal/customers/12369.json" }
+        },
+        "total": 20.00,
+        "currency": "USD",
+        "status": "processing"
+      }
+    ]
+  }
+}
