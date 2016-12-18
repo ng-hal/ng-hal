@@ -55,7 +55,7 @@ export class Foo {
 
 ## Demo application
 
-[http://spektrakel.de/ng2-hal](http://spektrakel.de/ng2-hal)
+[http://spektrakel.de/ng-hal](http://spektrakel.de/ng-hal)
 
 
 ## API Design Considerations
