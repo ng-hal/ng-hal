@@ -1,5 +1,7 @@
 .DS_Store
+.chrome/
 .idea/
+.vscode/
 *.iml
 tmp/
 
