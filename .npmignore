@@ -2,13 +2,17 @@
 .idea/
 *.iml
 tmp/
-npm-debug.log
 
 config/
 demo/
 gh-pages/
 lib/
 node_modules/
+.editorconfig
+.gitignore
+.travis.yml
+karma.conf.js
+npm-debug.log
 tsconfig.json
 tslint.json
 typedoc.json

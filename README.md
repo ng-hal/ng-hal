@@ -1,11 +1,11 @@
-ng2-hal
-=======
+ng-hal
+======
 
-[![Build Status](https://travis-ci.org/dherges/ng2-hal.svg?branch=master)](https://travis-ci.org/dherges/ng2-hal)
-[![Dependency Status](https://david-dm.org/dherges/ng2-hal/status.svg)](https://david-dm.org/dherges/ng2-hal)
+[![Build Status](https://travis-ci.org/dherges/ng-hal.svg?branch=master)](https://travis-ci.org/dherges/ng-hal)
+[![Dependency Status](https://david-dm.org/dherges/ng-hal/status.svg)](https://david-dm.org/dherges/ng-hal)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://img.shields.io/npm/v/ng2-hal.svg)](https://npmjs.org/ng2-hal)
-[![npm downloads](https://img.shields.io/npm/dm/ng2-hal.svg)](https://npmjs.org/ng2-hal)
+[![npm version](https://img.shields.io/npm/v/ng-hal.svg)](https://npmjs.org/ng-hal)
+[![npm downloads](https://img.shields.io/npm/dm/ng-hal.svg)](https://npmjs.org/ng-hal)
 
 
 > An HAL Navigator for Angular2
@@ -19,7 +19,7 @@ $ npm install ng2-hal
 
 Import ``HalModule`` to your application, similar to the following example:
 ```ts
-import { HalModule } from 'ng2-hal';
+import { HalModule } from 'ng-hal';
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -37,7 +37,7 @@ export class AppModule {}
 To retrieve HAL/JSON documents, inject ``Navigator`` into one our your components or services.
 Usage Example:
 ```ts
-import { Navigator } from 'ng2-hal';
+import { Navigator } from 'ng-hal';
 
 @Injectable()
 export class Foo {
@@ -97,6 +97,7 @@ export class Foo {
 
 ## Version History
 
+ * ``v0.2.0`` renamed to ``ng-hal``, version bumps
  * ``v0.1.0`` first version on public npm registry
 
 

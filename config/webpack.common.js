@@ -157,7 +157,7 @@ module.exports = function (options) {
      */
     plugins: [
       new AssetsPlugin({
-        path: helpers.root('dist'),
+        path: helpers.root('gh-pages'),
         filename: 'webpack-assets.json',
         prettyPrint: true
       }),
@@ -206,7 +206,7 @@ module.exports = function (options) {
        * See: https://www.npmjs.com/package/copy-webpack-plugin
        */
       new CopyWebpackPlugin([
-        { from: 'demo/hal'}
+        { from: 'demo/hal', to: 'hal'}
       ]),
 
 
