@@ -14,7 +14,7 @@ ng-hal
 ## Usage
 
 ```bash
-$ npm install ng2-hal
+$ npm install ng-hal
 ```
 
 Import ``HalModule`` to your application, similar to the following example:
