@@ -13,7 +13,7 @@ import { AppComponent }       from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    HalModule
+    HalModule.forRoot()
   ]
 })
 export class AppModule {}
