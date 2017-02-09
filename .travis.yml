@@ -12,7 +12,7 @@ addons:
       - google-chrome
     packages:
       - google-chrome-stable
+sudo: required
 
 script: npm run ci
 
-sudo: false
