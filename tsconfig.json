@@ -12,6 +12,7 @@
     "baseUrl": "./app",
     "types": [
       "core-js",
+      "jasmine",
       "node",
       "source-map",
       "uglify-js",
