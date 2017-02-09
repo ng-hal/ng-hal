@@ -1,6 +1,5 @@
-/**
- * @author: @AngularClass
- */
+/** @see https://github.com/AngularClass/angular2-webpack-starter/blob/master/config/webpack.test.js */
+
 
 const helpers = require('./helpers');
 const path = require('path');

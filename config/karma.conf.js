@@ -1,5 +1,8 @@
+/** @see https://github.com/AngularClass/angular2-webpack-starter/blob/master/config/karma.conf.js */
+
+
 module.exports = function(config) {
-  var testWebpackConfig = require('./webpack.test.js');
+  var testWebpackConfig = require('./webpack.test.js')({env: 'test'});
 
   var cfg = {
     // base path that will be used to resolve all patterns (e.g. files, exclude)

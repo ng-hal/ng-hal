@@ -40,6 +40,7 @@
     "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base demo/",
     "start": "npm run server:dev",
     "test": "karma start",
+    "test:debug": "karma start --no-single-run --log-level debug",
     "preversion": "npm test",
     "version": "npm run build",
     "postversion": "git push && git push --tags"

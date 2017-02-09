@@ -1,6 +1,6 @@
-/**
- * @author: @AngularClass
- */
+/** @see https://github.com/AngularClass/angular2-webpack-starter/blob/master/config/webpack.ghpages.js */
+
+
 const fs = require('fs');
 const path = require('path');
 const helpers = require('./helpers');

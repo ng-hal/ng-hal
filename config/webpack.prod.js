@@ -1,6 +1,5 @@
-/**
- * @author: @AngularClass
- */
+/** @see https://github.com/AngularClass/angular2-webpack-starter/blob/master/config/webpack.prod.js */
+
 
 const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs

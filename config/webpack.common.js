@@ -1,6 +1,5 @@
-/**
- * @author: @AngularClass
- */
+/** @see https://github.com/AngularClass/angular2-webpack-starter/blob/master/config/webpack.common.js */
+
 
 const webpack = require('webpack');
 const helpers = require('./helpers');
