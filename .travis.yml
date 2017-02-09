@@ -1,3 +1,12 @@
+sudo: required
+dist: trusty
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
 language: node_js
 node_js:
   - "4"
@@ -6,13 +15,10 @@ node_js:
   - "7"
   - "node"
 
-addons:
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
-sudo: required
+before_install:
+  - npm i npm@^4 -g
+install:
+  - npm install
 
 script: npm run ci
 
