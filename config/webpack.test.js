@@ -1,6 +1,5 @@
-/**
- * @author: @AngularClass
- */
+/** @see https://github.com/AngularClass/angular2-webpack-starter/blob/master/config/webpack.test.js */
+
 
 const helpers = require('./helpers');
 const path = require('path');
@@ -49,9 +48,9 @@ module.exports = function (options) {
       extensions: ['.ts', '.js'],
 
       /**
-       * Make sure root is demo
+       * Make sure root is lib
        */
-      modules: [ path.resolve(__dirname, 'demo'), 'node_modules' ]
+      modules: [ helpers.root('lib'), 'node_modules' ]
 
     },
 
@@ -108,41 +107,6 @@ module.exports = function (options) {
         },
 
         /**
-         * Json loader support for *.json files.
-         *
-         * See: https://github.com/webpack/json-loader
-         */
-        {
-          test: /\.json$/,
-          loader: 'json-loader',
-          exclude: [helpers.root('demo/index.html')]
-        },
-
-        /**
-         * Raw loader support for *.css files
-         * Returns file content as string
-         *
-         * See: https://github.com/webpack/raw-loader
-         */
-        {
-          test: /\.css$/,
-          loader: ['to-string-loader', 'css-loader'],
-          exclude: [helpers.root('demo/index.html')]
-        },
-
-        /**
-         * Raw loader support for *.html
-         * Returns file content as string
-         *
-         * See: https://github.com/webpack/raw-loader
-         */
-        {
-          test: /\.html$/,
-          loader: 'raw-loader',
-          exclude: [helpers.root('demo/index.html')]
-        },
-
-        /**
          * Instruments JS files with Istanbul for subsequent code coverage reporting.
          * Instrument only testing sources.
          *
@@ -152,7 +116,7 @@ module.exports = function (options) {
           enforce: 'post',
           test: /\.(js|ts)$/,
           loader: 'istanbul-instrumenter-loader',
-          include: helpers.root('demo'),
+          include: helpers.root('lib'),
           exclude: [
             /\.(e2e|spec)\.ts$/,
             /node_modules/
@@ -199,7 +163,7 @@ module.exports = function (options) {
       new ContextReplacementPlugin(
         // The (\\|\/) piece accounts for path separators in *nix and Windows
         /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-        helpers.root('demo'), // location of your src
+        helpers.root('lib'), // location of your src
         {
           // your Angular Async Route paths relative to this root directory
         }

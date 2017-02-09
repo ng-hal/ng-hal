@@ -40,6 +40,7 @@
     "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base demo/",
     "start": "npm run server:dev",
     "test": "karma start",
+    "test:debug": "karma start --no-single-run --log-level debug",
     "preversion": "npm test",
     "version": "npm run build",
     "postversion": "git push && git push --tags"
@@ -84,6 +85,7 @@
     "html-webpack-plugin": "^2.24.1",
     "http-server": "^0.9.0",
     "ie-shim": "^0.1.0",
+    "istanbul-instrumenter-loader": "^1.2.0",
     "jasmine-core": "^2.5.2",
     "json-loader": "^0.5.4",
     "karma": "^1.4.1",
