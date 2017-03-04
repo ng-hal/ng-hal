@@ -2,6 +2,7 @@ ng-hal
 ======
 
 [![Build Status](https://travis-ci.org/dherges/ng-hal.svg?branch=master)](https://travis-ci.org/dherges/ng-hal)
+[![Coverage Status](https://coveralls.io/repos/github/dherges/ng-hal/badge.svg?branch=develop)](https://coveralls.io/github/dherges/ng-hal?branch=develop)
 [![Dependencies Status](https://david-dm.org/dherges/ng-hal/status.svg)](https://david-dm.org/dherges/ng-hal)
 [![Peer Dependencies Status](https://david-dm.org/dherges/ng-hal/peer-status.svg)](https://david-dm.org/dherges/ng-hal?type=peer)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
