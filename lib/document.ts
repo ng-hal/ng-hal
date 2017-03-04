@@ -1,9 +1,10 @@
 import { Request, Response }  from '@angular/http';
 
-import { Resource }           from './resource';
+import { Resource }           from './hal';
 
 
-export class HalDocument {
+/** HEADS UP: naming of this class is going to be discussed and likely to be changed in future */
+export class Document {
 
   constructor(
     public request: Request,

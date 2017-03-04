@@ -2,7 +2,7 @@ import { HalModule } from './hal.module';
 
 describe(`HalModule`, () => {
 
-  it(`returns root providers by forRoot()`, () => {
+  it(`forRoot() returns root-scoped providers`, () => {
     let rootModule = HalModule.forRoot();
 
     expect(rootModule).toBeDefined();

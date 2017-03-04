@@ -1,17 +1,12 @@
-import './rxjs/add/follow'; 
+import './rxjs/add/follow';
 export * from './rxjs/follow';
 
-export {
-  ResourceCollection,
-  LinkCollection,
-  Link
-}                                       from 'halfred';
+export * from './conversion';
+export * from './hal';
+export * from './parser';
+export * from './uri';
 
-export { ConversionStrategy }           from './conversion-strategy';
-export { ConversionStrategyJson }       from './conversion-strategy-json';
-export { ConversionStrategyComposite }  from './conversion-strategy-composite';
-export { HalDocument }                  from './hal-document';
-export { HalModule }                    from './hal.module';
-export { Navigator }                    from './navigator';
-export { Resource }                     from './resource';
-export { Uri }                          from './uri';
+export * from './document';
+export * from './hal.module';
+export * from './navigator';
+export * from './session';
