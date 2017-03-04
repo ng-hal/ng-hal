@@ -1,10 +1,10 @@
 import { Response }             from '@angular/http';
 
 import { ConversionStrategy }   from './conversion-strategy';
-import { Resource }             from './resource';
+import { Resource }             from '../hal';
 
 
-export class ConversionStrategyComposite implements ConversionStrategy {
+export class CompositeConversionStrategy implements ConversionStrategy {
 
   constructor(
     private conversionStrategies: ConversionStrategy[]

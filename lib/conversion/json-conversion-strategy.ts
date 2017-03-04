@@ -1,17 +1,16 @@
-import { Injectable }           from '@angular/core';
 import { Response }             from '@angular/http';
 
-import { parse }                from 'halfred';
-
 import { ConversionStrategy }   from './conversion-strategy';
-import { Resource }             from './resource';
+import { Parser }               from '../parser';
+import { Resource }             from '../hal';
 
 
 /** A converter for 'application/hal+json' */
-@Injectable()
-export class ConversionStrategyJson implements ConversionStrategy {
+export class JsonConversionStrategy implements ConversionStrategy {
 
-  constructor() {}
+  constructor(
+    private parser: Parser
+  ) {}
 
   accepts(response: Response): boolean {
     let mediaType: string = response.headers.get('Content-Type');
@@ -22,7 +21,7 @@ export class ConversionStrategyJson implements ConversionStrategy {
   convert(response: Response): Resource {
     let data = response.json();
 
-    return new Resource(parse(data));
+    return this.parser.parse(data);
   }
 
 }

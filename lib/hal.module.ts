@@ -1,7 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
-import { ConversionStrategy } from './conversion-strategy';
-import { ConversionStrategyJson } from './conversion-strategy-json';
+import { CONVERSION_STRATEGY, ConversionStrategy, JsonConversionStrategy } from './conversion';
 import { Navigator } from './navigator';
 
 
