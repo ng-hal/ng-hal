@@ -1,29 +1,40 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "es2015",
     "moduleResolution": "node",
+    "declaration": true,
+    "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true,
     "noEmitHelpers": true,
     "noImplicitAny": true,
-    "declaration": true,
+    "baseUrl": "",
+    "rootDir": "./",
     "outDir": "../dist",
     "types": [
-      "core-js"
+      "node"
+    ],
+    "lib": [
+      "dom",
+      "es2015"
     ]
   },
   "exclude": [
     "node_modules",
     "dist",
-    "gh-pages"
+    "gh-pages",
+    "**/*.ngfactory.ts",
+    "**/*.shim.ts"
   ],
+  "angularCompilerOptions": {
+      "genDir": "../dist",
+      "entryModule": "./hal.module#HalModule"
+  },
   "compileOnSave": false,
   "buildOnSave": false,
   "files": [
-    "../typings/halfred.d.ts",
-    "../typings/uri-templates.d.ts",
+    "./typings/halfred.d.ts",
     "./index.ts"
   ]
 }
