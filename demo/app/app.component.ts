@@ -2,7 +2,12 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { Request, Response } from '@angular/http';
 
 import {
-  Navigator, HalDocument, ConversionStrategy, Resource, Session, Link, Uri
+  Navigator,
+  Document,
+  Resource,
+  Session,
+  Link,
+  Uri
 } from '../../dist';
 
 
@@ -51,13 +56,13 @@ export class AppComponent {
     this.navigator
       .get(url)
       .subscribe(
-        (doc: HalDocument) => {
+        (doc: Document) => {
           this.resource = doc.resource;
           this.response = doc.response;
           this.request = doc.request;
           this.links = this.resource.allLinksFlattenedArray();
         }
-      )
+      );
   }
 
   onSwitchTab(name: string) {
