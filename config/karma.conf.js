@@ -44,6 +44,7 @@ module.exports = function(config) {
 
     remapCoverageReporter: {
       'text-summary': null,
+      lcovonly: './coverage/lcovonly.info',
       json: './coverage/coverage.json',
       html: './coverage/html'
     },
