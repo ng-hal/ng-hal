@@ -48,8 +48,7 @@
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
-    "halfred": "^1.0.0",
-    "uri-templates": "^0.2.0"
+    "halfred": "^1.0.0"
   },
   "peerDependencies": {
     "@angular/core": "^2.0.0",
