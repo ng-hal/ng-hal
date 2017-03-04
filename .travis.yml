@@ -27,4 +27,4 @@ before_script:
 script: npm run ci
 
 after_success:
-  - '[ -z "$COVERALLS_REPO_TOKEN" ] && cat .coverage/lcovonly.info | ./node_modules/.bin/coveralls'
+  - '[ -z "$COVERALLS_REPO_TOKEN" ] && cat ./coverage/lcovonly.info | ./node_modules/.bin/coveralls'
