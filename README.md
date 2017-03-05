@@ -24,13 +24,9 @@ Import ``HalModule`` to your application, similar to the following example:
 import { HalModule } from 'ng-hal';
 
 @NgModule({
-  declarations: [ AppComponent ],
-  bootstrap:    [ AppComponent ],
   imports:      [
-    BrowserModule,
     HttpModule,
-    FormsModule,
-    HalModule
+    HalModule.forRoot()
   ]
 })
 export class AppModule {}
@@ -75,30 +71,9 @@ export class Foo {
  * URI Templates: [RFC 6570](https://tools.ietf.org/html/rfc6570)
 
 
-## Heads up!
-
-**This is still very much work-in-progress.**
-
-### TODOs
-
- - [ ] URI templating
- - [ ] ``Link`` API: uri templating as instance methods on ``Link``
-   * requires: ``Resource`` implementation to map ``Object`` (declares as ts interface ``Link``) to class instances
- - [ ] publish to npm
- - [ ] ``ConversionStrategy``:
-   * in later version, it would be nice to chose between ``hal+json`` and ``hal+xml``
-   * also: have a multiple strategies registered, then choose the right one dependent on ``Content-Type``
- - [x] ``npm test``: add unit testing
- - [x] ``Navigator`` API: convenient shortcut for follow-on navigation
-   * e.g., ``follow((hal: HalDocument) => Observable<HalDocument>)``
-   * currently, ``mergeMap()`` achieves desired behaviour – just an alias?
- - [x] ``ConversionStrategy`` API: ``(res: Response) => boolean`` and ``(res: Response) => Resource`` is good
- - [x] ``HalDocument`` API: a tuple of ``(Request, Response, Resource)``?
- - [x] ``npm test``: for now, only build and linting
-
-
 ## Version History
 
+ * ``v0.3.0`` tsconfig ``"noEmitHelpers": false``
  * ``v0.2.0`` renamed to ``ng-hal``, version bumps
  * ``v0.1.0`` first version on public npm registry
 
@@ -134,3 +109,4 @@ SOFTWARE.
  * [geraintluff/uri-templates](https://github.com/geraintluff/uri-templates): URI templates according to [RFC6570](https://tools.ietf.org/html/rfc6570)
  * [Daniel Rosenwasser](https://github.com/DanielRosenwasser): for helping out on [TypeScript #10463](https://github.com/Microsoft/TypeScript/issues/10463)
  * [AngularClass/angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter): build tools
+ * [manekinekko/angular-library-starter](https://github.com/manekinekko/angular-library-starter): build tools
