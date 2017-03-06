@@ -365,7 +365,7 @@ export class Uri {
   }
 
   // TODO: test & doc
-  public expand(vars: { [key: string]: string}): string {
+  public expand(vars: { [key: string]: any}): string {
     let valueFn: (key: string) => string = function (varName) {
       return vars[varName];
     };
@@ -374,7 +374,7 @@ export class Uri {
   }
 
   // TODO: test & doc
-  public expandBy(valueFn: (key: string) => string): string {
+  public expandBy(valueFn: (key: string) => any): string {
 
     var result = this.textParts[0];
     for (var i = 0; i < this.substitutions.length; i++) {
