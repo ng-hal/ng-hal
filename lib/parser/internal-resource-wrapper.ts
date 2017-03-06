@@ -1,6 +1,6 @@
 import { Resource as HalfredResource } from 'halfred';
 
-import { Resource, Link } from '../hal';
+import { Resource, ResourceCollection, Link } from '../hal';
 
 export class InternalResourceWrapper extends HalfredResource implements Resource {
 
@@ -19,8 +19,8 @@ export class InternalResourceWrapper extends HalfredResource implements Resource
         this[key] = shallow[key];
       }
     });
-    // Object.assign(this, shallow);
     */
+    // Object.assign(this, shallow);
 
   }
 
@@ -39,5 +39,27 @@ export class InternalResourceWrapper extends HalfredResource implements Resource
 
     return flattenedArray;
   }
+
+  /*
+  allEmbeddedResourceArrays(): ResourceCollection {
+    let parent = super.allEmbeddedResourceArrays();
+    let result: ResourceCollection;
+
+    Object.keys(parent)
+      .forEach((key: string) => {
+        result[key] = parent[key].map((item) => {
+          return new InternalResourceWrapper(item);
+        });
+      });
+
+    return result;
+  }
+  */
+
+  /*
+  embedded(key: string) {
+    return new InternalResourceWrapper(super.embedded(key));
+  }
+  */
 
 }

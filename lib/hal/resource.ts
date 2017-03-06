@@ -96,7 +96,7 @@ export interface Resource {
 
 
   /** @experimental */
-  //allLinksFlattenedArray(): Link[];
+  // allLinksFlattenedArray(): Link[];
 
 
   /**
