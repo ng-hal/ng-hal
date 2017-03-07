@@ -12,11 +12,12 @@ describe(`Uri`, () => {
     base: 'http://example.com/home/',
     path: '/foo/bar',
     list: ['red', 'green', 'blue'],
+    keys: {'semi': ';', 'dot': '.', 'comma': ','},
     v: 6,
     x: 1024,
     y: 768,
     empty: '',
-    empty_keys: [],
+    empty_keys: {},
     undef: null
   };
 
@@ -88,16 +89,26 @@ describe(`Uri`, () => {
       .toBe('1024,Hello%20World%21,768');
   });
 
-/*
-?{x,empty}         ?1024,
-?{x,undef}         ?1024
-?{undef,y}         ?768
-{var:3}            val
-{var:30}           value
-{list}             red,green,blue
-{list*}            red,green,blue
-{keys}             semi,%3B,dot,.,comma,%2C
-{keys*}            semi=%3B,dot=.,comma=%2C
-*/
+  it(`expands a simple string expansion with explode modifier (RFC-6570, 3.2.2)`, () => {
+    expect(new Uri('?{x,empty}').expand({x: '1024', empty: ''})).toBe('?1024,');
+    expect(new Uri('?{x,undef}').expand({x: '1024', undef: null})).toBe('?1024');
+    expect(new Uri('?{undef,y}').expand({y: '768', undef: null})).toBe('?768');
+  });
+
+  it(`expands a simple string expansion with colon limit (RFC-6570, 3.2.2)`, () => {
+    expect(new Uri('{var:3}').expand({var: 'value'})).toBe('val');
+    expect(new Uri('{var:30}').expand({var: 'value'})).toBe('value');
+  });
+
+  it(`expands a simple string expansion with list values (RFC-6570, 3.2.2)`, () => {
+    expect(new Uri('{list}').expand({list: ['red','green','blue']})).toBe('red,green,blue');
+    expect(new Uri('{list*}').expand({list: ['red','green','blue']})).toBe('red,green,blue');
+  });
+
+  it(`expands a simple string expansion with keyed values (RFC-6570, 3.2.2)`, () => {
+    expect(new Uri('{keys}').expand({keys: {'semi': ';', 'dot': '.', 'comma': ','}})).toBe('semi,%3B,dot,.,comma,%2C');
+    expect(new Uri('{keys*}').expand({keys: {'semi': ';', 'dot': '.', 'comma': ','}})).toBe('semi=%3B,dot=.,comma=%2C');
+  });
+
 
 });
