@@ -324,16 +324,17 @@ function uriTemplateSubstitution(spec: string) {
  */
 export class Uri {
 
-  public static of(url: string): Uri {
-    return new Uri(url);
-  }
-
   private textParts: string[];
   private varNames: string[];
   private substitutions: any[];
 
+  /**
+   * Creates a new instance of Uri.
+   *
+   * @param raw Template string
+   */
   constructor (
-    private raw: string // <-- URITemplate
+    private raw: string
   ) {
 
     var parts = raw.split("{");
@@ -359,12 +360,29 @@ export class Uri {
     this.varNames = varNames;
   }
 
-  // TODO: test & doc
+  /**
+   * Creates a new Uri from the template string given in <code>url</code>.
+   *
+   * @param template URI Template, e.g. 'http://www.example.com/foo{?query,number}'
+   * @returns Uri instance
+   */
+  public static of(template: string): Uri {
+    return new Uri(template);
+  }
+
+  /**
+   * @returns Returns the template string of this Uri.
+   */
   public get template(): string {
     return this.raw;
   }
 
-  // TODO: test & doc
+  /**
+   * Expands the template of this Uri by substituting variables with values given in <code>vars</code>.
+   *
+   * @param vars A key/value object containin the variable values
+   * @returns An expanded URI string
+   */
   public expand(vars: { [key: string]: any}): string {
     let valueFn: (key: string) => string = function (varName) {
       return vars[varName];
@@ -373,7 +391,13 @@ export class Uri {
     return this.expandBy(valueFn);
   }
 
-  // TODO: test & doc
+
+  /**
+   * Expands the template of this Uri by substituting variables with values provided by <code>valueFn</code>.
+   *
+   * @param valueFn A callback function that returns variable values
+   * @returns An expanded URI string
+   */
   public expandBy(valueFn: (key: string) => any): string {
 
     var result = this.textParts[0];
