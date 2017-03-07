@@ -145,24 +145,24 @@ describe(`Uri`, () => {
       tag: 'RFC-6570, 3.2.5',
       url: 'https://tools.ietf.org/html/rfc6570#section-3.2.5',
       tests: [
-        { template: '{/who}', values, expected: '/fred' },
-        { template: '{/who,who}', values, expected: '/fred/fred' },
-        { template: '{/half,who}', values, expected: '/50%25/fred' },
-        { template: '{/who,dub}', values, expected: '/fred/me%2Ftoo' },
-        { template: '{/var}', values, expected: '/value' },
-        { template: '{/var,empty}', values, expected: '/value/' },
-        { template: '{/var,undef}', values, expected: '/value' },
-        { template: '{/var,x}/here', values, expected: '/value/1024/here' },
-        { template: '{/var:1,var}', values, expected: '/v/value' },
-        { template: '{/list}', values, expected: '/red,green,blue' },
-        { template: '{/list*}', values, expected: '/red/green/blue' },
-        { template: '{/list*,path:4}', values, expected: '/red/green/blue/%2Ffoo' },
-        { template: '{/keys}', values, expected: '/semi,%3B,dot,.,comma,%2C' },
-        { template: '{/keys*}', values, expected: '/semi=%3B/dot=./comma=%2C' }
+        { template: '{.who}', values, expected: '.fred' },
+        { template: '{.who,who}', values, expected: '.fred.fred' },
+        { template: '{.half,who}', values, expected: '.50%25.fred' },
+        { template: 'www{.dom*}', values, expected: 'www.example.com' },
+        { template: 'X{.var}', values, expected: 'X.value' },
+        { template: 'X{.empty}', values, expected: 'X.' },
+        { template: 'X{.undef}', values, expected: 'X' },
+        { template: 'X{.var:3}', values, expected: 'X.val' },
+        { template: 'X{.list}', values, expected: 'X.red,green,blue' },
+        { template: 'X{.list*}', values, expected: 'X.red.green.blue' },
+        { template: 'X{.keys}', values, expected: 'X.semi,%3B,dot,.,comma,%2C' },
+        { template: 'X{.keys*}', values, expected: 'X.semi=%3B.dot=..comma=%2C' },
+        { template: 'X{.empty_keys}', values, expected: 'X' },
+        { template: 'X{.empty_keys*}', values, expected: 'X' }
       ]
     },
     {
-      title: 'Path Segment Expansion: {/var',
+      title: 'Path Segment Expansion: {/var}',
       tag: 'RFC-6570, 3.2.6',
       url: 'https://tools.ietf.org/html/rfc6570#section-3.2.6',
       tests: [
@@ -183,7 +183,7 @@ describe(`Uri`, () => {
       ]
     },
     {
-      title: 'Path-Style Parameter Expansion Expansion: {/var}',
+      title: 'Path-Style Parameter Expansion: {;var}',
       tag: 'RFC-6570, 3.2.7',
       url: 'https://tools.ietf.org/html/rfc6570#section-3.2.7',
       tests: [
