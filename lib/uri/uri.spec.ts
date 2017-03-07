@@ -25,6 +25,7 @@ describe(`Uri`, () => {
     let uri = new Uri('');
 
     expect(uri).not.toBeNull();
+    expect(uri instanceof Uri).toBeTruthy();
   });
 
   it(`returns template value of given URI string`, () => {
@@ -110,5 +111,35 @@ describe(`Uri`, () => {
     expect(new Uri('{keys*}').expand({keys: {'semi': ';', 'dot': '.', 'comma': ','}})).toBe('semi=%3B,dot=.,comma=%2C');
   });
 
+  it(`expands a reserved expansion with simple values (RFC-6570, 3.2.3)`, () => {
+    expect(new Uri('{+var}').expand(VALUES)).toBe('value');
+    expect(new Uri('{+hello}').expand(VALUES)).toBe('Hello%20World!');
+    expect(new Uri('{+half}').expand(VALUES)).toBe('50%25');
+  });
+
+/* RESERVED EXPANSION 3.2.3
+
+{+var}                value
+{+hello}              Hello%20World!
+{+half}               50%25
+
+{base}index           http%3A%2F%2Fexample.com%2Fhome%2Findex
+{+base}index          http://example.com/home/index
+O{+empty}X            OX
+O{+undef}X            OX
+
+{+path}/here          /foo/bar/here
+here?ref={+path}      here?ref=/foo/bar
+up{+path}{var}/here   up/foo/barvalue/here
+{+x,hello,y}          1024,Hello%20World!,768
+{+path,x}/here        /foo/bar,1024/here
+
+{+path:6}/here        /foo/b/here
+{+list}               red,green,blue
+{+list*}              red,green,blue
+{+keys}               semi,;,dot,.,comma,,
+{+keys*}              semi=;,dot=.,comma=,
+
+*/
 
 });
