@@ -386,11 +386,4 @@ export class Uri {
     return result;
   }
 
-  // TODO ... deprecation?
-  public fromUri(uri: string): Uri {
-    //this.uritemplate = utpl.utpl(uri);
-
-    return this;
-  }
-
 }
