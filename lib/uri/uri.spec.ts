@@ -1,25 +1,6 @@
 import { Uri } from './uri';
 
 describe(`Uri`, () => {
-  // Constants as described in RFC-6570, 3.2
-  const VALUES: { [key: string]: any } = {
-    count: ['one', 'two', 'three'],
-    dom: ['example', 'com'],
-    hello: 'Hello World!',
-    half: '50%',
-    var: 'value',
-    who: 'fred',
-    base: 'http://example.com/home/',
-    path: '/foo/bar',
-    list: ['red', 'green', 'blue'],
-    keys: {'semi': ';', 'dot': '.', 'comma': ','},
-    v: 6,
-    x: 1024,
-    y: 768,
-    empty: '',
-    empty_keys: {},
-    undef: null
-  };
 
   it(`constructs instances`, () => {
     let uri = new Uri('');
@@ -52,205 +33,220 @@ describe(`Uri`, () => {
     expect(uri.expand({bar: '123'})).toBe('/foo/bar');
   });
 
-  it(`expands a variable expansion with list values (RFC-6570, 3.2.1)`, () => {
-    let args = { count: VALUES.count };
 
-    expect(new Uri('{count}').expand(args)).toBe('one,two,three');
-    expect(new Uri('{count*}').expand(args)).toBe('one,two,three');
-    expect(new Uri('{/count}').expand(args)).toBe('/one,two,three');
-    expect(new Uri('{/count*}').expand(args)).toBe('/one/two/three');
-    expect(new Uri('{;count}').expand(args)).toBe(';count=one,two,three');
-    expect(new Uri('{;count*}').expand(args)).toBe(';count=one;count=two;count=three');
-    expect(new Uri('{?count}').expand(args)).toBe('?count=one,two,three');
-    expect(new Uri('{?count*}').expand(args)).toBe('?count=one&count=two&count=three');
-    expect(new Uri('{&count*}').expand(args)).toBe('&count=one&count=two&count=three');
-  });
+  /* RFC-6570 specs */
 
-  it(`expands a simple string expansion (RFC-6570, 3.2.2)`, () => {
-    expect(new Uri('{var}').expand({var: 'value'})).toBe('value');
-  });
+  // Constants as described in RFC-6570, 3.2
+  const values: { [key: string]: any } = {
+    count: ['one', 'two', 'three'],
+    dom: ['example', 'com'],
+    dub: "me/too",
+    hello: 'Hello World!',
+    half: '50%',
+    var: 'value',
+    who: 'fred',
+    base: 'http://example.com/home/',
+    path: '/foo/bar',
+    list: ['red', 'green', 'blue'],
+    keys: {'semi': ';', 'dot': '.', 'comma': ','},
+    v: 6,
+    x: 1024,
+    y: 768,
+    empty: '',
+    empty_keys: {},
+    undef: null
+  };
 
-  it(`expands a simple string expansion with percent encoded values (RFC-6570, 3.2.2)`, () => {
-    expect(new Uri('{hello}').expand({hello: 'Hello World!'})).toBe('Hello%20World%21');
-    expect(new Uri('{half}').expand({half: '50%'})).toBe('50%25');
-  });
+  const specs = [
+    {
+      title: 'Variable Expansion',
+      tag: 'RFC-6570, 3.2.1',
+      url: 'https://tools.ietf.org/html/rfc6570#section-3.2.1',
+      tests: [
+        { template: '{count}', values, expected: 'one,two,three' },
+        { template: '{count*}', values, expected: 'one,two,three' },
+        { template: '{/count}', values, expected: '/one,two,three' },
+        { template: '{/count*}', values, expected: '/one/two/three' },
+        { template: '{;count}', values, expected: ';count=one,two,three' },
+        { template: '{;count*}', values, expected: ';count=one;count=two;count=three' },
+        { template: '{?count}', values, expected: '?count=one,two,three' },
+        { template: '{?count*}', values, expected: '?count=one&count=two&count=three' },
+        { template: '{&count*}', values, expected: '&count=one&count=two&count=three' }
+      ]
+    },
+    {
+      title: 'Simple String Expansion: {var}',
+      tag: 'RFC-6570, 3.2.2',
+      url: 'https://tools.ietf.org/html/rfc6570#section-3.2.2',
+      tests: [
+        { template: '{var}', values, expected: 'value' },
+        { template: '{hello}', values, expected: 'Hello%20World%21' },
+        { template: '{half}', values, expected: '50%25' },
+        { template: 'O{empty}X', values, expected: 'OX' },
+        { template: 'O{undef}X', values, expected: 'OX' },
+        { template: '{x,y}', values, expected: '1024,768' },
+        { template: '{x,hello,y}', values, expected: '1024,Hello%20World%21,768' },
+        { template: '?{x,empty}', values, expected: '?1024,' },
+        { template: '?{x,undef}', values, expected: '?1024' },
+        { template: '?{undef,y}', values, expected: '?768' },
+        { template: '{var:3}', values, expected: 'val' },
+        { template: '{var:30}', values, expected: 'value' },
+        { template: '{list}', values, expected: 'red,green,blue' },
+        { template: '{list*}', values, expected: 'red,green,blue' },
+        { template: '{keys}', values, expected: 'semi,%3B,dot,.,comma,%2C' },
+        { template: '{keys*}', values, expected: 'semi=%3B,dot=.,comma=%2C' }
+      ]
+    },
+    {
+      title: 'Reserved Expansion: {+var}',
+      tag: 'RFC-6570, 3.2.3',
+      url: 'https://tools.ietf.org/html/rfc6570#section-3.2.3',
+      tests: [
+        { template: '{+var}', values, expected: 'value' },
+        { template: '{+hello}', values, expected: 'Hello%20World!' },
+        { template: '{+half}', values, expected: '50%25' },
+        { template: '{base}index', values, expected: 'http%3A%2F%2Fexample.com%2Fhome%2Findex' },
+        { template: '{+base}index', values, expected: 'http://example.com/home/index' },
+        { template: 'O{+empty}X', values, expected: 'OX' },
+        { template: 'O{+undef}X', values, expected: 'OX' },
+        { template: '{+path}/here', values, expected: '/foo/bar/here' },
+        { template: 'here?ref={+path}', values, expected: 'here?ref=/foo/bar' },
+        { template: 'up{+path}{var}/here', values, expected: 'up/foo/barvalue/here' },
+        { template: '{+x,hello,y}', values, expected: '1024,Hello%20World!,768' },
+        { template: '{+path,x}/here', values, expected: '/foo/bar,1024/here' },
+        { template: '{+path:6}/here', values, expected: '/foo/b/here' },
+        { template: '{+list}', values, expected: 'red,green,blue' },
+        { template: '{+list*}', values, expected: 'red,green,blue' },
+        { template: '{+keys}', values, expected: 'semi,;,dot,.,comma,,' },
+        { template: '{+keys*}', values, expected: 'semi=;,dot=.,comma=,' }
+      ]
+    },
+    {
+      title: 'Fragment Expansion: {#var}',
+      tag: 'RFC-6570, 3.2.4',
+      url: 'https://tools.ietf.org/html/rfc6570#section-3.2.4',
+      tests: [
+        { template: '{#var}', values, expected: '#value' },
+        { template: '{#hello}', values, expected: '#Hello%20World!' },
+        { template: '{#half}', values, expected: '#50%25' },
+        { template: 'foo{#empty}', values, expected: 'foo#' },
+        { template: 'foo{#undef}', values, expected: 'foo' },
+        { template: '{#x,hello,y}', values, expected: '#1024,Hello%20World!,768' },
+        { template: '{#path,x}/here', values, expected: '#/foo/bar,1024/here' },
+        { template: '{#path:6}/here', values, expected: '#/foo/b/here' },
+        { template: '{#list}', values, expected: '#red,green,blue' },
+        { template: '{#list*}', values, expected: '#red,green,blue' },
+        { template: '{#keys}', values, expected: '#semi,;,dot,.,comma,,' },
+        { template: '{#keys*}', values, expected: '#semi=;,dot=.,comma=,' }
+      ]
+    },
+    {
+      title: 'Label Expansion with Dot-Prefix: {.var}',
+      tag: 'RFC-6570, 3.2.5',
+      url: 'https://tools.ietf.org/html/rfc6570#section-3.2.5',
+      tests: [
+        { template: '{/who}', values, expected: '/fred' },
+        { template: '{/who,who}', values, expected: '/fred/fred' },
+        { template: '{/half,who}', values, expected: '/50%25/fred' },
+        { template: '{/who,dub}', values, expected: '/fred/me%2Ftoo' },
+        { template: '{/var}', values, expected: '/value' },
+        { template: '{/var,empty}', values, expected: '/value/' },
+        { template: '{/var,undef}', values, expected: '/value' },
+        { template: '{/var,x}/here', values, expected: '/value/1024/here' },
+        { template: '{/var:1,var}', values, expected: '/v/value' },
+        { template: '{/list}', values, expected: '/red,green,blue' },
+        { template: '{/list*}', values, expected: '/red/green/blue' },
+        { template: '{/list*,path:4}', values, expected: '/red/green/blue/%2Ffoo' },
+        { template: '{/keys}', values, expected: '/semi,%3B,dot,.,comma,%2C' },
+        { template: '{/keys*}', values, expected: '/semi=%3B/dot=./comma=%2C' }
+      ]
+    },
+    {
+      title: 'Path Segment Expansion: {/var',
+      tag: 'RFC-6570, 3.2.6',
+      url: 'https://tools.ietf.org/html/rfc6570#section-3.2.6',
+      tests: [
+        { template: '{/who}', values, expected: '/fred' },
+        { template: '{/who,who}', values, expected: '/fred/fred' },
+        { template: '{/half,who}', values, expected: '/50%25/fred' },
+        { template: '{/who,dub}', values, expected: '/fred/me%2Ftoo' },
+        { template: '{/var}', values, expected: '/value' },
+        { template: '{/var,empty}', values, expected: '/value/' },
+        { template: '{/var,undef}', values, expected: '/value' },
+        { template: '{/var,x}/here', values, expected: '/value/1024/here' },
+        { template: '{/var:1,var}', values, expected: '/v/value' },
+        { template: '{/list}', values, expected: '/red,green,blue' },
+        { template: '{/list*}', values, expected: '/red/green/blue' },
+        { template: '{/list*,path:4}', values, expected: '/red/green/blue/%2Ffoo' },
+        { template: '{/keys}', values, expected: '/semi,%3B,dot,.,comma,%2C' },
+        { template: '{/keys*}', values, expected: '/semi=%3B/dot=./comma=%2C' }
+      ]
+    },
+    {
+      title: 'Path-Style Parameter Expansion Expansion: {/var}',
+      tag: 'RFC-6570, 3.2.7',
+      url: 'https://tools.ietf.org/html/rfc6570#section-3.2.7',
+      tests: [
+        { template: '{;who}', values, expected: ';who=fred' },
+        { template: '{;half}', values, expected: ';half=50%25' },
+        { template: '{;empty}', values, expected: ';empty' },
+        { template: '{;v,empty,who}', values, expected: ';v=6;empty;who=fred' },
+        { template: '{;v,bar,who}', values, expected: ';v=6;who=fred' },
+        { template: '{;x,y}', values, expected: ';x=1024;y=768' },
+        { template: '{;x,y,empty}', values, expected: ';x=1024;y=768;empty' },
+        { template: '{;x,y,undef}', values, expected: ';x=1024;y=768' },
+        { template: '{;hello:5}', values, expected: ';hello=Hello' },
+        { template: '{;list}', values, expected: ';list=red,green,blue' },
+        { template: '{;list*}', values, expected: ';list=red;list=green;list=blue' },
+        { template: '{;keys}', values, expected: ';keys=semi,%3B,dot,.,comma,%2C' },
+        { template: '{;keys*}', values, expected: ';semi=%3B;dot=.;comma=%2C' }
+      ]
+    },
+    {
+      title: 'Form-Style Query Expansion: {?var}',
+      tag: 'RFC-6570, 3.2.8',
+      url: 'https://tools.ietf.org/html/rfc6570#section-3.2.8',
+      tests: [
+        { template: '{?who}', values, expected: '?who=fred' },
+        { template: '{?half}', values, expected: '?half=50%25' },
+        { template: '{?x,y}', values, expected: '?x=1024&y=768' },
+        { template: '{?x,y,empty}', values, expected: '?x=1024&y=768&empty=' },
+        { template: '{?x,y,undef}', values, expected: '?x=1024&y=768' },
+        { template: '{?var:3}', values, expected: '?var=val' },
+        { template: '{?list}', values, expected: '?list=red,green,blue' },
+        { template: '{?list*}', values, expected: '?list=red&list=green&list=blue' },
+        { template: '{?keys}', values, expected: '?keys=semi,%3B,dot,.,comma,%2C' },
+        { template: '{?keys*}', values, expected: '?semi=%3B&dot=.&comma=%2C' }
+      ]
+    },
+    {
+      title: 'Form-Style Query Continuation: {&var}',
+      tag: 'RFC-6570, 3.2.9',
+      url: 'https://tools.ietf.org/html/rfc6570#section-3.2.9',
+      tests: [
+        { template: '{&who}', values, expected: '&who=fred' },
+        { template: '{&half}', values, expected: '&half=50%25' },
+        { template: '?fixed=yes{&x}', values, expected: '?fixed=yes&x=1024' },
+        { template: '{&x,y,empty}', values, expected: '&x=1024&y=768&empty=' },
+        { template: '{&x,y,undef}', values, expected: '&x=1024&y=768' },
+        { template: '{&var:3}', values, expected: '&var=val' },
+        { template: '{&list}', values, expected: '&list=red,green,blue' },
+        { template: '{&list*}', values, expected: '&list=red&list=green&list=blue' },
+        { template: '{&keys}', values, expected: '&keys=semi,%3B,dot,.,comma,%2C' },
+        { template: '{&keys*}', values, expected: '&semi=%3B&dot=.&comma=%2C' }
+      ]
+    },
+  ];
 
-  it(`expands a simple string expansion with an empty value (RFC-6570, 3.2.2)`, () => {
-    expect(new Uri('O{empty}X').expand({empty: ''})).toBe('OX');
-  });
+  specs.forEach((spec: any) => {
 
-  it(`expands a simple string expansion with an undefined value (RFC-6570, 3.2.2)`, () => {
-    expect(new Uri('O{undef}X').expand({undef: null})).toBe('OX');
-    expect(new Uri('O{undef}X').expand({})).toBe('OX');
-  });
-
-  it(`expands a simple string expansion with comma-separated values (RFC-6570, 3.2.2)`, () => {
-    expect(new Uri('{x,y}').expand({x: '1024', y: '768'})).toBe('1024,768');
-    expect(new Uri('{x,hello,y}').expand({x: '1024', y: '768', hello: 'Hello World!'}))
-      .toBe('1024,Hello%20World%21,768');
-  });
-
-  it(`expands a simple string expansion with explode modifier (RFC-6570, 3.2.2)`, () => {
-    expect(new Uri('?{x,empty}').expand({x: '1024', empty: ''})).toBe('?1024,');
-    expect(new Uri('?{x,undef}').expand({x: '1024', undef: null})).toBe('?1024');
-    expect(new Uri('?{undef,y}').expand({y: '768', undef: null})).toBe('?768');
-  });
-
-  it(`expands a simple string expansion with colon limit (RFC-6570, 3.2.2)`, () => {
-    expect(new Uri('{var:3}').expand({var: 'value'})).toBe('val');
-    expect(new Uri('{var:30}').expand({var: 'value'})).toBe('value');
-  });
-
-  it(`expands a simple string expansion with list values (RFC-6570, 3.2.2)`, () => {
-    expect(new Uri('{list}').expand({list: ['red','green','blue']})).toBe('red,green,blue');
-    expect(new Uri('{list*}').expand({list: ['red','green','blue']})).toBe('red,green,blue');
-  });
-
-  it(`expands a simple string expansion with keyed values (RFC-6570, 3.2.2)`, () => {
-    expect(new Uri('{keys}').expand({keys: {'semi': ';', 'dot': '.', 'comma': ','}})).toBe('semi,%3B,dot,.,comma,%2C');
-    expect(new Uri('{keys*}').expand({keys: {'semi': ';', 'dot': '.', 'comma': ','}})).toBe('semi=%3B,dot=.,comma=%2C');
-  });
-
-  it(`expands a reserved expansion with simple values (RFC-6570, 3.2.3)`, () => {
-    expect(new Uri('{+var}').expand(VALUES)).toBe('value');
-    expect(new Uri('{+hello}').expand(VALUES)).toBe('Hello%20World!');
-    expect(new Uri('{+half}').expand(VALUES)).toBe('50%25');
-  });
-
-
-const RESERVED_EXPANSION = {
-  '{+var}': 'value',
-  '{+hello}': 'Hello%20World!',
-  '{+half}': '50%25'
-};
-  it(`expands according to reserved expansion (RFC-6570, 3.2.2)`, () => {
-    Object.keys(RESERVED_EXPANSION)
-      .forEach((key: string) => {
-        expect(new Uri(key).expand(VALUES)).toBe(RESERVED_EXPANSION[key]);
+    it(`expands according to ${spec.title} (${spec.tag})`, () => {
+      spec.tests.forEach((test: any) => {
+        expect(new Uri(test.template).expand(test.values)).toBe(test.expected);
       });
+    });
 
   });
 
-/* RESERVED EXPANSION 3.2.3
-
-{+var}                value
-{+hello}              Hello%20World!
-{+half}               50%25
-
-{base}index           http%3A%2F%2Fexample.com%2Fhome%2Findex
-{+base}index          http://example.com/home/index
-O{+empty}X            OX
-O{+undef}X            OX
-
-{+path}/here          /foo/bar/here
-here?ref={+path}      here?ref=/foo/bar
-up{+path}{var}/here   up/foo/barvalue/here
-{+x,hello,y}          1024,Hello%20World!,768
-{+path,x}/here        /foo/bar,1024/here
-
-{+path:6}/here        /foo/b/here
-{+list}               red,green,blue
-{+list*}              red,green,blue
-{+keys}               semi,;,dot,.,comma,,
-{+keys*}              semi=;,dot=.,comma=,
-
-*/
-
-/* FRAGMENT EXPANSION 3.2.4
-
-{#var}             #value
-{#hello}           #Hello%20World!
-{#half}            #50%25
-foo{#empty}        foo#
-foo{#undef}        foo
-{#x,hello,y}       #1024,Hello%20World!,768
-{#path,x}/here     #/foo/bar,1024/here
-{#path:6}/here     #/foo/b/here
-{#list}            #red,green,blue
-{#list*}           #red,green,blue
-{#keys}            #semi,;,dot,.,comma,,
-{#keys*}           #semi=;,dot=.,comma=,
-*/
-
-/* LABEL EXPANSION WITH DOT PREFIX (3.2.5)
-
-{.who}             .fred
-{.who,who}         .fred.fred
-{.half,who}        .50%25.fred
-www{.dom*}         www.example.com
-X{.var}            X.value
-X{.empty}          X.
-X{.undef}          X
-X{.var:3}          X.val
-X{.list}           X.red,green,blue
-X{.list*}          X.red.green.blue
-X{.keys}           X.semi,%3B,dot,.,comma,%2C
-X{.keys*}          X.semi=%3B.dot=..comma=%2C
-X{.empty_keys}     X
-X{.empty_keys*}    X
-*/
-
-/* PATH SEGMENT EXPANSION (3.2.6)
-{/who}             /fred
-{/who,who}         /fred/fred
-{/half,who}        /50%25/fred
-{/who,dub}         /fred/me%2Ftoo
-{/var}             /value
-{/var,empty}       /value/
-{/var,undef}       /value
-{/var,x}/here      /value/1024/here
-{/var:1,var}       /v/value
-{/list}            /red,green,blue
-{/list*}           /red/green/blue
-{/list*,path:4}    /red/green/blue/%2Ffoo
-{/keys}            /semi,%3B,dot,.,comma,%2C
-{/keys*}           /semi=%3B/dot=./comma=%2C
-*/
-
-/* PATH-STYLE PARAMETER EXPANSION (3.2.7)
-{;who}             ;who=fred
-{;half}            ;half=50%25
-{;empty}           ;empty
-{;v,empty,who}     ;v=6;empty;who=fred
-{;v,bar,who}       ;v=6;who=fred
-{;x,y}             ;x=1024;y=768
-{;x,y,empty}       ;x=1024;y=768;empty
-{;x,y,undef}       ;x=1024;y=768
-{;hello:5}         ;hello=Hello
-{;list}            ;list=red,green,blue
-{;list*}           ;list=red;list=green;list=blue
-{;keys}            ;keys=semi,%3B,dot,.,comma,%2C
-{;keys*}           ;semi=%3B;dot=.;comma=%2C
-*/
-
-
-/* FORM-STYLE QUERY EXPANSION (3.2.8)
-
-{?who}             ?who=fred
-{?half}            ?half=50%25
-{?x,y}             ?x=1024&y=768
-{?x,y,empty}       ?x=1024&y=768&empty=
-{?x,y,undef}       ?x=1024&y=768
-{?var:3}           ?var=val
-{?list}            ?list=red,green,blue
-{?list*}           ?list=red&list=green&list=blue
-{?keys}            ?keys=semi,%3B,dot,.,comma,%2C
-{?keys*}           ?semi=%3B&dot=.&comma=%2C
-*/
-
-/* FORM-STYLE QUERY CONTINUATION (3.2.9)
-
-{&who}             &who=fred
-{&half}            &half=50%25
-?fixed=yes{&x}     ?fixed=yes&x=1024
-{&x,y,empty}       &x=1024&y=768&empty=
-{&x,y,undef}       &x=1024&y=768
-
-{&var:3}           &var=val
-{&list}            &list=red,green,blue
-{&list*}           &list=red&list=green&list=blue
-{&keys}            &keys=semi,%3B,dot,.,comma,%2C
-{&keys*}           &semi=%3B&dot=.&comma=%2C
-*/
 
 });
