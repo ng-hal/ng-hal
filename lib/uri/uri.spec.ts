@@ -117,6 +117,20 @@ describe(`Uri`, () => {
     expect(new Uri('{+half}').expand(VALUES)).toBe('50%25');
   });
 
+
+const RESERVED_EXPANSION = {
+  '{+var}': 'value',
+  '{+hello}': 'Hello%20World!',
+  '{+half}': '50%25'
+};
+  it(`expands according to reserved expansion (RFC-6570, 3.2.2)`, () => {
+    Object.keys(RESERVED_EXPANSION)
+      .forEach((key: string) => {
+        expect(new Uri(key).expand(VALUES)).toBe(RESERVED_EXPANSION[key]);
+      });
+
+  });
+
 /* RESERVED EXPANSION 3.2.3
 
 {+var}                value
@@ -140,6 +154,103 @@ up{+path}{var}/here   up/foo/barvalue/here
 {+keys}               semi,;,dot,.,comma,,
 {+keys*}              semi=;,dot=.,comma=,
 
+*/
+
+/* FRAGMENT EXPANSION 3.2.4
+
+{#var}             #value
+{#hello}           #Hello%20World!
+{#half}            #50%25
+foo{#empty}        foo#
+foo{#undef}        foo
+{#x,hello,y}       #1024,Hello%20World!,768
+{#path,x}/here     #/foo/bar,1024/here
+{#path:6}/here     #/foo/b/here
+{#list}            #red,green,blue
+{#list*}           #red,green,blue
+{#keys}            #semi,;,dot,.,comma,,
+{#keys*}           #semi=;,dot=.,comma=,
+*/
+
+/* LABEL EXPANSION WITH DOT PREFIX (3.2.5)
+
+{.who}             .fred
+{.who,who}         .fred.fred
+{.half,who}        .50%25.fred
+www{.dom*}         www.example.com
+X{.var}            X.value
+X{.empty}          X.
+X{.undef}          X
+X{.var:3}          X.val
+X{.list}           X.red,green,blue
+X{.list*}          X.red.green.blue
+X{.keys}           X.semi,%3B,dot,.,comma,%2C
+X{.keys*}          X.semi=%3B.dot=..comma=%2C
+X{.empty_keys}     X
+X{.empty_keys*}    X
+*/
+
+/* PATH SEGMENT EXPANSION (3.2.6)
+{/who}             /fred
+{/who,who}         /fred/fred
+{/half,who}        /50%25/fred
+{/who,dub}         /fred/me%2Ftoo
+{/var}             /value
+{/var,empty}       /value/
+{/var,undef}       /value
+{/var,x}/here      /value/1024/here
+{/var:1,var}       /v/value
+{/list}            /red,green,blue
+{/list*}           /red/green/blue
+{/list*,path:4}    /red/green/blue/%2Ffoo
+{/keys}            /semi,%3B,dot,.,comma,%2C
+{/keys*}           /semi=%3B/dot=./comma=%2C
+*/
+
+/* PATH-STYLE PARAMETER EXPANSION (3.2.7)
+{;who}             ;who=fred
+{;half}            ;half=50%25
+{;empty}           ;empty
+{;v,empty,who}     ;v=6;empty;who=fred
+{;v,bar,who}       ;v=6;who=fred
+{;x,y}             ;x=1024;y=768
+{;x,y,empty}       ;x=1024;y=768;empty
+{;x,y,undef}       ;x=1024;y=768
+{;hello:5}         ;hello=Hello
+{;list}            ;list=red,green,blue
+{;list*}           ;list=red;list=green;list=blue
+{;keys}            ;keys=semi,%3B,dot,.,comma,%2C
+{;keys*}           ;semi=%3B;dot=.;comma=%2C
+*/
+
+
+/* FORM-STYLE QUERY EXPANSION (3.2.8)
+
+{?who}             ?who=fred
+{?half}            ?half=50%25
+{?x,y}             ?x=1024&y=768
+{?x,y,empty}       ?x=1024&y=768&empty=
+{?x,y,undef}       ?x=1024&y=768
+{?var:3}           ?var=val
+{?list}            ?list=red,green,blue
+{?list*}           ?list=red&list=green&list=blue
+{?keys}            ?keys=semi,%3B,dot,.,comma,%2C
+{?keys*}           ?semi=%3B&dot=.&comma=%2C
+*/
+
+/* FORM-STYLE QUERY CONTINUATION (3.2.9)
+
+{&who}             &who=fred
+{&half}            &half=50%25
+?fixed=yes{&x}     ?fixed=yes&x=1024
+{&x,y,empty}       &x=1024&y=768&empty=
+{&x,y,undef}       &x=1024&y=768
+
+{&var:3}           &var=val
+{&list}            &list=red,green,blue
+{&list*}           &list=red&list=green&list=blue
+{&keys}            &keys=semi,%3B,dot,.,comma,%2C
+{&keys*}           &semi=%3B&dot=.&comma=%2C
 */
 
 });
