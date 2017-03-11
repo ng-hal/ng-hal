@@ -24,6 +24,7 @@ export class InternalResourceWrapper extends HalfredResource implements Resource
 
   }
 
+  /*
   allLinksFlattenedArray() {
     let flattenedArray: any[] = Object.keys(this.allLinks())
       .map((key) => {
@@ -39,6 +40,7 @@ export class InternalResourceWrapper extends HalfredResource implements Resource
 
     return flattenedArray;
   }
+  */
 
   /*
   allEmbeddedResourceArrays(): ResourceCollection {
