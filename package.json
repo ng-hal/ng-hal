@@ -30,10 +30,12 @@
     "build:demo": "cd demo && yarn install && yarn run build",
     "build:lib": "cd lib && yarn install && yarn run build",
     "prebuild": "yarn run clean",
+    "ci": "cd lib && npm run build",
     "clean": "rimraf -- dist",
     "start": "yarn run build"
   },
   "devDependencies": {
+    "coveralls": "^2.12.0",
     "rimraf": "^2.6.1"
   }
 }
