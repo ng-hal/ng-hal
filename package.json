@@ -30,7 +30,7 @@
     "build:demo": "cd demo && yarn install && yarn run build",
     "build:lib": "cd lib && yarn install && yarn run build",
     "prebuild": "yarn run clean",
-    "ci": "cd lib && npm run build",
+    "ci": "cd lib && npm install && npm run build",
     "clean": "rimraf -- dist",
     "start": "yarn run build"
   },
