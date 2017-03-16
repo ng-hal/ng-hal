@@ -9,9 +9,15 @@
     "experimentalDecorators": true,
     "noEmitHelpers": true,
     "noImplicitAny": true,
+    "strictNullChecks": true,
     "baseUrl": "",
     "rootDir": "./",
     "outDir": "../dist",
+    "paths": {
+      "@angular/core": ["node_modules/@angular/core"],
+      "@angular/http": ["node_modules/@angular/http"],
+      "rxjs/*": ["node_modules/rxjs/*"]
+    },
     "types": [
       "node"
     ],
@@ -28,8 +34,9 @@
     "**/*.shim.ts"
   ],
   "angularCompilerOptions": {
-      "genDir": "../dist",
-      "entryModule": "./hal.module#HalModule"
+    "genDir": "../dist",
+    "entryModule": "./hal.module#HalModule",
+    "strictMetadataEmit": true
   },
   "compileOnSave": false,
   "buildOnSave": false,
