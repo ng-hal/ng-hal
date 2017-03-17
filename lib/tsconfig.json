@@ -19,7 +19,12 @@
     "rootDir": "",
     "outDir": "../dist/ng-hal",
     "types": [
-      "node"
+      "core-js",
+      "jasmine",
+      "node",
+      "source-map",
+      "uglify-js",
+      "webpack"
     ],
     "lib": [
       "dom",
