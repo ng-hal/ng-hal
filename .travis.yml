@@ -28,4 +28,4 @@ before_script:
 script: yarn run ci
 
 after_success:
-  - '[ -z "$COVERALLS_REPO_TOKEN" ] && cat ./lib/coverage/lcovonly.info | ./node_modules/.bin/coveralls'
+  - '[ -z "$COVERALLS_REPO_TOKEN" ] && cd lib && cat ./coverage/lcovonly.info | ./node_modules/.bin/coveralls'

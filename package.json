@@ -42,7 +42,6 @@
     "test:lib": "cd lib && yarn install && yarn run build && yarn test"
   },
   "devDependencies": {
-    "coveralls": "~2.12.0",
     "cpx": "~1.5.0",
     "rimraf": "~2.6.1"
   }
