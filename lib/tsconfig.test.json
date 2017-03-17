@@ -1,4 +1,11 @@
 {
+  "atom": { "rewriteTsconfig": false },
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true,
+    "useWebpackText": true
+  },
+  "buildOnSave": false,
+  "compileOnSave": false,
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
@@ -9,14 +16,14 @@
     "noEmitHelpers": false,
     "noImplicitAny": true,
     "declaration": false,
-    "baseUrl": "./app",
-    "types": [
-      "core-js",
-      "jasmine",
-      "node",
-      "source-map",
-      "uglify-js",
-      "webpack"
+    "baseUrl": "./src",
+    "typeRoots": [
+      "node_modules/@angular",
+      "node_modules/@types"
+    ],
+    "lib": [
+      "dom",
+      "es6"
     ]
   },
   "exclude": [
@@ -24,12 +31,5 @@
     "node_modules",
     "lib",
     "gh-pages"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "forkChecker": true,
-    "useWebpackText": true
-  },
-  "compileOnSave": false,
-  "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false }
+  ]
 }

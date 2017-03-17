@@ -2,7 +2,7 @@
   "name": "ng-hal-parent",
   "private": true,
   "version": "0.0.0",
-  "description": "Navigator for Hypermedia Abstraction Language (HAL) documents in Angular",
+  "description": "A navigator for Hypermedia Abstraction Language (HAL) documents in Angular",
   "keywords": [
     "angular",
     "hal",

@@ -35,19 +35,6 @@
     "rxjs": "^5.0.0",
     "zone.js": "^0.7.0"
   },
-  "scripts": {
-    "build": "yarn run build:aot",
-    "build:aot": "ngc -p tsconfig.json",
-    "build:jit": "tsc -p tsconfig.json",
-    "clean": "rimraf -- ../dist/ng-hal",
-    "copy:package": "cpx package.json ../dist/ng-hal",
-    "prebuild:aot": "yarn run clean",
-    "prebuild:jit": "yarn run clean",
-    "postbuild:aot": "yarn run copy:package",
-    "postbuild:jit": "yarn run copy:package",
-    "test": "karma start",
-    "test:debug": "karma start --no-single-run --log-level debug"
-  },
   "devDependencies": {
     "@angular/common": "~2.4.9",
     "@angular/compiler": "~2.4.9",
@@ -87,5 +74,18 @@
     "webpack-md5-hash": "~0.0.5",
     "webpack-merge": "~3.0.0",
     "zone.js": "~0.7.7"
+  },
+  "scripts": {
+    "build": "yarn run build:aot",
+    "build:aot": "ngc -p tsconfig.json",
+    "build:jit": "tsc -p tsconfig.json",
+    "clean": "rimraf -- ../dist/ng-hal",
+    "copy:package": "cpx package.json ../dist/ng-hal",
+    "prebuild:aot": "yarn run clean",
+    "prebuild:jit": "yarn run clean",
+    "postbuild:aot": "yarn run copy:package",
+    "postbuild:jit": "yarn run copy:package",
+    "test": "karma start",
+    "test:debug": "karma start --no-single-run --log-level debug"
   }
 }
