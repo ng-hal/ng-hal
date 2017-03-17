@@ -10,7 +10,7 @@ ng-hal
 [![npm downloads](https://img.shields.io/npm/dm/ng-hal.svg)](https://npmjs.org/ng-hal)
 
 
-> An HAL Navigator for Angular2
+> A navigator for HAL documents in Angular
 
 
 ## Usage
