@@ -26,11 +26,11 @@
   version "2.4.10"
   resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.4.10.tgz#ff6beade5b39c989ebf2393c49b34eebd43e9555"
 
-"@angular/platform-browser-dynamic@^2.4.10":
+"@angular/platform-browser-dynamic@~2.4.9":
   version "2.4.10"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.4.10.tgz#8df25dec2b06adc690cc9bc26448deccaebcd8ec"
 
-"@angular/platform-browser@^2.4.10":
+"@angular/platform-browser@~2.4.9":
   version "2.4.10"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.10.tgz#cbf25608148fb4ffef96cc5005ba5d7b3e093906"
 
@@ -298,7 +298,7 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
-awesome-typescript-loader@^3.1.2:
+awesome-typescript-loader@~3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/awesome-typescript-loader/-/awesome-typescript-loader-3.1.2.tgz#3df192b91a6285f795ca65e63aad114fbb44f710"
   dependencies:
@@ -3263,7 +3263,7 @@ source-list-map@~0.1.7:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-0.1.8.tgz#c550b2ab5427f6b3f21f5afead88c4f5587b2106"
 
-source-map-loader@^0.2.0:
+source-map-loader@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/source-map-loader/-/source-map-loader-0.2.0.tgz#aba0cf717a1d7ee29fc30f31cc0c441d78ea42ba"
   dependencies:
@@ -3530,7 +3530,7 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
 
-ts-helpers@^1.1.2:
+ts-helpers@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/ts-helpers/-/ts-helpers-1.1.2.tgz#fc69be9f1f3baed01fb1a0ef8d4cfe748814d835"
 
