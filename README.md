@@ -16,7 +16,7 @@ ng-hal
 ## Usage
 
 ```bash
-$ npm install ng-hal
+$ npm install --save ng-hal
 ```
 
 Alternative, use yarn:
