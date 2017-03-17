@@ -27,17 +27,23 @@
   },
   "scripts": {
     "build": "yarn run build:lib && yarn run build:demo",
-    "build:demo": "cd demo && yarn install && yarn run build",
-    "build:lib": "cd lib && yarn install && yarn run build",
     "prebuild": "yarn run clean",
-    "ci": "yarn test",
+    "build:demo": "cd demo && yarn install && yarn run build",
+    "prebuild:demo": "yarn run clean:demo",
+    "build:lib": "cd lib && yarn install && yarn run build",
+    "prebuild:lib": "yarn run clean:lib",
+    "postbuild:lib": "yarn run cpx {README.md,LICENSE} dist/ng-hal",
+    "ci": "yarn run build:lib && yarn run test:lib",
     "clean": "rimraf -- dist",
+    "clean:demo": "rimraf -- dist/demo",
+    "clean:lib": "rimraf -- dist/ng-hal",
     "start": "yarn run build",
     "test": "yarn run test:lib",
     "test:lib": "cd lib && yarn install && yarn run build && yarn test"
   },
   "devDependencies": {
-    "coveralls": "^2.12.0",
-    "rimraf": "^2.6.1"
+    "coveralls": "~2.12.0",
+    "cpx": "~1.5.0",
+    "rimraf": "~2.6.1"
   }
 }
