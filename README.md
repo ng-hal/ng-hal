@@ -19,7 +19,15 @@ ng-hal
 $ npm install ng-hal
 ```
 
-Import ``HalModule`` to your application, similar to the following example:
+Alternative, use yarn:
+
+```bash
+$ yarn add ng-hal
+```
+
+
+Import ``HalModule.forRoot()`` to your application's module:
+
 ```ts
 import { HalModule } from 'ng-hal';
 
@@ -32,15 +40,17 @@ import { HalModule } from 'ng-hal';
 export class AppModule {}
 ```
 
-To retrieve HAL/JSON documents, inject ``Navigator`` into one our your components or services.
-Usage Example:
+Inject ``Navigator`` into components or services, then start retrieving HAL/JSON documents:
+
 ```ts
 import { Navigator } from 'ng-hal';
 
 @Injectable()
 export class Foo {
 
-  constructor(private navigator: Navigator) {}
+  constructor(
+    private navigator: Navigator
+  ) {}
 
   demo() {
     this.navigator

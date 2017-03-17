@@ -1,4 +1,10 @@
 {
+  "angularCompilerOptions": {
+    "genDir": "../dist/ng-hal",
+    "entryModule": "./src/hal.module#HalModule"
+  },
+  "buildOnSave": false,
+  "compileOnSave": false,
   "compilerOptions": {
     "target": "es5",
     "module": "es2015",
@@ -10,10 +16,15 @@
     "noEmitHelpers": true,
     "noImplicitAny": true,
     "baseUrl": "",
-    "rootDir": "./",
-    "outDir": "../dist",
+    "rootDir": "",
+    "outDir": "../dist/ng-hal",
     "types": [
-      "node"
+      "core-js",
+      "jasmine",
+      "node",
+      "source-map",
+      "uglify-js",
+      "webpack"
     ],
     "lib": [
       "dom",
@@ -25,16 +36,11 @@
     "dist",
     "gh-pages",
     "**/*.ngfactory.ts",
-    "**/*.shim.ts"
+    "**/*.shim.ts",
+    "**/*.spec.ts"
   ],
-  "angularCompilerOptions": {
-      "genDir": "../dist",
-      "entryModule": "./hal.module#HalModule"
-  },
-  "compileOnSave": false,
-  "buildOnSave": false,
   "files": [
-    "./typings/halfred.d.ts",
-    "./index.ts"
+    "./src/index.ts",
+    "./src/typings/halfred.d.ts"
   ]
 }

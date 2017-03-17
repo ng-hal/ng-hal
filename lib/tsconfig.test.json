@@ -1,0 +1,36 @@
+{
+  "atom": { "rewriteTsconfig": false },
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true,
+    "useWebpackText": true
+  },
+  "buildOnSave": false,
+  "compileOnSave": false,
+  "compilerOptions": {
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noEmitHelpers": false,
+    "noImplicitAny": true,
+    "inlineSourceMap": true,
+    "removeComments": true,
+    "sourceMap": false,
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "typeRoots": [
+      "node_modules/@angular",
+      "node_modules/@types"
+    ],
+    "lib": [
+      "dom",
+      "es6"
+    ]
+  },
+  "exclude": [
+    "dist",
+    "node_modules",
+    "gh-pages"
+  ]
+}

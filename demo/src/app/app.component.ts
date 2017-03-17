@@ -8,7 +8,7 @@ import {
   Session,
   Link,
   Uri
-} from '../../dist';
+} from 'ng-hal';
 
 
 /** Demo application */
@@ -21,7 +21,7 @@ export class AppComponent {
 
   model: any = {
     verb: 'GET',
-    url: 'hal/orders.json',
+    url: 'api/orders.json',
     params: [],
     link: undefined
   };
