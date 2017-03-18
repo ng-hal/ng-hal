@@ -1,7 +1,7 @@
 {
   "angularCompilerOptions": {
-    "genDir": "../dist/ng-hal",
-    "entryModule": "./src/hal.module#HalModule"
+    "entryModule": "./src/hal.module#HalModule",
+    "genDir": "./.ng-aot"
   },
   "buildOnSave": false,
   "compileOnSave": false,
@@ -11,12 +11,14 @@
     "moduleResolution": "node",
     "declaration": true,
     "sourceMap": true,
+    "inlineSources": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noEmitHelpers": true,
-    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "noImplicitAny": false,
+    "stripInternal": true,
     "baseUrl": "",
-    "rootDir": "",
+    "rootDir": "./src",
     "outDir": "../dist/ng-hal",
     "types": [
       "core-js",
@@ -31,6 +33,9 @@
       "es2015"
     ]
   },
+  "include": [
+    "src"
+  ],
   "exclude": [
     "node_modules",
     "dist",
@@ -38,9 +43,5 @@
     "**/*.ngfactory.ts",
     "**/*.shim.ts",
     "**/*.spec.ts"
-  ],
-  "files": [
-    "./src/index.ts",
-    "./src/typings/halfred.d.ts"
   ]
 }

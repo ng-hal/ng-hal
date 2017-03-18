@@ -24,8 +24,8 @@
     "node": ">= 4.2.1",
     "npm": ">= 3"
   },
-  "main": "src/index.js",
-  "typings": "src/index.d.ts",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "dependencies": {
     "halfred": "^1.0.0"
   },
