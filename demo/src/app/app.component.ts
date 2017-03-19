@@ -13,7 +13,7 @@ import {
 
 /** Demo application */
 @Component({
-  selector: 'app',
+  selector: 'ngh-app',
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })
@@ -40,8 +40,8 @@ export class AppComponent {
     console.log("AppComponent inited.", this.navigator);
 
     this.navigator
-      .get('/hal/orders.json')
-      .follow((doc) => this.navigator.get('hal/orders/123.json'))
+      .get('/api/orders.json')
+      .follow((doc) => this.navigator.get('api/orders/123.json'))
       .subscribe((nav) => console.log(nav));
   }
 
@@ -60,7 +60,7 @@ export class AppComponent {
           this.resource = doc.resource;
           this.response = doc.response;
           this.request = doc.request;
-          this.links = this.resource.allLinksFlattenedArray();
+          this.links = []; //this.resource.allLinksFlattenedArray();
         }
       );
   }
