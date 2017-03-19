@@ -20,13 +20,9 @@
     "baseUrl": "",
     "rootDir": "./src",
     "outDir": "../dist/ng-hal",
-    "types": [
-      "core-js",
-      "jasmine",
-      "node",
-      "source-map",
-      "uglify-js",
-      "webpack"
+    "typeRoots": [
+      "node_modules/@angular",
+      "node_modules/@types"
     ],
     "lib": [
       "dom",
