@@ -1,4 +1,7 @@
-import { Injectable }           from '@angular/core';
+import {
+  Inject,
+  Injectable
+}                               from '@angular/core';
 import {
   Http,
   Request,
@@ -11,7 +14,10 @@ import {
 import { Observable }           from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { ConversionStrategy }   from './conversion';
+import {
+  ConversionStrategy,
+  CONVERSION_STRATEGY
+}                               from './conversion';
 import { Resource }             from './hal';
 
 import { Document }             from './document';
@@ -22,6 +28,7 @@ export class Navigator {
 
   constructor(
     private http: Http,
+    @Inject(CONVERSION_STRATEGY)
     private conversionStrategy: ConversionStrategy
   ) {}
 

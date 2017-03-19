@@ -5,6 +5,10 @@ import { Navigator } from './navigator';
 import { Parser } from './parser';
 
 
+export function jsonConversionProvider(parser: Parser) {
+  return new JsonConversionStrategy(parser);
+}
+
 /** Angular module for HAL Navigator. */
 @NgModule({})
 export class HalModule {
@@ -16,9 +20,19 @@ export class HalModule {
     return {
       ngModule: HalModule,
       providers: [
-        { provide: CONVERSION_STRATEGY, useClass: JsonConversionStrategy },
-        { provide: Parser, useClass: Parser },
-        { provide: Navigator, useClass: Navigator }
+        {
+          provide: CONVERSION_STRATEGY,
+          useFactory: jsonConversionProvider,
+          deps: [ Parser ]
+        },
+        {
+          provide: Parser,
+          useClass: Parser
+        },
+        {
+          provide: Navigator,
+          useClass: Navigator
+        }
       ]
     };
   }
