@@ -1,6 +1,6 @@
 {
   "name": "ng-hal",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Navigator for Hypermedia Abstraction Language (HAL) documents in Angular",
   "keywords": [
     "angular",
