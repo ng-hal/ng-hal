@@ -83,6 +83,7 @@ export class Foo {
 
 ## Version History
 
+ * ``v0.4.0`` BREAKING API CHANGES, supports AoT compilation, removes uri-templates dependency, uses yarn, increases test coverage
  * ``v0.3.0`` tsconfig ``"noEmitHelpers": false``
  * ``v0.2.0`` renamed to ``ng-hal``, version bumps
  * ``v0.1.0`` first version on public npm registry
