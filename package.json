@@ -1,31 +1,83 @@
 {
-  "name": "ng-hal-parent",
-  "private": true,
+  "name": "ng-hal-demo",
   "version": "0.0.0",
-  "description": "A navigator for Hypermedia Abstraction Language (HAL) documents in Angular",
-  "keywords": [
-    "angular",
-    "hal",
-    "hypermedia",
-    "rest",
-    "http",
-    "json"
-  ],
+  "description": "Hyping thru media with the hypermedia abstraction language.",
   "author": "David Herges <david@spektrakel.de>",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dherges/ng-hal.git"
-  },
-  "bugs": {
-    "url": "https://github.com/dherges/ng-hal/issues"
-  },
-  "homepage": "https://dherges.github.io/ng-hal",
-  "engines": {
-    "node": ">= 4.2.1",
-    "npm": ">= 3"
-  },
+  "private": true,
   "scripts": {
+    "build": "ng build",
+    "build:lib": "echo foo",
+    "e2e": "ng e2e",
+    "lint": "ng lint",
+    "ng": "ng",
+    "start": "ng serve",
+    "test": "ng test"
+  },
+  "dependencies": {
+    "@angular/common": "~2.4.10",
+    "@angular/compiler": "~2.4.10",
+    "@angular/core": "~2.4.10",
+    "@angular/forms": "~2.4.10",
+    "@angular/http": "~2.4.10",
+    "@angular/platform-browser": "~2.4.10",
+    "@angular/platform-browser-dynamic": "~2.4.10",
+    "@angular/router": "~3.4.10",
+    "core-js": "~2.4.1",
+    "rxjs": "~5.2.0",
+    "zone.js": "~0.7.7"
+  },
+  "devDependencies": {
+    "@angular/common": "~2.4.10",
+    "@angular/compiler": "~2.4.10",
+    "@angular/core": "~2.4.10",
+    "@angular/cli": "1.0.0",
+    "@angular/compiler-cli": "^2.4.10",
+    "@angular/http": "~2.4.10",
+    "@angular/platform-browser": "~2.4.10",
+    "@angular/platform-browser-dynamic": "~2.4.10",
+    "@types/core-js": "~0.9.35",
+    "@types/jasmine": "2.5.38",
+    "@types/node": "~6.0.60",
+    "@types/source-map": "~0.5.0",
+    "@types/uglify-js": "~2.6.28",
+    "@types/webpack": "~2.2.7",
+    "awesome-typescript-loader": "~3.1.2",
+    "codelyzer": "~2.0.0",
+    "coveralls": "~2.12.0",
+    "cpx": "~1.5.0",
+    "istanbul-instrumenter-loader": "~1.2.0",
+    "jasmine-core": "~2.5.2",
+    "jasmine-spec-reporter": "~3.2.0",
+    "karma": "~1.4.1",
+    "karma-chrome-launcher": "~2.0.0",
+    "karma-cli": "~1.0.1",
+    "karma-coverage": "~1.1.1",
+    "karma-coverage-istanbul-reporter": "~0.2.0",
+    "karma-jasmine": "~1.1.0",
+    "karma-jasmine-html-reporter": "~0.2.2",
+    "karma-mocha-reporter": "~2.2.2",
+    "karma-remap-coverage": "~0.1.4",
+    "karma-sourcemap-loader": "~0.3.7",
+    "karma-webpack": "2.0.2",
+    "linklocal": "~2.8.0",
+    "protractor": "~5.1.0",
+    "rimraf": "~2.6.1",
+    "rxjs": "~5.2.0",
+    "source-map-loader": "~0.2.0",
+    "tslint": "~4.5.0",
+    "ts-helpers": "~1.1.2",
+    "ts-node": "~2.0.0",
+    "typedoc": "~0.5.7",
+    "typescript": "~2.2.1",
+    "webpack": "2.2.1",
+    "webpack-dev-middleware": "~1.10.1",
+    "webpack-dev-server": "~2.4.1",
+    "webpack-md5-hash": "~0.0.5",
+    "webpack-merge": "~3.0.0",
+    "zone.js": "~0.7.7"
+  },
+  "scripts__": {
     "build": "yarn run build:lib && yarn run build:demo",
     "prebuild": "yarn run clean",
     "build:demo": "cd demo && yarn install && yarn run build",
@@ -45,9 +97,5 @@
     "start": "yarn run build",
     "test": "yarn run test:lib",
     "test:lib": "cd lib && yarn install && yarn run build && yarn test"
-  },
-  "devDependencies": {
-    "cpx": "~1.5.0",
-    "rimraf": "~2.6.1"
   }
 }
