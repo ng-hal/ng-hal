@@ -24,6 +24,8 @@ echo(`Cleaned.`, `\n`);
 
 
 echo(`AoT compilation starting...`);
+// XX: run tsc first, then ngc, see https://github.com/angular/angular/issues/13359#issuecomment-289693569
+run(`tsc -p ${SOURCE}/tsconfig.lib.json`);
 run(`ngc -p ${SOURCE}/tsconfig.lib.json`);
 echo(chalk.green(`AoT compilation completed`), `\n`);
 
