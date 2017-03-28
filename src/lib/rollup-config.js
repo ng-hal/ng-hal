@@ -1,5 +1,6 @@
 import angularInline from 'rollup-plugin-angular-inline';
 import nodeResolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
 
 const TARGET= 'dist/ng-hal';
 
@@ -14,7 +15,8 @@ export default {
     '@angular/forms',
     '@angular/http',
     'rxjs/Observable',
-    'rxjs/Observer'
+    'rxjs/Observer',
+    'halfred'
   ],
   globals: {
     '@angular/core': 'ng.core',
@@ -22,10 +24,12 @@ export default {
     '@angular/forms': 'ng.forms',
     '@angular/http': 'ng.http',
     'rxjs/Observable': 'Rx',
-    'rxjs/Observer': 'Rx'
+    'rxjs/Observer': 'Rx',
+    'halfred': 'halfred'
   },
   plugins: [
     nodeResolve({jsnext: true, module: true}),
+    commonjs(),
     angularInline({ include: `./${TARGET}/lib/**/*.component.js` })
   ],
   onwarn: (warning) => {
