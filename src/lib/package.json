@@ -25,8 +25,8 @@
     "npm": ">= 3"
   },
   "main": "bundle/ng-hal.umd.js",
-  "module": "index.js",
-  "typings": "index.d.ts",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "dependencies": {
     "halfred": "^1.0.0"
   },
@@ -35,19 +35,5 @@
     "@angular/http": "^2.0.0",
     "rxjs": "^5.0.0",
     "zone.js": "^0.7.0"
-  },
-  "scripts": {
-    "build": "yarn run build:aot",
-    "build:aot": "ngc -p tsconfig.json",
-    "build:jit": "tsc -p tsconfig.json",
-    "clean": "rimraf -- ../dist/ng-hal",
-    "copy:package": "cpx package.json ../dist/ng-hal",
-    "lint": "tslint --config tslint.json --project tsconfig.json",
-    "prebuild:aot": "yarn run clean",
-    "prebuild:jit": "yarn run clean",
-    "postbuild:aot": "yarn run copy:package",
-    "postbuild:jit": "yarn run copy:package",
-    "test": "karma start",
-    "test:debug": "karma start --no-single-run --log-level debug"
   }
 }

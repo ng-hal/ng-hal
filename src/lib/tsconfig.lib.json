@@ -1,7 +1,9 @@
 {
   "angularCompilerOptions": {
-    "entryModule": "./src/hal.module#HalModule",
-    "genDir": "./.ng-aot"
+    "annotateForClosureCompiler": true,
+    "flatModuleId": "ng-hal",
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true
   },
   "buildOnSave": false,
   "compileOnSave": false,
@@ -14,23 +16,20 @@
     "inlineSources": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noEmitOnError": true,
+    "noEmitOnError": false,
     "noImplicitAny": false,
     "stripInternal": true,
     "baseUrl": "",
     "rootDir": "./src",
-    "outDir": "../dist/ng-hal",
-    "typeRoots": [
-      "node_modules/@angular",
-      "node_modules/@types"
-    ],
+    "outDir": "../../dist/ng-hal/lib",
     "lib": [
       "dom",
       "es2015"
     ]
   },
-  "include": [
-    "src"
+  "files": [
+    "src/index.ts",
+    "src/typings/halfred.d.ts"
   ],
   "exclude": [
     "node_modules",
