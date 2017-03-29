@@ -1,5 +1,3 @@
-/// <reference path="./typings/halfred.d.ts" />
-
 import './rxjs/add/follow';
 export * from './rxjs/follow';
 
