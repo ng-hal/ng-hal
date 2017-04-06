@@ -30,9 +30,9 @@ run(`ngc -p ${SOURCE}/tsconfig.lib.json`);
 echo(chalk.green(`AoT compilation completed`), `\n`);
 
 
-echo(`Styles and templates copying...`);
-run(`cpx ${SOURCE}/src/**/*.{html,css,scss} ${TARGET}/lib`);
-echo(chalk.green(`Styles and templates copied`), `\n`);
+//echo(`Styles and templates copying...`);
+//run(`cpx ${SOURCE}/src/**/*.{html,css,scss} ${TARGET}/lib`);
+//echo(chalk.green(`Styles and templates copied`), `\n`);
 
 
 echo(`Rollup starting...`);
@@ -43,7 +43,7 @@ echo(chalk.green(`Rollup finished`), `\n`);
 echo(`Packaging...`);
 run(`cpx ${SOURCE}/src/typings/**/* ${TARGET}/typings`);
 run(`cpx ${SOURCE}/package.json ${TARGET}`);
-run(`cpx {README.md,LICENSE} ${TARGET}`);
+run(`cpx "{README.md,LICENSE}" ${TARGET}`);
 echo(`Package created.`, `\n`);
 
 

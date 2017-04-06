@@ -9,7 +9,7 @@
     "build": "yarn run build:lib && yarn run build:demo",
     "build:demo": "ng build",
     "build:lib": "node src/lib/build.js",
-    "postbuild:lib": "rimraf src/demo/ng-hal && cpx dist/ng-hal/**/* src/demo/ng-hal",
+    "postbuild:lib": "rimraf src/demo/ng-hal && cpx \"dist/ng-hal/**/*\" src/demo/ng-hal",
     "ci": "yarn run build && yarn run lint && yarn run test",
     "e2e": "ng e2e",
     "lint": "yarn run lint:demo",
