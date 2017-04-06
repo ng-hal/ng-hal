@@ -20,8 +20,8 @@
     "moduleResolution": "node",
     "baseUrl": "./src",
     "typeRoots": [
-      "node_modules/@angular",
-      "node_modules/@types"
+      "../../node_modules/@angular",
+      "../../node_modules/@types"
     ],
     "lib": [
       "dom",
@@ -29,8 +29,10 @@
     ]
   },
   "exclude": [
+    "e2e",
     "dist",
     "node_modules",
-    "gh-pages"
+    "gh-pages",
+    "src/demo"
   ]
 }

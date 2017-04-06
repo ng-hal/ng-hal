@@ -5,8 +5,8 @@
   },
   "apps": [
     {
-      "root": "src",
-      "outDir": "dist",
+      "root": "src/demo",
+      "outDir": "dist/demo",
       "assets": [
         "api",
         "assets",
@@ -37,10 +37,10 @@
   },
   "lint": [
     {
-      "project": "src/tsconfig.app.json"
+      "project": "src/demo/tsconfig.app.json"
     },
     {
-      "project": "src/tsconfig.spec.json"
+      "project": "src/demo/tsconfig.spec.json"
     },
     {
       "project": "e2e/tsconfig.e2e.json"

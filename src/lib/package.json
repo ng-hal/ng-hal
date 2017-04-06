@@ -1,0 +1,37 @@
+{
+  "name": "ng-hal",
+  "version": "0.4.0",
+  "description": "Navigator for Hypermedia Abstraction Language (HAL) documents in Angular",
+  "keywords": [
+    "angular",
+    "hal",
+    "hypermedia",
+    "rest",
+    "http",
+    "json"
+  ],
+  "author": "David Herges <david@spektrakel.de>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dherges/ng-hal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dherges/ng-hal/issues"
+  },
+  "homepage": "https://dherges.github.io/ng-hal",
+  "engines": {
+    "node": ">= 4.2.1",
+    "npm": ">= 3"
+  },
+  "main": "bundle/ng-hal.umd.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^2.0.0",
+    "@angular/http": "^2.0.0",
+    "halfred": "^1.0.0",
+    "rxjs": "^5.0.0",
+    "zone.js": "^0.7.0"
+  }
+}
