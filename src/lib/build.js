@@ -13,6 +13,12 @@ function run(command) {
   }
 }
 
+const isPublishing = process.env.NODE_ENV === 'publish';
+if (isPublishing) {
+  echo(`Bumping version...`);
+  run(`cd ${SOURCE} && yarn version`);
+  echo(chalk.green(`Version bumped.`), `\n\n`);
+}
 
 echo('Build starting...', `\n`);
 
@@ -48,3 +54,9 @@ echo(`Package created.`, `\n`);
 
 
 echo(chalk.green(`Build success`));
+
+if (isPublishing) {
+  echo(`\n\n`, `Publishing 'ng-hal' to npm registry...`);
+  run(`cd ${TARGET} && npm publish`);
+  echo(chalk.green(`Published.`), `\n`);
+}
