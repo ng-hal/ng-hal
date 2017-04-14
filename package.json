@@ -16,6 +16,7 @@
     "lint:demo": "ng lint",
     "lint:lib": "tslint --config src/lib/tslint.json --project src/lib/tsconfig.lib.json",
     "ng": "ng",
+    "publish": "NODE_ENV=publish node src/lib/build.js",
     "start": "ng serve",
     "test": "ng test",
     "test:lib": "karma start src/lib/karma.conf.js",
