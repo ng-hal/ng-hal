@@ -83,7 +83,6 @@
     "ts-helpers": "~1.1.2",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typedoc": "~0.5.7",
     "typescript": "~2.2.1",
     "webpack": "2.2.1",
     "webpack-dev-middleware": "~1.10.1",
