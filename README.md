@@ -83,11 +83,12 @@ export class Foo {
 
 ## Version History
 
- * ``v0.4.1`` publishes an ES5/UMD bundle and an ES5/ES2015 version of the library
- * ``v0.4.0`` BREAKING API CHANGES, supports AoT compilation, removes uri-templates dependency, uses yarn, increases test coverage
- * ``v0.3.0`` tsconfig ``"noEmitHelpers": false``
- * ``v0.2.0`` renamed to ``ng-hal``, version bumps
- * ``v0.1.0`` first version on public npm registry
+ * `v0.4.2` support Angular `^2.0.0 || ^4.0.0` from legacy code base
+ * `v0.4.1` publishes an ES5/UMD bundle and an ES5/ES2015 version of the library
+ * `v0.4.0` BREAKING API CHANGES, supports AoT compilation, removes uri-templates dependency, uses yarn, increases test coverage
+ * `v0.3.0` tsconfig ``"noEmitHelpers": false``
+ * `v0.2.0` renamed to ``ng-hal``, version bumps
+ * `v0.1.0` first version on public npm registry
 
 
 ## License
