@@ -12,6 +12,7 @@ npm-debug.log
 npm-debug.log.*
 yarn-error.log
 
+.ng_build
 
 src/demo/ng-hal
 

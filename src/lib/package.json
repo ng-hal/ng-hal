@@ -24,9 +24,6 @@
     "node": ">= 4.2.1",
     "npm": ">= 3"
   },
-  "main": "bundle/ng-hal.umd.js",
-  "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
   "peerDependencies": {
     "@angular/core": "^2.0.0 || ^4.0.0",
     "@angular/http": "^2.0.0 || ^4.0.0",
