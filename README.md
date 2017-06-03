@@ -55,7 +55,7 @@ export class Foo {
   demo() {
     this.navigator
       .get('/my/hal-document.json')
-      .subscribe((doc: HalDocument) => console.log(doc));
+      .subscribe((doc: Document) => console.log(doc));
   }
 }
 ```
@@ -70,7 +70,7 @@ export class Foo {
 
  * ``Navigator`` API is almost identical to Angular's ``Http`` API.
    * ``follow`` is a short-cut Observable operation that is derived from ``mergeMap``/``flatMap``.
- * ``HalDocument`` gives you a ``Resource`` object and the original ``Request``/``Response`` pair.
+ * ``Document`` gives you a ``Resource`` object and the original ``Request``/``Response`` pair.
  * ``Resource`` is a normalized view of the JSON document. You can, however, obtain the unmodified JSON object.
 
 
@@ -85,7 +85,7 @@ export class Foo {
 
  * `v0.4.2` support Angular `^2.0.0 || ^4.0.0` from legacy code base
  * `v0.4.1` publishes an ES5/UMD bundle and an ES5/ES2015 version of the library
- * `v0.4.0` BREAKING API CHANGES, supports AoT compilation, removes uri-templates dependency, uses yarn, increases test coverage
+ * `v0.4.0` BREAKING API CHANGES (HalDocument renamed to Document), supports AoT compilation, removes uri-templates dependency, uses yarn, increases test coverage
  * `v0.3.0` tsconfig ``"noEmitHelpers": false``
  * `v0.2.0` renamed to ``ng-hal``, version bumps
  * `v0.1.0` first version on public npm registry

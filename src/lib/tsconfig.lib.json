@@ -1,13 +1,15 @@
 {
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
+    "flatModuleId": "ng-hal",
+    "flatModuleOutFile": "index",
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true
   },
   "buildOnSave": false,
   "compileOnSave": false,
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",
     "declaration": true,
@@ -19,8 +21,7 @@
     "noImplicitAny": false,
     "stripInternal": true,
     "baseUrl": "",
-    "rootDir": "./src",
-    "outDir": "../../dist/ng-hal/lib",
+    "outDir": "src",
     "typeRoots": [
       "../../node_modules/@types"
     ],
@@ -30,8 +31,7 @@
     ]
   },
   "files": [
-    "src/index.ts",
-    "src/typings/halfred.d.ts"
+    "src/public_api.ts"
   ],
   "exclude": [
     "node_modules",
