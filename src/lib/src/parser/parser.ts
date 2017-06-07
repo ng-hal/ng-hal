@@ -15,7 +15,7 @@ import { InternalResourceWrapper } from './internal-resource-wrapper';
 export class Parser {
 
   public parse(input: any): Resource {
-    return new InternalResourceWrapper(halfredParse(input) || {});
+    return new InternalResourceWrapper(halfredParse(input));
   }
 
 }
