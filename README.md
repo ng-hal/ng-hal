@@ -1,15 +1,17 @@
 ng-hal
 ======
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/dherges/ng-hal.svg)](https://greenkeeper.io/)
 
-[![Build Status](https://img.shields.io/travis/dherges/ng-hal/develop.svg)](https://travis-ci.org/dherges/ng-hal)
-[![Coverage Status](https://img.shields.io/coveralls/dherges/ng-hal/develop.svg)](https://coveralls.io/github/dherges/ng-hal?branch=develop)
-[![Dependencies Status](https://david-dm.org/dherges/ng-hal/status.svg)](https://david-dm.org/dherges/ng-hal)
-[![Peer Dependencies Status](https://david-dm.org/dherges/ng-hal/peer-status.svg)](https://david-dm.org/dherges/ng-hal?type=peer)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![npm version](https://img.shields.io/npm/v/ng-hal.svg)](https://npmjs.org/ng-hal)
 [![npm downloads](https://img.shields.io/npm/dm/ng-hal.svg)](https://npmjs.org/ng-hal)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Dependencies Status](https://david-dm.org/dherges/ng-hal/status.svg)](https://david-dm.org/dherges/ng-hal)
+[![Peer Dependencies Status](https://david-dm.org/dherges/ng-hal/peer-status.svg)](https://david-dm.org/dherges/ng-hal?type=peer)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/dherges/ng-hal.svg)](https://greenkeeper.io/)
+[![CircleCI](https://circleci.com/gh/dherges/ng-hal/tree/master.svg?style=svg)](https://circleci.com/gh/dherges/ng-hal/tree/master)
+[![Travis CI](https://img.shields.io/travis/dherges/ng-hal/master.svg)](https://travis-ci.org/dherges/ng-hal)
+[![Coverage Status](https://img.shields.io/coveralls/dherges/ng-hal/master.svg)](https://coveralls.io/github/dherges/ng-hal?branch=master)
 
 
 > A navigator for HAL documents in Angular
