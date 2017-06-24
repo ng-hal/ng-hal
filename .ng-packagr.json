@@ -1,8 +1,0 @@
-{
-  "src": "src/lib",
-  "dest": "dist/ng-hal",
-  "workingDirectory": ".ng_build",
-  "ngc": {
-    "tsconfig": "tsconfig.lib.json"
-  }
-}
