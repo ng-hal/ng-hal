@@ -1,6 +1,6 @@
 {
   "name": "ng-hal-demo",
-  "version": "0.0.0",
+  "version": "1.0.0-pre.0",
   "description": "Hyping thru media with the hypermedia abstraction language.",
   "author": "David Herges <david@spektrakel.de>",
   "license": "MIT",
@@ -21,7 +21,8 @@
     "test:demo": "ng test",
     "test:lib": "karma start lib/karma.conf.js",
     "test:lib:dev": "karma start lib/karma.conf.js --no-single-run --log-level debug",
-    "commitmsg": "validate-commit-msg"
+    "commitmsg": "validate-commit-msg",
+    "release": "standard-version --prerelease pre --message 'release: cut v%s release'"
   },
   "dependencies": {
     "@angular/common": "~4.2.4",
@@ -83,6 +84,7 @@
     "rxjs": "~5.4.1",
     "shelljs": "^0.7.7",
     "source-map-loader": "~0.2.0",
+    "standard-version": "^4.2.0",
     "ts-helpers": "~1.1.2",
     "ts-node": "~3.1.0",
     "tslint": "~5.4.3",
