@@ -20,7 +20,8 @@
     "test": "ng test --single-run && yarn test:lib",
     "test:demo": "ng test",
     "test:lib": "karma start lib/karma.conf.js",
-    "test:lib:dev": "karma start lib/karma.conf.js --no-single-run --log-level debug"
+    "test:lib:dev": "karma start lib/karma.conf.js --no-single-run --log-level debug",
+    "commitmsg": "validate-commit-msg"
   },
   "dependencies": {
     "@angular/common": "~4.2.4",
@@ -56,6 +57,7 @@
     "codelyzer": "~3.1.1",
     "coveralls": "~2.13.1",
     "cpx": "~1.5.0",
+    "husky": "^0.14.1",
     "istanbul-instrumenter-loader": "~2.0.0",
     "jasmine-core": "~2.6.4",
     "jasmine-spec-reporter": "~4.1.1",
@@ -85,6 +87,7 @@
     "ts-node": "~3.1.0",
     "tslint": "~5.4.3",
     "typescript": "~2.3.4",
+    "validate-commit-msg": "^2.12.2",
     "webpack": "3.0.0",
     "webpack-dev-middleware": "~1.11.0",
     "webpack-dev-server": "~2.5.0",
