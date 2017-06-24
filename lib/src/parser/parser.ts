@@ -1,8 +1,5 @@
-import { Resource as HalfredResource, parse as halfredParse } from 'halfred';
-
-import { Resource } from '../hal';
-
-import { InternalResourceWrapper } from './internal-resource-wrapper';
+import { Resource } from '../hal/hal.interfaces';
+import { ResourceImpl } from '../hal/resource';
 
 /**
  * Parser offers validation and normalization of HAL resources represented as object literals.
@@ -15,7 +12,9 @@ import { InternalResourceWrapper } from './internal-resource-wrapper';
 export class Parser {
 
   public parse(input: any): Resource {
-    return new InternalResourceWrapper(halfredParse(input) || {});
+
+    // TODO: implement parsing and normalization
+    return new ResourceImpl(input);
   }
 
 }

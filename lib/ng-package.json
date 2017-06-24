@@ -1,0 +1,11 @@
+{
+  "$schema": "../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../dist/ng-hal",
+  "workingDirectory": "../.ng_build",
+  "lib": {
+    "publicApi": "src/public_api.ts",
+    "externals": {
+      "rxjs/operator/mergeMap": "Rx.Observable.prototype"
+    }
+  }
+}

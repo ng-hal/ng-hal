@@ -1,13 +1,25 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
 
-import { CONVERSION_STRATEGY, ConversionStrategy, JsonConversionStrategy } from './conversion';
+import { CONVERSION_STRATEGY, ConversionStrategy } from './conversion/conversion-strategy';
+import { JsonConversionStrategy } from './conversion/json-conversion-strategy';
+
 import { Navigator } from './navigator';
-import { Parser } from './parser';
+import { Parser } from './parser/parser';
 
 
 export function jsonConversionProvider(parser: Parser) {
   return new JsonConversionStrategy(parser);
 }
+
+const providers: Provider[] = [
+  {
+    provide: CONVERSION_STRATEGY,
+    useFactory: jsonConversionProvider,
+    deps: [ Parser ]
+  },
+  Parser,
+  Navigator
+];
 
 /** Angular module for HAL Navigator. */
 @NgModule({})
@@ -17,24 +29,7 @@ export class HalModule {
   /** Return a module for HAL Navigator with root providers. */
   public static forRoot(): ModuleWithProviders {
 
-    return {
-      ngModule: HalModule,
-      providers: [
-        {
-          provide: CONVERSION_STRATEGY,
-          useFactory: jsonConversionProvider,
-          deps: [ Parser ]
-        },
-        {
-          provide: Parser,
-          useClass: Parser
-        },
-        {
-          provide: Navigator,
-          useClass: Navigator
-        }
-      ]
-    };
+    return { ngModule: HalModule, providers };
   }
 
 }

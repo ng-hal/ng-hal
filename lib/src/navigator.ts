@@ -1,26 +1,11 @@
-import {
-  Inject,
-  Injectable
-}                               from '@angular/core';
-import {
-  Http,
-  Request,
-  RequestMethod,
-  RequestOptions,
-  RequestOptionsArgs,
-  Response
-}                               from '@angular/http';
-
-import { Observable }           from 'rxjs/Observable';
+import { Inject, Injectable } from '@angular/core';
+import { Http, Request, RequestMethod, RequestOptions, RequestOptionsArgs, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import {
-  ConversionStrategy,
-  CONVERSION_STRATEGY
-}                               from './conversion';
-import { Resource }             from './hal';
-
-import { Document }             from './document';
+import { ConversionStrategy, CONVERSION_STRATEGY } from './conversion/conversion-strategy';
+import { Resource } from './hal/hal.interfaces';
+import { Document } from './document';
 
 
 @Injectable()
@@ -28,8 +13,7 @@ export class Navigator {
 
   constructor(
     private http: Http,
-    @Inject(CONVERSION_STRATEGY)
-    private conversionStrategy: ConversionStrategy
+    @Inject(CONVERSION_STRATEGY) private conversionStrategy: ConversionStrategy
   ) {}
 
 

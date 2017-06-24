@@ -1,5 +1,3 @@
-/// <reference path="../ng-hal/typings/halfred.d.ts" />
-
 import { NgModule, Provider } from '@angular/core';
 import { HttpModule }         from '@angular/http';
 import { BrowserModule  }     from '@angular/platform-browser';

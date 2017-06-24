@@ -1,8 +1,8 @@
-import { Response }             from '@angular/http';
+import { Response } from '@angular/http';
 
-import { ConversionStrategy }   from './conversion-strategy';
-import { Parser }               from '../parser';
-import { Resource }             from '../hal';
+import { ConversionStrategy } from './conversion-strategy';
+import { Parser } from '../parser/parser';
+import { Resource } from '../hal/hal.interfaces';
 
 
 /** A converter for 'application/hal+json' */
@@ -13,15 +13,20 @@ export class JsonConversionStrategy implements ConversionStrategy {
   ) {}
 
   accepts(response: Response): boolean {
-    let mediaType: string = response.headers.get('Content-Type');
+    const mediaType: string = response.headers.get('Content-Type');
 
-    return mediaType === 'application/json' || mediaType === 'application/hal+json';
+    switch (mediaType) {
+      case 'application/json':
+      case 'application/hal+json':
+        return true;
+      default:
+        return false;
+    }
+
   }
 
   convert(response: Response): Resource {
-    let data = response.json();
-
-    return this.parser.parse(data);
+    return this.parser.parse(response.json());
   }
 
 }

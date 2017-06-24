@@ -1,100 +1,40 @@
-/**
- * A Link Object represents a hyperlink from the containing resource to a URI.
- *
- * @see https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5
- */
-export interface Link {
+import { Uri } from '../uri/uri';
+import { Link } from './hal.interfaces';
 
-  /**
-   * The "href" property is REQUIRED.
-   *
-   * Its value is either a URI [RFC3986] or a URI Template [RFC6570].
-   *
-   * If the value is a URI Template then the Link Object SHOULD have a
-   * "templated" attribute whose value is true.
-   *
-   * @see https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5.1
-   */
-  href: string;
+export class LinkImpl implements Link {
 
-  /**
-   * The "templated" property is OPTIONAL.
-   *
-   * Its value is boolean and SHOULD be true when the Link Object's "href"
-   * property is a URI Template.
-   *
-   * Its value SHOULD be considered false if it is undefined or any other
-   * value than true.
-   *
-   * @see https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5.2
-   */
-  templated?: boolean;
+  constructor(
+    public href: string,
+    public templated?: boolean,
+    public type?: string,
+    public deprecation?: string,
+    public name?: string,
+    public profile?: string,
+    public title?: string,
+    public hreflang?: string
+  ) {}
 
-  /**
-   * The "type" property is OPTIONAL.
-   *
-   * Its value is a string used as a hint to indicate the media type
-   * expected when dereferencing the target resource.
-   *
-   * @see https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5.3
-   */
-  type?: string;
+  public uri(): Uri {
 
-  /**
-   * The "deprecation" property is OPTIONAL.
-   *
-   * Its presence indicates that the link is to be deprecated (i.e.
-   * removed) at a future date.  Its value is a URL that SHOULD provide
-   * further information about the deprecation.
-   *
-   * A client SHOULD provide some notification (for example, by logging a
-   * warning message) whenever it traverses over a link that has this
-   * property.  The notification SHOULD include the deprecation property's
-   * value so that a client manitainer can easily find information about
-   * the deprecation.
-   *
-   * @see https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5.4
-   */
-  deprecation?: string;
+    return Uri.of(this.href);
+  }
 
-  /**
-   * The "name" property is OPTIONAL.
-   *
-   * Its value MAY be used as a secondary key for selecting Link Objects
-   * which share the same relation type.
-   *
-   * @see https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5.5
-   */
-  name?: string;
+  /*
+  resolve(params: LinkParams): string {
 
-  /**
-   * The "profile" property is OPTIONAL.
-   *
-   * Its value is a string which is a URI that hints about the profile (as
-   * defined by [I-D.wilde-profile-link]) of the target resource.
-   *
-   * @see https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5.6
-   */
-  profile?: string;
+    if (this.templated) {
 
-  /**
-   * The "title" property is OPTIONAL.
-   *
-   * Its value is a string and is intended for labelling the link with a
-   * human-readable identifier (as defined by [RFC5988]).
-   *
-   * @see https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5.7
-   */
-  title?: string;
+      const propNames = Object.getOwnPropertyNames(params);
 
-  /**
-   * The "hreflang" property is OPTIONAL.
-   *
-   * Its value is a string and is intended for indicating the language of
-   * the target resource (as defined by [RFC5988]).
-   *
-   * @see https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5.8
-   */
-  hreflang?: string;
+      return Object.getOwnPropertyNames(params)
+        .map((propName: string) => ({ name: propName, value: params[propName ]}))
+        .reduce((url, prop) => url.replace(new RegExp(`{${prop.name}}`, 'g'), prop.value), this.href);
+
+    } else {
+      return this.href;
+    }
+
+  }
+  */
 
 }

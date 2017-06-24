@@ -1,10 +1,14 @@
-import { OpaqueToken }  from '@angular/core';
-import { Response }     from '@angular/http';
+import { InjectionToken } from '@angular/core';
+import { Response } from '@angular/http';
 
-import { Resource }     from '../hal';
+import { Resource } from '../hal/hal.interfaces';
 
 
-/** Concrete converters need to implement this interface. */
+/**
+ * A strateg for converting HTTP responses to Resources.
+ *
+ * Concrete converters need to implement this interface.
+ */
 export interface ConversionStrategy {
 
   accepts(response: Response): boolean;
@@ -18,4 +22,4 @@ export interface ConversionStrategy {
  *
  * Usage: <code>@Inject(CONVERSION_STRATEGY) converter: ConversionStrategy</code>
  */
-export const CONVERSION_STRATEGY = new OpaqueToken('NG_HAL_CONVERSION_STRATEGY');
+export const CONVERSION_STRATEGY = new InjectionToken<ConversionStrategy>(`NG_HAL_CONVERSION_STRATEGY`);

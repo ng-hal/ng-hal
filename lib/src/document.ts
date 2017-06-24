@@ -1,9 +1,9 @@
-import { Request, Response }  from '@angular/http';
+import { Request, Response } from '@angular/http';
 
-import { Resource }           from './hal';
+import { Resource } from './hal/hal.interfaces';
 
 
-/** HEADS UP: naming of this class is going to be discussed and likely to be changed in future */
+/** **HEADS UP**: name of this class is likely to be changed in future */
 export class Document {
 
   constructor(

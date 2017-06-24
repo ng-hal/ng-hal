@@ -16,5 +16,9 @@
       "es2016",
       "dom"
     ]
-  }
+  },
+  "exclude": [
+    ".ng_build",
+    "dist"
+  ]
 }

@@ -1,4 +1,5 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "sourceMap": true,
     "declaration": false,
@@ -13,10 +14,7 @@
     "outDir": "../out-tsc/app",
     "module": "es2015",
     "baseUrl": "",
-    "types": [],
-    "paths": {
-      "ng-hal": [ "./ng-hal" ]
-    }
+    "types": []
   },
   "exclude": [
     "test.ts",
