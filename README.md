@@ -113,5 +113,3 @@ SOFTWARE.
  * [basti1302/halfred](https://github.com/basti1302/halfred): resource parsing and normalization for ``application/hal+json``
  * [geraintluff/uri-templates](https://github.com/geraintluff/uri-templates): URI templates according to [RFC6570](https://tools.ietf.org/html/rfc6570)
  * [Daniel Rosenwasser](https://github.com/DanielRosenwasser): for helping out on [TypeScript #10463](https://github.com/Microsoft/TypeScript/issues/10463)
- * [AngularClass/angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter): build tools
- * [manekinekko/angular-library-starter](https://github.com/manekinekko/angular-library-starter): build tools
