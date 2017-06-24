@@ -1,6 +1,8 @@
 ng-hal
 ======
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/dherges/ng-hal.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://img.shields.io/travis/dherges/ng-hal/develop.svg)](https://travis-ci.org/dherges/ng-hal)
 [![Coverage Status](https://img.shields.io/coveralls/dherges/ng-hal/develop.svg)](https://coveralls.io/github/dherges/ng-hal?branch=develop)
 [![Dependencies Status](https://david-dm.org/dherges/ng-hal/status.svg)](https://david-dm.org/dherges/ng-hal)
