@@ -25,5 +25,5 @@ before_script:
   - sleep 3
 script: yarn ci
 
-after_success:
-  - '[ -z "$COVERALLS_REPO_TOKEN" ] && cd lib && cat ../coverage/lcovonly.info | ../node_modules/.bin/coveralls'
+# after_success:
+#   - '[ -z "$COVERALLS_REPO_TOKEN" ] && cd lib && cat ../coverage/lcovonly.info | ../node_modules/.bin/coveralls'
