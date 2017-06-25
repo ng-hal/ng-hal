@@ -4,6 +4,14 @@
   "description": "Hyping thru media with the hypermedia abstraction language.",
   "author": "David Herges <david@spektrakel.de>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dherges/ng-hal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dherges/ng-hal/issues"
+  },
+  "homepage": "https://dherges.github.io/ng-hal",
   "dependencies": {
     "@angular/common": "~4.2.4",
     "@angular/compiler": "~4.2.4",
@@ -96,6 +104,7 @@
     "ci:test": "yarn test",
     "ci:lint": "yarn lint",
     "ci:publish": "yarn build:lib && node tools/publish/prepublish.js",
+    "ci:validate": "node tools/validate-commit-msg/index.js",
     "e2e": "ng e2e",
     "ng": "ng",
     "start": "yarn build:lib && ng serve",

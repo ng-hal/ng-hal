@@ -1,1 +1,4 @@
-TODO: reproduce the `git log master ^origin/master` | `validate-commit-msg` script for pull requests
+Validate Commit Messages
+========================
+
+> Validates Conventional Commit Messages for Pull Requests, on Circle CI
