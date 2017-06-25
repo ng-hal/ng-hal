@@ -40,7 +40,7 @@ describe(`Uri`, () => {
   const values: { [key: string]: any } = {
     count: ['one', 'two', 'three'],
     dom: ['example', 'com'],
-    dub: "me/too",
+    dub: 'me/too',
     hello: 'Hello World!',
     half: '50%',
     var: 'value',

@@ -22,4 +22,5 @@ export interface ConversionStrategy {
  *
  * Usage: <code>@Inject(CONVERSION_STRATEGY) converter: ConversionStrategy</code>
  */
-export const CONVERSION_STRATEGY = new InjectionToken<ConversionStrategy>(`NG_HAL_CONVERSION_STRATEGY`);
+export const CONVERSION_STRATEGY =
+  new InjectionToken<ConversionStrategy>(`NG_HAL_CONVERSION_STRATEGY`);

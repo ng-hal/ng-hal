@@ -1,5 +1,4 @@
 {
-  "atom": { "rewriteTsconfig": false },
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,
     "useWebpackText": true
@@ -20,19 +19,17 @@
     "moduleResolution": "node",
     "baseUrl": "./src",
     "typeRoots": [
-      "../../node_modules/@angular",
-      "../../node_modules/@types"
+      "../node_modules/@types"
     ],
     "lib": [
       "dom",
-      "es6"
+      "es2015"
     ]
   },
   "exclude": [
     "e2e",
     "dist",
     "node_modules",
-    "gh-pages",
-    "src/demo"
+    "gh-pages"
   ]
 }
