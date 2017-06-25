@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { ConversionStrategy, CONVERSION_STRATEGY } from './conversion/conversion-strategy';
-import { Resource } from './hal/hal.interfaces';
+import { Resource } from './hal/hal.model';
 import { Document } from './document';
 
 

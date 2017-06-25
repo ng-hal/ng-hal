@@ -2,7 +2,7 @@ import { Response } from '@angular/http';
 
 import { ConversionStrategy } from './conversion-strategy';
 import { Parser } from '../parser/parser';
-import { Resource } from '../hal/hal.interfaces';
+import { Resource } from '../hal/hal.model';
 
 
 /** A converter for 'application/hal+json' */

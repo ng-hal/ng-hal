@@ -1,4 +1,4 @@
-import { Link, LinkCollection, Resource, ResourceCollection } from './hal.interfaces';
+import { Link, Resource, Relations } from './hal.model';
 import { LinkImpl } from './link';
 
 
@@ -9,7 +9,7 @@ export class ResourceImpl implements Resource {
     private _optionalOriginalJson?: any
   ) {}
 
-  allEmbeddedResources(): ResourceCollection {
+  allEmbeddedResources(): Relations<Resource[]> {
 
     return this._normalizedJson['_embedded'];
   }
@@ -24,7 +24,7 @@ export class ResourceImpl implements Resource {
     return new ResourceImpl(this._normalizedJson['_embedded'][rel][0]);
   }
 
-  allLinks(): LinkCollection {
+  allLinks(): Relations<Link[]> {
 
     return this._normalizedJson['_links'];
   }

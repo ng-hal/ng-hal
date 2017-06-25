@@ -1,7 +1,7 @@
 import { Headers, Response, ResponseOptions } from '@angular/http';
 
 import { Parser } from '../parser/parser';
-import { Resource } from '../hal/hal.interfaces';
+import { Resource } from '../hal/hal.model';
 import { ResourceImpl } from '../hal/resource';
 
 import { JsonConversionStrategy } from './json-conversion-strategy';

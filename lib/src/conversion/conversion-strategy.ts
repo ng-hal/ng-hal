@@ -1,7 +1,7 @@
 import { InjectionToken } from '@angular/core';
 import { Response } from '@angular/http';
 
-import { Resource } from '../hal/hal.interfaces';
+import { Resource } from '../hal/hal.model';
 
 
 /**

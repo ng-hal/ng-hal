@@ -3,7 +3,7 @@ import './rxjs/add/follow';
 export * from './rxjs/follow';
 
 // HAL API (interfaces)
-export * from './hal/hal.interfaces';
+export * from './hal/hal.model';
 
 // URI Templates API
 export { Uri } from './uri/uri';

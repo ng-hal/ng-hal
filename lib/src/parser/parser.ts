@@ -1,4 +1,4 @@
-import { Resource } from '../hal/hal.interfaces';
+import { Resource } from '../hal/hal.model';
 import { ResourceImpl } from '../hal/resource';
 
 /**

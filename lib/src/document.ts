@@ -1,6 +1,6 @@
 import { Request, Response } from '@angular/http';
 
-import { Resource } from './hal/hal.interfaces';
+import { Resource } from './hal/hal.model';
 
 
 /** **HEADS UP**: name of this class is likely to be changed in future */
