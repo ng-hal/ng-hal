@@ -26,6 +26,9 @@
       "es2015"
     ]
   },
+  "include": [
+    "src/**/*.ts"
+  ],
   "exclude": [
     "e2e",
     "dist",

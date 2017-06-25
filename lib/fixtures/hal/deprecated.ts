@@ -1,4 +1,6 @@
-export const DEPRECATED = {
+import { ResourceDocument } from '../../src/hal/hal.model';
+
+export const DEPRECATED: ResourceDocument = {
   _embedded: {
     one: {
       _embedded: {

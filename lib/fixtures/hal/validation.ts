@@ -1,4 +1,4 @@
-export const VALIDATION = {
+export const VALIDATION: any = {
   _links: {
     notSelf: {
       href: '/no/self/link',

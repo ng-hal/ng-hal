@@ -1,4 +1,6 @@
-export const SHOP = {
+import { ResourceDocument } from '../../src/hal/hal.model';
+
+export const SHOP: ResourceDocument = {
   _links: {
     self: { href: '/orders' },
     next: { href: '/orders?page=2' },

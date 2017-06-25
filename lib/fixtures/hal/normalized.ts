@@ -1,9 +1,9 @@
 import { ResourceDocument } from '../../src/hal/hal.model';
 
-export const MINIMAL: ResourceDocument = {
+export const NORMALIZED: ResourceDocument = {
   _links: {
-    self: {
+    self: [{
       href: 'dummy'
-    }
+    }]
   }
 };

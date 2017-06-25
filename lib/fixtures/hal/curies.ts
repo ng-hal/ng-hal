@@ -1,4 +1,6 @@
-export const CURIES = {
+import { ResourceDocument } from '../../src/hal/hal.model';
+
+export const CURIES: ResourceDocument = {
   _links: {
     self: { href: '/orders' },
     curies: [{

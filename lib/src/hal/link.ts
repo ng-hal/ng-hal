@@ -1,22 +1,15 @@
 import { Uri } from '../uri/uri';
-import { Link } from './hal.model';
+import { Link, LinkDefinition } from './hal.model';
 
 export class LinkImpl implements Link {
 
   constructor(
-    public href: string,
-    public templated?: boolean,
-    public type?: string,
-    public deprecation?: string,
-    public name?: string,
-    public profile?: string,
-    public title?: string,
-    public hreflang?: string
+    public link: LinkDefinition
   ) {}
 
   public uri(): Uri {
 
-    return Uri.of(this.href);
+    return Uri.of(this.link.href);
   }
 
   /*
