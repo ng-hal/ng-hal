@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Request, Response } from '@angular/http';
 
 import {
@@ -6,6 +6,7 @@ import {
   Document,
   Resource,
   Session,
+  LinkDefinition,
   Link,
   Uri
 } from 'ng-hal';
@@ -17,7 +18,7 @@ import {
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   model: any = {
     verb: 'GET',
@@ -30,7 +31,7 @@ export class AppComponent {
   resource: Resource;
   response: Response;
   request: Request;
-  links: Link[] = [];
+  links: LinkDefinition[] = [];
 
   constructor(
     private navigator: Navigator
@@ -71,7 +72,7 @@ export class AppComponent {
     return false;
   }
 
-  onNavigate(link: Link) {
+  onNavigate(link: LinkDefinition) {
     this.model.link = link;
     this.model['url'] = link.href;
     this.model['params'] = link.templated ? [{}] : [];
