@@ -4,17 +4,26 @@ machine:
   node:
     version: node
 
+general:
+  artifacts:
+    - "coverage"
+    - "dist/demo"
+    - "dist/ng-hal"
+
 dependencies:
-  override:
-    - yarn
   pre:
     - rm -rf node_modules
     - yarn cache clean
     - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+  override:
+    - yarn
 
 test:
   override:
-    - yarn ci
+    - yarn ci:build
+    - yarn ci:test
+  post:
+    - codecov
 
 deployment:
   npm:

@@ -22,7 +22,7 @@
   },
   "homepage": "https://dherges.github.io/ng-hal",
   "engines": {
-    "node": ">= 4.2.1"
+    "node": ">= 6.9.0"
   },
   "peerDependencies": {
     "@angular/core": "^4.0.0",
