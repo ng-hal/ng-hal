@@ -19,6 +19,8 @@ dependencies:
     - yarn
 
 test:
+  pre:
+    - yarn ci:validate
   override:
     - yarn ci:build
     - yarn ci:test
