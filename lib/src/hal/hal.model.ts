@@ -10,10 +10,22 @@ export interface Resource {
   linkArray(rel: string): Link[];
   link(rel: string): Link;
 
-  /** @stable */
+  /**
+   * Returns an object literal of the normalized resource document.
+   * You can read this object literal by giving a custom type `T` that extends from `NormalizedResourceDocument`.
+   *
+   * @returns {T} A normalized resource document of custom type `T`
+   * @stable
+   */
   data<T extends NormalizedResourceDocument>(): T;
 
-  /** @experimental */
+  /**
+   * Returns an object literal of the original, un-modified resource document.
+   * You can read this object literal by giving a custom type `T` that extends from `ResourceDocument`.
+   *
+   * @returns {T} A resource document of custom type `T`
+   * @stable
+   */
   original?<T extends ResourceDocument>(): T;
 }
 
