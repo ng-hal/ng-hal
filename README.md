@@ -30,13 +30,13 @@ $ yarn add ng-hal
 ```
 
 
-Import ``HalModule.forRoot()`` to your application's module:
+Import `HalModule.forRoot()` and `HttpModule` to your application's module:
 
 ```ts
 import { HalModule } from 'ng-hal';
 
 @NgModule({
-  imports:      [
+  imports: [
     HttpModule,
     HalModule.forRoot()
   ]
@@ -87,6 +87,6 @@ export class Foo {
 
 ## Credits
 
- * [basti1302/halfred](https://github.com/basti1302/halfred): resource parsing and normalization for ``application/hal+json``
+ * [basti1302/halfred](https://github.com/basti1302/halfred): resource parsing and normalization for `application/hal+json`
  * [geraintluff/uri-templates](https://github.com/geraintluff/uri-templates): URI templates according to [RFC6570](https://tools.ietf.org/html/rfc6570)
  * [Daniel Rosenwasser](https://github.com/DanielRosenwasser): for helping out on [TypeScript #10463](https://github.com/Microsoft/TypeScript/issues/10463)
