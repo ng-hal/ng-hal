@@ -17,159 +17,16 @@
           <path fill="#FFF" d="M1,1v4h2v-3h1v3h1v-4h1v5h2v-4h1v2h-1v1h2v-4h1v4h2v-3h1v3h1v-3h1v3h1v-4"></path>
         </svg>
       </a>
+
+      <a href="https://yarnpkg.com/en/package/ng-hal">
+        yarn
+      </a>
     </div>
   </div>
 
   <hr>
 
-  <main>
-    <form (ngSubmit)="onFormSubmit()" #navigationForm="ngForm">
-      <div class="form-group row">
-        <label for="formVerb" class="col-sm-2">Verb:</label>
-        <div class="col-sm-10">
-          <select class="form-control"
-                  id="formVerb"
-                  name="verb"
-                  required
-                  [(ngModel)]="model.verb">
-            <option>GET</option>
-            <option>POST</option>
-            <option>PUT</option>
-            <option>DELETE</option>
-            <option>PATCH</option>
-            <option>HEAD</option>
-            <option>OPTIONS</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="formUrlInput" class="col-sm-2">URL:</label>
-        <div class="col-sm-10">
-          <input class="form-control"
-                 id="formUrlInput"
-                 type="text"
-                 name="url"
-                 required
-                 [(ngModel)]="model.url"/>
-        </div>
-      </div>
-      <div class="form-group row" *ngFor="let param of this.model.params">
-        <label for="formUrlInput_x" class="col-sm-2">Params:</label>
-        <div class="col-sm-3">
-          <input class="form-control"
-                 id="formUrlInput_x"
-                 type="text"
-                 placeholder="Key"
-                 name="params_key_x"
-                 required
-                 [(ngModel)]="param.key"/>
-        </div>
-        <div class="col-sm-3">
-          <input class="form-control"
-                 id="formUrlInput_xy"
-                 type="text"
-                 placeholder="Value"
-                 name="params_value_x"
-                 required
-                 [(ngModel)]="param.value"/>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <div class="offset-sm-2 col-sm-10">
-          <button type="submit" class="btn btn-primary" [disabled]="navigationForm.invalid">Navigate</button>
-        </div>
-      </div>
-    </form>
-  </main>
-
-  <nav>
-    <ul class="nav nav-tabs m-b-1 p-l-1 p-r-1">
-      <li class="nav-item">
-        <a class="nav-link" href="#"
-           [class.active]="activeTab == 'hal'"
-           (click)="onSwitchTab('hal')">HAL Resource</a>
-      </li>
-      <li class="nav-item"><a class="nav-link" href="#"
-          [class.active]="activeTab == 'embedded'"
-          (click)="onSwitchTab('embedded')">Embedded</a>
-      </li>
-      <li class="nav-item"><a class="nav-link" href="#"
-          [class.active]="activeTab == 'links'"
-          (click)="onSwitchTab('links')">Links</a>
-      </li>
-      <li class="nav-item"><a class="nav-link" href="#"
-          [class.active]="activeTab == 'navigation'"
-          (click)="onSwitchTab('navigation')">Navigation</a>
-      </li>
-      <li class="nav-item"><a class="nav-link" href="#"
-          [class.active]="activeTab == 'http'"
-          (click)="onSwitchTab('http')">HTTP</a>
-      </li>
-    </ul>
-  </nav>
-
-  <aside *ngIf="activeTab == 'hal'">
-    <div class="row">
-      <div class="col-md-6">
-        <h4>Original Resource</h4>
-        <pre><code class="small">{{ resource?.original() | json }}</code></pre>
-      </div>
-      <div class="col-md-6">
-        <h4>Resource <small><em>(normalized by halfred)</em></small></h4>
-        <pre><code class="small">{{ resource | json }}</code></pre>
-      </div>
-    </div>
-  </aside>
-
-  <aside *ngIf="activeTab == 'links'">
-    <div class="row">
-      <div class="col-md-6">
-        <h4>Links <small><em>resource.allLinks()</em></small></h4>
-        <pre><code class="small">{{ resource?.allLinks() | json }}</code></pre>
-      </div>
-      <div class="col-md-6">
-        <h4>CURIEs <small><em>resource.curieArray()</em></small></h4>
-        <pre><code class="small">{{ resource?.curieArray() | json }}</code></pre>
-      </div>
-    </div>
-  </aside>
-
-  <aside *ngIf="activeTab == 'embedded'">
-    <div class="row">
-      <div class="col-md-12">
-        <h4>All Embedded Resources <small><em>resource.allEmbeddedResources()</em></small></h4>
-        <pre><code class="small">{{ resource?.allEmbeddedResources() | json}}</code></pre>
-      </div>
-    </div>
-  </aside>
-
-  <aside *ngIf="activeTab == 'navigation'">
-    <div class="row">
-      <div class="col-md-12">
-        <h4>Navigation</h4>
-        <ul>
-          <li *ngFor="let link of links">
-            <a href="{{link.href}}" (click)="onNavigate(link)">rel={{link.rel}}, href={{link.href}}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </aside>
-
-  <aside *ngIf="activeTab == 'http'">
-    <div class="row">
-      <div class="col-md-6">
-        <h4>Request</h4>
-        <pre><code class="small">{{ request | json}}</code></pre>
-      </div>
-      <div class="col-md-6">
-        <h4>Response</h4>
-        <pre><code class="small">{{ response | json }}</code></pre>
-      </div>
-    </div>
-  </aside>
-
+  <router-outlet></router-outlet>
 
   <footer>
   </footer>
