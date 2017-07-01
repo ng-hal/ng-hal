@@ -1,7 +1,7 @@
 {
   "_links": {
     "self": {
-      "href": "hal/orders.json"
+      "href": "/api/orders.json"
     },
     "curies": [
       {
@@ -11,23 +11,23 @@
       }
     ],
     "next": {
-      "href": "hal/orders?page=2"
+      "href": "/api/orders?page=2"
     },
     "ea:detail": {
-      "href": "hal/orders/{id}.json",
+      "href": "/api/orders/{id}.json",
       "templated": true
     },
     "ea:find": {
-      "href": "hal/orders.json{?id}",
+      "href": "/api/orders.json{?id}",
       "templated": true
     },
     "ea:admin": [
       {
-        "href": "hal/admins/2.json",
+        "href": "/api/admins/2.json",
         "title": "Fred"
       },
       {
-        "href": "hal/admins/5.json",
+        "href": "/api/admins/5.json",
         "title": "Kate"
       }
     ]
@@ -38,9 +38,8 @@
     "ea:order": [
       {
         "_links": {
-          "self": { "href": "hal/orders/123.json" },
-          "ea:basket": { "href": "hal/baskets/98712.json" },
-          "ea:customer": { "href": "hal/customers/7809.json" }
+          "self": { "href": "/api/orders/123.json" },
+          "ea:customer": { "href": "/api/customers/12345.json" }
         },
         "total": 30.00,
         "currency": "USD",
@@ -48,13 +47,21 @@
       },
       {
         "_links": {
-          "self": { "href": "hal/orders/124.json" },
-          "ea:basket": { "href": "hal/baskets/97213.json" },
-          "ea:customer": { "href": "hal/customers/12369.json" }
+          "self": { "href": "/api/orders/124.json" },
+          "ea:customer": { "href": "/api/customers/12345.json" }
         },
         "total": 20.00,
         "currency": "USD",
         "status": "processing"
+      },
+      {
+        "_links": {
+          "self": { "href": "/api/orders/523.json" },
+          "ea:customer": { "href": "/api/customers/77122.json" }
+        },
+        "total": 10.20,
+        "currency": "USD",
+        "status": "shipped"
       }
     ]
   }
