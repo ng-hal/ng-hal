@@ -1,11 +1,11 @@
 import { Headers, Response, ResponseOptions } from '@angular/http';
 
 import { Parser } from '../parser/parser';
-import { Resource } from '../hal/hal.model';
+import { Resource, NormalizedResourceDocument } from '../hal/hal.model';
 import { ResourceImpl } from '../hal/resource';
+import { NORMALIZED } from '../../fixtures/hal/normalized';
 
 import { JsonConversionStrategy } from './json-conversion-strategy';
-
 
 describe(`JsonConversionStrategy`, () => {
   let fakeParser: Parser;
@@ -21,7 +21,7 @@ describe(`JsonConversionStrategy`, () => {
     fakeParser = new Parser();
     spyOn(fakeParser, 'parse').and.callFake((input: any): Resource => {
 
-      return new ResourceImpl({});
+      return new ResourceImpl(NORMALIZED, NORMALIZED);
     });
 
     jsonConversion = new JsonConversionStrategy(fakeParser);

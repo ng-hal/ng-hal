@@ -12,7 +12,8 @@ export interface Resource {
 
   /**
    * Returns an object literal of the normalized resource document.
-   * You can read this object literal by giving a custom type `T` that extends from `NormalizedResourceDocument`.
+   * You can read this object literal by giving a custom type `T` that extends
+   * from `NormalizedResourceDocument`.
    *
    * @returns {T} A normalized resource document of custom type `T`
    * @stable
@@ -21,7 +22,8 @@ export interface Resource {
 
   /**
    * Returns an object literal of the original, un-modified resource document.
-   * You can read this object literal by giving a custom type `T` that extends from `ResourceDocument`.
+   * You can read this object literal by giving a custom type `T` that extends
+   * from `ResourceDocument`.
    *
    * @returns {T} A resource document of custom type `T`
    * @stable
@@ -29,9 +31,9 @@ export interface Resource {
   original?<T extends ResourceDocument>(): T;
 }
 
-export interface Link {
-  link: LinkDefinition;
-  uri(): Uri;
+export interface Link extends LinkDefinition {
+
+  expand(vars?: { [key: string]: any}): string;
 }
 
 
@@ -44,7 +46,7 @@ export type NormalizedResourceDocument = {
 
   _links: Relations<LinkDefinition[]>;
 
-  _embedded: Relations<ResourceDocument[]>;
+  _embedded: Relations<NormalizedResourceDocument[]>;
 
   [key: string]: any;
 

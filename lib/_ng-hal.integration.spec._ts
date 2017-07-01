@@ -3,12 +3,11 @@ import { async, inject, TestBed } from '@angular/core/testing';
 import { Http, HttpModule, Request, XHRBackend } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 
-import { NORMALIZED } from '../fixtures/hal/normalized';
-
-import { HalModule } from './hal.module';
-import { Navigator } from './navigator';
-import { Document } from './document';
 import { fakeResponse } from '../fixtures/responses';
+import { NORMALIZED } from '../fixtures/hal/normalized';
+import { fakeShopResponse } from '../fixtures/hal/shop';
+
+import { HalModule, Navigator, Document } from './public_api';
 
 /** Integration test for 'ng-hal' library */
 describe(`ng-hal`, () => {
@@ -47,8 +46,34 @@ describe(`ng-hal`, () => {
 
           expect(next).toBeTruthy();
           expect(next.resource).toBeTruthy();
-          expect(next.resource.link('self').uri().expand({})).toBe('dummy');
+          expect(next.resource.link('self').uri.expand({})).toBe('dummy');
         });
+    }
+  )));
+
+  it(`should walk through the shop example`, async(inject([ Navigator, MockBackend ],
+    (navigator: Navigator, mockBackend: MockBackend) => {
+
+      mockBackend.connections.subscribe((c: MockConnection) => {
+
+        c.mockRespond(fakeShopResponse(c.request.url));
+      });
+
+      navigator.get(`/orders`)
+        .follow((doc) => {
+
+          return navigator.get(doc.resource.link('find').uri.expand({ id: 123 }));
+        })
+        .follow((session) => {
+
+          return navigator.get(session.current.resource.link('customer').uri.expand({}));
+        })
+        .subscribe((session) => {
+
+          expect(session.current.resource.data()['name']).toBe('Bob');
+        });
+
+      // XX ... Session.traverse() vs. Observable<Document>.follow()
     }
   )));
 

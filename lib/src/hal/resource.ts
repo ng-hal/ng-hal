@@ -1,47 +1,77 @@
-import { Link, Resource, Relations } from './hal.model';
+import { Link, NormalizedResourceDocument, Relations, Resource,
+  ResourceDocument } from './hal.model';
 import { LinkImpl } from './link';
+import { asLink, asResource } from '../parser/util';
 
 
 export class ResourceImpl implements Resource {
 
   constructor(
-    private _normalizedJson: any,
-    private _optionalOriginalJson?: any
+    private _normalized: NormalizedResourceDocument,
+    private _original: ResourceDocument
   ) {}
 
   allEmbeddedResources(): Relations<Resource[]> {
 
-    return this._normalizedJson['_embedded'];
+    return Object.keys(this._normalized._embedded)
+      .map((rel: string) => ({ rel, value: this._normalized._embedded[rel] }))
+      .reduce((prev, current) => {
+        prev[current.rel] = current.value.map((resource) => new ResourceImpl(
+          resource,
+          asResource(this._original._embedded[current.rel])[0]
+        ));
+
+        return prev;
+      }, {} as Relations<Resource[]>);
   }
 
   embeddedArray(rel: string): Resource[] {
 
-    return this._normalizedJson['_embedded'][rel];
+    return this._normalized._embedded[rel]
+      .map(resource => new ResourceImpl(
+        resource[0],
+        asResource(this._original._embedded[rel])[0]
+      ));
   }
 
   embedded(rel: string): Resource {
 
-    return new ResourceImpl(this._normalizedJson['_embedded'][rel][0]);
+    return new ResourceImpl(
+      this._normalized._embedded[rel][0],
+      asResource(this._original._embedded[rel])[0]
+    );
   }
 
   allLinks(): Relations<Link[]> {
 
-    return this._normalizedJson['_links'];
+    return Object.keys(this._normalized._links)
+      .map((rel: string) => ({ rel, value: this._normalized._links[rel] }))
+      .reduce((prev, current) => {
+        prev[current.rel] = current.value.map((link) => new LinkImpl(link));
+
+        return prev;
+      }, {} as Relations<Link[]>);
   }
 
   linkArray(rel: string): Link[] {
 
-    return this._normalizedJson['_links'][rel];
+    return this._normalized._links[rel]
+      .map(link => new LinkImpl(link));
   }
 
   link(rel: string): Link {
 
-    return new LinkImpl(this._normalizedJson['_links'][rel][0]);
+    return new LinkImpl(this._normalized['_links'][rel][0]);
   }
 
-  data<T>(): T {
+  data<T extends NormalizedResourceDocument>(): T {
 
-    return this._normalizedJson;
+    return (this._normalized as T);
+  }
+
+  original<T extends ResourceDocument>(): T {
+
+    return (this._original as T);
   }
 
 }
