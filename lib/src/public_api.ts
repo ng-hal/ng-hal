@@ -1,9 +1,6 @@
 // HAL API (interfaces)
 export * from './model/hal.interfaces';
 
-// URI Templates API
-export { Uri } from './uri/uri';
-
 // For customization of conversion strategy
 export { ConversionStrategy, CONVERSION_STRATEGY } from './conversion/conversion-strategy';
 export { JsonConversionStrategy } from './conversion/json-conversion-strategy';

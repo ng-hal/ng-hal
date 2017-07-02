@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Response, Request } from '@angular/http';
-import { ShopApiService } from '../shop-api.service';
+import 'rxjs/add/operator/mergeMap';
 import {
   Navigator,
   Transaction,
   Resource,
   Session,
   LinkDefinition,
-  Link,
-  Uri
+  Link
 } from 'ng-hal';
+import { ShopApiService } from '../shop-api.service';
 
 @Component({
   selector: 'ngh-shop',
@@ -42,7 +42,7 @@ export class ShopComponent implements OnInit {
 
     this.navigator
       .get('/api/orders.json')
-      .follow((doc) => this.navigator.get('api/orders/123.json'))
+      .mergeMap(() => this.navigator.get('api/orders/123.json'))
       .subscribe((nav) => console.log(nav));
 
   }
@@ -53,7 +53,7 @@ export class ShopComponent implements OnInit {
       .map((p: any) => { let p2: any = {}; p2[p.key] = p.value; return p2; })
       .reduce((prev: any, next: any) => Object.assign(prev, next), {})
 
-    let url = this.model.link && this.model.link.templated ? Uri.of(this.model.url).expand(params) : this.model.url
+    let url = this.model.url;
 
     this.navigator
       .get(url)
