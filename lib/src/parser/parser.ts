@@ -1,5 +1,6 @@
-import { Resource } from '../hal/hal.model';
-import { ResourceImpl } from '../hal/resource';
+import { Resource } from '../model/hal.interfaces';
+import { ResourceImpl } from '../model/resource';
+import { deepCopy } from './util';
 
 /**
  * Parser implements validation and normalization of HAL resources represented as object literals.

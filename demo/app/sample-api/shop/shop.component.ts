@@ -3,7 +3,7 @@ import { Response, Request } from '@angular/http';
 import { ShopApiService } from '../shop-api.service';
 import {
   Navigator,
-  Document,
+  Transaction,
   Resource,
   Session,
   LinkDefinition,
@@ -58,7 +58,7 @@ export class ShopComponent implements OnInit {
     this.navigator
       .get(url)
       .subscribe(
-        (doc: Document) => {
+        (doc: Transaction) => {
           this.resource = doc.resource;
           this.response = doc.response;
           this.request = doc.request;

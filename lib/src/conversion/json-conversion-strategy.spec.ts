@@ -1,10 +1,8 @@
 import { Headers, Response, ResponseOptions } from '@angular/http';
-
 import { Parser } from '../parser/parser';
-import { Resource, NormalizedResourceDocument } from '../hal/hal.model';
+import { Resource, NormalizedResourceDocument } from '../model/hal.interfaces';
 import { ResourceImpl } from '../hal/resource';
 import { NORMALIZED } from '../../fixtures/hal/normalized';
-
 import { JsonConversionStrategy } from './json-conversion-strategy';
 
 describe(`JsonConversionStrategy`, () => {

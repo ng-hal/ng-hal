@@ -1,5 +1,5 @@
 import { Uri } from '../uri/uri';
-import { Link, LinkDefinition } from './hal.model';
+import { Link, LinkDefinition } from './hal.interfaces';
 
 export class LinkImpl implements Link {
 

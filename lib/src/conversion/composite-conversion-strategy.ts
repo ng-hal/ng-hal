@@ -1,8 +1,6 @@
 import { Response } from '@angular/http';
-
 import { ConversionStrategy } from './conversion-strategy';
-import { Resource } from '../hal/hal.model';
-
+import { Resource } from '../model/hal.interfaces';
 
 export class CompositeConversionStrategy implements ConversionStrategy {
 

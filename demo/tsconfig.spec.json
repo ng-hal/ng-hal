@@ -20,7 +20,10 @@
     ],
     "typeRoots": [
       "../node_modules/@types"
-    ]
+    ],
+    "paths": {
+      "ng-hal": [ "./ng-hal" ]
+    }
   },
   "files": [
     "test.ts"

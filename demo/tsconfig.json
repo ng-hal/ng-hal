@@ -1,9 +1,23 @@
 {
-  "extends": "../tsconfig.json",
+  "compileOnSave": false,
   "compilerOptions": {
-    "paths": {
-      "ng-hal": [ "./ng-hal" ]
-    }
-  }
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "../node_modules/@types"
+    ],
+    "lib": [
+      "es2016",
+      "dom"
+    ]
+  },
+  "exclude": [
+    ".ng_build",
+    "dist",
+    "node_modules"
+  ]
 }
-

@@ -19,6 +19,7 @@
   },
   "exclude": [
     ".ng_build",
+    "node_modules",
     "dist"
   ]
 }

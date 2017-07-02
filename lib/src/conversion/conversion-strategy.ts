@@ -1,8 +1,6 @@
 import { InjectionToken } from '@angular/core';
 import { Response } from '@angular/http';
-
-import { Resource } from '../hal/hal.model';
-
+import { Resource } from '../model/hal.interfaces';
 
 /**
  * A strateg for converting HTTP responses to Resources.
@@ -15,7 +13,6 @@ export interface ConversionStrategy {
 
   convert(response: Response): Resource;
 }
-
 
 /**
  * Injecting this DI token resolves to an instance of a ConversionStrategy.

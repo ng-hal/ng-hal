@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
-import { Document, Navigator, NormalizedResourceDocument, Resource } from 'ng-hal';
+import 'rxjs/add/operator/mergeMap';
+import { Transaction, Navigator, NormalizedResourceDocument, Resource } from 'ng-hal';
 
 export interface Orders extends NormalizedResourceDocument {
   currentlyProcessing: number,
@@ -19,7 +20,7 @@ export class ShopApiService {
   public walkThrough() {
 
     return this.navigator.get('/api/orders.json')
-      .follow((doc: Document) => {
+      .mergeMap((doc: Transaction) => {
         const orders: Resource[] = doc.resource.embeddedArray('ea:order');
         const urls: string[] = orders.map((order) => order.link('self').href);
         const observables = urls.map((url) => this.navigator.get(url));

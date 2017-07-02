@@ -1,4 +1,8 @@
-import { ResourceDocument, LinkDefinition } from '../hal/hal.model';
+import { ResourceDocument, LinkDefinition } from '../model/hal.interfaces';
+
+export const deepCopy = <T>(input: T): T => {
+  return JSON.parse(JSON.stringify(input));
+};
 
 export const asArray = <T>(test: T | T[]): T[] => {
 

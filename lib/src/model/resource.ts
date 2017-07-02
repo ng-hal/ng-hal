@@ -1,5 +1,5 @@
 import { Link, NormalizedResourceDocument, Relations, Resource,
-  ResourceDocument } from './hal.model';
+  ResourceDocument } from './hal.interfaces';
 import { LinkImpl } from './link';
 import { asLink, asResource } from '../parser/util';
 
