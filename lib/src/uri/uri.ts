@@ -378,12 +378,13 @@ export class Uri {
   }
 
   /**
-   * Expands the template of this Uri by substituting variables with values given in <code>vars</code>.
+   * Expands the template of this Uri by substituting variables with values given
+   * in <code>vars</code>.
    *
    * @param vars A key/value object containin the variable values
    * @returns An expanded URI string
    */
-  public expand(vars: { [key: string]: any}): string {
+  public expand(vars: { [key: string]: any} = {}): string {
     let valueFn: (key: string) => string = function (varName) {
       return vars[varName];
     };
@@ -393,16 +394,17 @@ export class Uri {
 
 
   /**
-   * Expands the template of this Uri by substituting variables with values provided by <code>valueFn</code>.
+   * Expands the template of this Uri by substituting variables with values
+   * provided by <code>valueFn</code>.
    *
    * @param valueFn A callback function that returns variable values
    * @returns An expanded URI string
    */
   public expandBy(valueFn: (key: string) => any): string {
 
-    var result = this.textParts[0];
-    for (var i = 0; i < this.substitutions.length; i++) {
-      var substitution = this.substitutions[i];
+    let result = this.textParts[0];
+    for (let i = 0; i < this.substitutions.length; i++) {
+      let substitution = this.substitutions[i];
       result += substitution(valueFn);
       result += this.textParts[i + 1];
     }

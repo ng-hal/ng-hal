@@ -14,7 +14,10 @@
     "outDir": "../out-tsc/app",
     "module": "es2015",
     "baseUrl": "",
-    "types": []
+    "types": [],
+    "paths": {
+      "ng-hal": [ "./ng-hal" ]
+    }
   },
   "exclude": [
     "test.ts",

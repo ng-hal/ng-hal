@@ -1,0 +1,6 @@
+{
+  "name": "Bob",
+  "_links": {
+    "self": { "href": "/api/customers/7712.json" }
+  }
+}

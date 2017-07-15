@@ -1,9 +1,7 @@
 import { Response } from '@angular/http';
-
 import { ConversionStrategy } from './conversion-strategy';
 import { Parser } from '../parser/parser';
-import { Resource } from '../hal/hal.model';
-
+import { Resource } from '../model/hal.interfaces';
 
 /** A converter for 'application/hal+json' */
 export class JsonConversionStrategy implements ConversionStrategy {

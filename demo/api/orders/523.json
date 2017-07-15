@@ -1,6 +1,7 @@
 {
   "_links": {
-    "self": { "href": "hal/orders/523.json" }
+    "self": { "href": "/api/orders/523.json" },
+    "customer": { "href": "/api/customers/7712.json" }
   },
   "currency": "USD",
   "status": "shipped",

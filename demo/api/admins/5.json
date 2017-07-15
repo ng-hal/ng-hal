@@ -1,3 +1,6 @@
 {
-  "name": "Kate"
+  "name": "Kate",
+  "_links": {
+    "self": { "href": "/api/admins/5.json" }
+  }
 }
