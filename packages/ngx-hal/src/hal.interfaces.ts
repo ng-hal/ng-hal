@@ -9,7 +9,7 @@
  *
  * @see https://tools.ietf.org/html/draft-kelly-json-hal-08#section-4
  */
-export type Resource = {
+export interface Resource {
 
   /**
    * The reserved "_links" property is OPTIONAL.
@@ -21,7 +21,7 @@ export type Resource = {
    *
    * @see https://tools.ietf.org/html/draft-kelly-json-hal-08#section-4.1.1
    */
-  _links?: Relations<LinkDefinition | LinkDefinition[]>;
+  _links?: Relations<Link | Link[]>;
 
   /**
    * The reserved "_embedded" property is OPTIONAL
@@ -35,26 +35,26 @@ export type Resource = {
    *
    * @see https://tools.ietf.org/html/draft-kelly-json-hal-08#section-4.1.2
    */
-  _embedded?: Relations<ResourceDocument | ResourceDocument[]>;
+  _embedded?: Relations<Resource | Resource[]>;
 
   [key: string]: any;
 
-};
+}
 
 /**
  * A normalized resource document.
  *
  * Embedded resources and link relations are guaranteed to be an array.
  */
-export type NormalizedResource = {
+export interface NormalizedResource {
 
-  _links: Relations<LinkDefinition[]>;
+  _links: Relations<Link[]>;
 
-  _embedded: Relations<ResourceDocument[]>;
+  _embedded: Relations<Resource[]>;
 
   [key: string]: any;
 
-};
+}
 
 
 /**
@@ -62,7 +62,7 @@ export type NormalizedResource = {
  *
  * @see https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5
  */
-export type Link = {
+export interface Link {
 
   /**
    * The "href" property is REQUIRED.
@@ -156,9 +156,9 @@ export type Link = {
    */
   hreflang?: string;
 
-};
+}
 
 /** A collection of relations, keyed by string identifier. */
-export type Relations<T> = {
+export interface Relations<T> {
   [rel: string]: T;
-};
+}
