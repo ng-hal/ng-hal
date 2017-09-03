@@ -14,7 +14,10 @@
     "outDir": "../out-tsc/app",
     "module": "es2015",
     "baseUrl": "",
-    "types": []
+    "types": [],
+    "paths": {
+      "@ngx-hal/core": [ "../packages/core/src/public_api.ts" ]
+    }
   },
   "exclude": [
     "test.ts",

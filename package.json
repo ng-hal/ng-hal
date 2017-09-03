@@ -87,9 +87,9 @@
   },
   "private": true,
   "scripts": {
-    "build": "yarn build:lib && yarn build:demo",
-    "build:demo": "ng build --extract-css --prod --aot",
-    "build:lib": "ng-packagr -p packages/lib/ng-package.json",
+    "build": "yarn build:core && yarn build:demo",
+    "build:core": "ng-packagr -p packages/core/ng-package.json",
+    "build:demo": "ng build --target=production --aot",
     "test": "yarn test:lib && yarn test:demo:single",
     "test:demo": "ng test",
     "test:demo:single": "ng test --single-run",

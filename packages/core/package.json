@@ -1,5 +1,5 @@
 {
-  "name": "ng-hal",
+  "name": "ngx-hal",
   "version": "x.y.z",
   "private": true,
   "description": "Navigator for Hypermedia Abstraction Language (HAL) documents in Angular",
@@ -26,7 +26,7 @@
   },
   "peerDependencies": {
     "@angular/core": "^4.3.0",
-    "@angular/http": "^4.3.0",
+    "@angular/common": "^4.3.0",
     "rxjs": "^5.4.0",
     "zone.js": "^0.8.0"
   }

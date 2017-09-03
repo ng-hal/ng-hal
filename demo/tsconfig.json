@@ -2,7 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "ng-hal": [ "./ng-hal" ]
+      "@ngx-hal/core": [ "../packages/core/src/public_api.ts" ]
     }
   }
 }

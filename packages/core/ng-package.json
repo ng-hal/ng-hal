@@ -3,6 +3,6 @@
   "dest": "../../dist/ngx-hal",
   "workingDirectory": "../../.ng_build/ngx-hal",
   "lib": {
-    "publicApi": "src/public_api.ts"
+    "entryFile": "public_api.ts"
   }
 }

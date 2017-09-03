@@ -1,25 +1,23 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, Inject } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { Resource } from './hal.interfaces';
+import { TRANSPORT } from './hal.di';
+import { Transport } from './transport/transport';
 
 @Injectable()
 export class Navigator {
 
   constructor(
-    private http: HttpClient // <-- implementation detail: do we actually sit on top of HttpClient?
-                             // If yes, we should kind of "decorate" requests (w/ Accept / Content-Type)
-                             // How do we go w/ the overloaded methods and `responseType` (which we need to know in advance)?
-                             // Can we go w/ HttpHandler?
-                             //   |-> if yes, maybe we build HttpRequest directly and set up serialization around it...
-                             // Can we go w/ HttpInterceptors for modifying requests?
-                             //   |--> if yes, maybe interceptors should do the serialization / deserialization
+    @Inject(TRANSPORT) private transport: Transport
   ) {}
 
   public get(urlOrResource: string | Resource, options: any): Observable<Resource> {
+
+    return this.transport.get(urlOrResource, options);
     /* Usage (draft)
       navigator.get({ _links: { self: { href: 'foo/bar' } } });
       navigator.get(resourceFrom({}).withSelfHref('foo/bar') );
-   
+
       then especially helpful for http bodies w/ post/put/patch:
       navigator.post(myResource);
 
@@ -27,7 +25,7 @@ export class Navigator {
       navigator.get('foo/bar');
       navigator.get('the/only/url/i-need-to-know-for-my-api-index'); // :-)
       navigator.get(linksFrom(resource).rel('next'))
-      
+
       sophisticated stuff:
       navigator.get('/api')
         .switchMap((index: Resource) => navigator.get( linksFrom(index).rel('next') ))

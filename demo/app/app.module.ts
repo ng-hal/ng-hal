@@ -1,11 +1,11 @@
 import { NgModule, Provider } from '@angular/core';
-import { HttpModule }         from '@angular/http';
-import { BrowserModule  }     from '@angular/platform-browser';
-import { FormsModule }        from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { BrowserModule  } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
-import { HalModule }          from 'ng-hal';
+import { HalModule } from '@ngx-hal/core';
 
-import { AppComponent }       from './app.component';
+import { AppComponent } from './app.component';
 
 
 @NgModule({

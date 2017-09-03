@@ -16,7 +16,8 @@
     "required": false,
     "allowed": [
       "demo",
-      "ng-hal"
+      "ng-hal",
+      "core"
     ],
     "validate": false,
     "multiple": false
