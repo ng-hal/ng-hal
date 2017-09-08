@@ -1,7 +1,7 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/ngx-hal",
-  "workingDirectory": "../../.ng_build/ngx-hal",
+  "dest": "../../dist/common",
+  "workingDirectory": "../../.ng_build/common",
   "lib": {
     "entryFile": "public_api.ts"
   }

@@ -1,0 +1,8 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/http",
+  "workingDirectory": "../../.ng_build/http",
+  "lib": {
+    "entryFile": "public_api.ts"
+  }
+}

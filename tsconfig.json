@@ -17,6 +17,9 @@
       "dom"
     ]
   },
+  "files": [
+    "packages/core/src/**/*.ts"
+  ],
   "exclude": [
     ".ng_build",
     "dist"
