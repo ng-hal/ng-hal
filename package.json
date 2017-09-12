@@ -78,7 +78,7 @@
     "ts-helpers": "~1.1.2",
     "ts-node": "~3.3.0",
     "tslint": "~5.7.0",
-    "typescript": "~2.4.1",
+    "typescript": "~2.5.2",
     "validate-commit-msg": "^2.12.2",
     "webpack": "3.5.5",
     "webpack-dev-middleware": "~1.12.0",
