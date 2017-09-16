@@ -13,7 +13,7 @@
   },
   "homepage": "https://dherges.github.io/ng-hal",
   "dependencies": {
-    "@angular/common": "~4.3.0",
+    "@angular/common": "~5.0.0-beta.7",
     "@angular/compiler": "~4.3.0",
     "@angular/core": "~4.3.0",
     "@angular/forms": "~4.3.0",
