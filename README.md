@@ -1,3 +1,8 @@
+Modification
+=============
+
+In order to work with angular >5 we replaced the deprecated `OpaqueToken` with `InjectionToken`.  
+
 ng-hal
 ======
 
