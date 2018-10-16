@@ -1,7 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const shell = require('shelljs');
-const validateMessage = require('validate-commit-msg');
+
+const load = require('@commitlint/load');
+const lint = require('@commitlint/lint');
 
 
 // First, fetch latest revision from remote repo as FETCH_HEAD
@@ -25,19 +27,43 @@ const git = shell.exec(`git log ${GIT_REV_FROM}...${GIT_REV_TO} --oneline`, { si
 const commits = git.stdout.split('\n').filter((line) => line);
 console.info(`Found ${commits.length} commits between ${GIT_REV_FROM} and ${GIT_REV_TO}`);
 
-commits.forEach((commit) => {
-  const idx = commit.indexOf(' ');
-  const sha = commit.substr(0, idx);
-  const msg = commit.substr(idx + 1, commit.length);
-
-  console.info(`Validating ${sha}: ${msg}`);
-  const valid = validateMessage(msg);
-  if (!valid) {
+load(require('../../commitlint.config'))
+.then(rules => {
+  return Promise.all(
+    commits.map(commit => {
+      const idx = commit.indexOf(' ');
+      const sha = commit.substr(0, idx);
+      const msg = commit.substr(idx + 1, commit.length);
+      return Promise.resolve({rules, idx, sha, msg});
+    })
+    .then(({rules, sha, msg}) => {
+      console.info(`Validating ${sha}: ${msg}`);
+      return Promise.all([lint(msg, rules), sha]);
+    })
+    .then(([report, sha]) => {
+      if (!report.valid) {
+        return Promise.reject({report, sha});
+      }
+    }))
+})
+.then(() => { console.info(`Commit messages are up to standard. All fine! Well done, man!`);
+ })
+.catch(({report, sha}) => {
+  if (!report) {
+    console.error('An error occured running tool/validate-commit-msg');
+  } else {
     console.error(``);
     console.error(`Commit ${sha} has not a valid commit message!`);
-
-    process.exit(1);
+    if (report.errors.length > 0) {
+      report.errors.forEach(error => {
+        console.error(`Error: ${error.message}`);
+      });
+    }
+    if (report.warnings.length > 0) {
+      report.warnings.forEach(warning => {
+        console.error(`Warning: ${warning.message}`);
+      });
+    }
   }
+  process.exit(1);
 });
-
-console.info(`Commit messages are up to standard. All fine! Well done, man!`);
