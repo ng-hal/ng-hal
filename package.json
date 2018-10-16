@@ -34,6 +34,11 @@
     "@angular/http": "~4.4.1",
     "@angular/platform-browser": "~4.4.1",
     "@angular/platform-browser-dynamic": "~4.4.1",
+    "@commitlint/cli": "^7.2.1",
+    "@commitlint/config-conventional": "^7.1.2",
+    "@commitlint/lint": "^7.2.1",
+    "@commitlint/load": "^7.2.1",
+    "@commitlint/read": "^7.1.2",
     "@types/chai": "^4.0.4",
     "@types/core-js": "~0.9.35",
     "@types/jasmine": "2.6.1",
@@ -79,7 +84,6 @@
     "ts-node": "~3.3.0",
     "tslint": "~5.8.0",
     "typescript": "~2.5.2",
-    "validate-commit-msg": "^2.12.2",
     "webpack": "3.8.1",
     "webpack-dev-middleware": "~1.12.0",
     "webpack-dev-server": "~2.9.0",
@@ -110,7 +114,7 @@
     "e2e": "ng e2e",
     "ng": "ng",
     "start": "yarn build:lib && ng serve",
-    "commitmsg": "validate-commit-msg",
+    "commitmsg": "commitlint -E GIT_PARAMS",
     "release": "standard-version --prerelease pre --message 'release: cut v%s release'"
   }
 }
