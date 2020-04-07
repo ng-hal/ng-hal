@@ -1,112 +1,125 @@
+import { Inject, Injectable } from "@angular/core";
 import {
-  Inject,
-  Injectable
-}                               from '@angular/core';
-import {
-  Http,
-  Request,
-  RequestMethod,
-  RequestOptions,
-  RequestOptionsArgs,
-  Response
-}                               from '@angular/http';
+  HttpRequest,
+  HttpClient,
+  HttpParams,
+  HttpHeaders,
+  HttpResponse,
+} from "@angular/common/http";
 
-import { Observable }           from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+import { Observable } from "rxjs";
 
-import {
-  ConversionStrategy,
-  CONVERSION_STRATEGY
-}                               from './conversion';
-import { Resource }             from './hal';
+import { ConversionStrategy, CONVERSION_STRATEGY } from "./conversion";
+import { Resource } from "./hal";
 
-import { Document }             from './document';
-
+import { Document } from "./document";
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class Navigator {
-
   constructor(
-    private http: Http,
+    private http: HttpClient,
     @Inject(CONVERSION_STRATEGY)
     private conversionStrategy: ConversionStrategy
   ) {}
 
-
-  public get(url: string, options?: RequestOptionsArgs): Observable<Document> {
-    return this.doNavigate(RequestMethod.Get, url, options);
+  public get(
+    url: string,
+    options?: { headers?: HttpHeaders; params?: HttpParams }
+  ): Observable<Document> {
+    return this.doNavigate("GET", url, options);
   }
 
-  public post(url: string, body: any, options?: RequestOptionsArgs): Observable<Document> {
-    return this.doNavigate(RequestMethod.Post, url, options, body);
+  public post(
+    url: string,
+    body: any,
+    options?: { headers?: HttpHeaders; params?: HttpParams }
+  ): Observable<Document> {
+    return this.doNavigate("POST", url, options, body);
   }
 
-  public put(url: string, body: any, options?: RequestOptionsArgs): Observable<Document> {
-    return this.doNavigate(RequestMethod.Put, url, options, body);
+  public put(
+    url: string,
+    body: any,
+    options?: { headers?: HttpHeaders; params?: HttpParams }
+  ): Observable<Document> {
+    return this.doNavigate("PUT", url, options, body);
   }
 
-  public delete(url: string, options?: RequestOptionsArgs): Observable<Document>  {
-    return this.doNavigate(RequestMethod.Delete, url, options);
+  public delete(
+    url: string,
+    options?: { headers?: HttpHeaders; params?: HttpParams }
+  ): Observable<Document> {
+    return this.doNavigate("DELETE", url, options);
   }
 
-  public patch(url: string, body: any, options?: RequestOptionsArgs): Observable<Document> {
-    return this.doNavigate(RequestMethod.Patch, url, options, body);
+  public patch(
+    url: string,
+    body: any,
+    options?: { headers?: HttpHeaders; params?: HttpParams }
+  ): Observable<Document> {
+    return this.doNavigate("PATCH", url, options, body);
   }
 
-  public head(url: string, options?: RequestOptionsArgs): Observable<Document> {
-    return this.doNavigate(RequestMethod.Head, url, options);
+  public head(
+    url: string,
+    options?: { headers?: HttpHeaders; params?: HttpParams }
+  ): Observable<Document> {
+    return this.doNavigate("HEAD", url, options);
   }
 
-  public options(url: string, options?: RequestOptionsArgs): Observable<Document> {
-    return this.doNavigate(RequestMethod.Options, url, options);
+  public options(
+    url: string,
+    options?: { headers?: HttpHeaders; params?: HttpParams }
+  ): Observable<Document> {
+    return this.doNavigate("OPTIONS", url, options);
   }
 
-  public navigate(url: string | Request, options?: RequestOptionsArgs): Observable<Document> {
-    let req: Request;
-    if (typeof url === 'string') {
-      let opts: RequestOptionsArgs = options ? options : {};
-      opts.url = url as string;
-
-      req = new Request(new RequestOptions(options));
-    } else {
-      req = url as Request;
-    }
-
+  public navigate(
+    url: string,
+    options?: { headers?: HttpHeaders; params?: HttpParams }
+  ): Observable<Document> {
+    let req: HttpRequest<any>;
+    req = new HttpRequest<any>("GET", url, options);
     return this.doHttp(req);
   }
 
   private doNavigate(
-    method: string | RequestMethod,
+    method: string,
     url: string,
-    options?: RequestOptionsArgs,
+    options?: { headers?: HttpHeaders; params?: HttpParams },
     body?: any
   ): Observable<Document> {
-    if (options) {
-      options.url = url;
-      options.method = method;
-    } else {
-      options = { url, method };
-    }
+    let request = new HttpRequest<any>(method, url, options);
 
     if (body) {
-      options.body = body;
+      request = new HttpRequest<any>(method, url, body, options);
     }
-
-    let request: Request = new Request(new RequestOptions(options));
 
     return this.doHttp(request);
   }
 
-  private doHttp(request: Request): Observable<Document> {
+  private doHttp(request: HttpRequest<any>): Observable<Document> {
     return this.http
-      .request(request)
-      .map((response: Response) => this.doConvert(request, response));
+      .request(request.method, request.url, {
+        body: request.body,
+        headers: request.headers,
+        observe: "response",
+        params: request.params,
+        responseType: "json",
+        reportProgress: false,
+      })
+      .pipe(
+        map((response: HttpResponse<any>) => this.doConvert(request, response))
+      );
   }
 
-  private doConvert(request: Request, response: Response): Document {
+  private doConvert(
+    request: HttpRequest<any>,
+    response: HttpResponse<any>
+  ): Document {
     let resource: Resource = this.conversionStrategy.convert(response);
 
     return new Document(request, response, resource);
   }
-
 }

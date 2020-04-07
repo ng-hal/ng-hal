@@ -1,6 +1,3 @@
-import './rxjs/add/follow';
-export * from './rxjs/follow';
-
 export * from './conversion';
 export * from './hal';
 export * from './parser';

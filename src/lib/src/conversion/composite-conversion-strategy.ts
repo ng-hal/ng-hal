@@ -1,7 +1,6 @@
-import { Response }             from '@angular/http';
-
 import { ConversionStrategy }   from './conversion-strategy';
 import { Resource }             from '../hal';
+import { HttpResponse } from '@angular/common/http';
 
 
 export class CompositeConversionStrategy implements ConversionStrategy {
@@ -10,13 +9,13 @@ export class CompositeConversionStrategy implements ConversionStrategy {
     private conversionStrategies: ConversionStrategy[]
   ) {}
 
-  accepts(response: Response): boolean {
+  accepts(response: HttpResponse<any>): boolean {
     let c: ConversionStrategy = this.findFirst(response);
 
     return c ? true : false;
   }
 
-  convert(response: Response): Resource {
+  convert(response: HttpResponse<any>): Resource {
     let c: ConversionStrategy = this.findFirst(response);
 
     if (c) {
@@ -26,7 +25,7 @@ export class CompositeConversionStrategy implements ConversionStrategy {
     return;
   }
 
-  private findFirst(response: Response): ConversionStrategy {
+  private findFirst(response: HttpResponse<any>): ConversionStrategy {
     for (let c of this.conversionStrategies) {
       if (c.accepts(response)) {
         return c;

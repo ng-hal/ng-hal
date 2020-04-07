@@ -1,19 +1,17 @@
-import { OpaqueToken } from '@angular/core';
+import { InjectionToken } from "@angular/core";
 
-import { CONVERSION_STRATEGY } from './conversion-strategy';
-
+import { CONVERSION_STRATEGY } from "./conversion-strategy";
 
 describe(`CONVERSION_STRATEGY`, () => {
+  it(`acts as an DI Token, i.e. is an intanceof InjectionToken`, () => {
+    let isInstanceOfInjectionToken =
+      CONVERSION_STRATEGY instanceof InjectionToken;
 
-  it(`acts as an DI Token, i.e. is an intanceof OpaqueToken`, () => {
-    let isInstanceOfOpaqueToken = CONVERSION_STRATEGY instanceof OpaqueToken;
-
-    expect(isInstanceOfOpaqueToken).toBeTruthy();
+    expect(isInstanceOfInjectionToken).toBeTruthy();
   });
 
-  const TOKEN_VALUE = 'NG_HAL_CONVERSION_STRATEGY';
+  const TOKEN_VALUE = "NG_HAL_CONVERSION_STRATEGY";
   it(`has a constant value of ${TOKEN_VALUE}`, () => {
     expect(CONVERSION_STRATEGY.toString()).toBe(`Token ${TOKEN_VALUE}`);
   });
-
 });

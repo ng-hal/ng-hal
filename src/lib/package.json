@@ -1,7 +1,8 @@
 {
-  "name": "ng-hal",
-  "version": "0.4.2",
+  "name": "@mirakurunchan/ng-hal",
+  "version": "1.0.0-alpha0",
   "description": "Navigator for Hypermedia Abstraction Language (HAL) documents in Angular",
+  "private": false,
   "keywords": [
     "angular",
     "hal",
@@ -14,7 +15,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dherges/ng-hal.git"
+    "url": "https://github.com/Chromadream/ng-hal.git"
   },
   "bugs": {
     "url": "https://github.com/dherges/ng-hal/issues"
@@ -28,10 +29,9 @@
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "peerDependencies": {
-    "@angular/core": "^2.0.0 || ^4.0.0",
-    "@angular/http": "^2.0.0 || ^4.0.0",
+    "@angular/core": ">= 6.0.0",
+    "@angular/common": ">= 6.0.0",
     "halfred": "^1.0.0",
-    "rxjs": "^5.0.0",
-    "zone.js": "^0.7.0 || ^0.8.0"
+    "rxjs": "^6.0.0"
   }
 }
