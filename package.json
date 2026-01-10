@@ -15,7 +15,7 @@
   "dependencies": {
     "@angular/common": "~4.4.1",
     "@angular/compiler": "~4.4.1",
-    "@angular/core": "~4.4.1",
+    "@angular/core": "~19.2.18",
     "@angular/forms": "~4.4.1",
     "@angular/http": "~4.4.1",
     "@angular/platform-browser": "~4.4.1",
@@ -30,7 +30,7 @@
     "@angular/common": "~4.4.1",
     "@angular/compiler": "~4.4.1",
     "@angular/compiler-cli": "~4.4.1",
-    "@angular/core": "~4.4.1",
+    "@angular/core": "~19.2.18",
     "@angular/http": "~4.4.1",
     "@angular/platform-browser": "~4.4.1",
     "@angular/platform-browser-dynamic": "~4.4.1",
